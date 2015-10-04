@@ -67,6 +67,22 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXLegacyTarget section */
+		2D475EF91BC0E309001813D0 /* DeployScript */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = 2D475EFA1BC0E309001813D0 /* Build configuration list for PBXLegacyTarget "DeployScript" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			dependencies = (
+			);
+			name = DeployScript;
+			passBuildSettingsInEnvironment = 1;
+			productName = DeployScript;
+		};
+/* End PBXLegacyTarget section */
+
 /* Begin PBXNativeTarget section */
 		2D475EEB1BC08ADF001813D0 /* PIFlightController */ = {
 			isa = PBXNativeTarget;
@@ -97,6 +113,9 @@
 					2D475EEB1BC08ADF001813D0 = {
 						CreatedOnToolsVersion = 6.3.2;
 					};
+					2D475EF91BC0E309001813D0 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
 				};
 			};
 			buildConfigurationList = 2D475EE71BC08ADF001813D0 /* Build configuration list for PBXProject "PIFlightController" */;
@@ -112,6 +131,7 @@
 			projectRoot = "";
 			targets = (
 				2D475EEB1BC08ADF001813D0 /* PIFlightController */,
+				2D475EF91BC0E309001813D0 /* DeployScript */,
 			);
 		};
 /* End PBXProject section */
@@ -220,6 +240,31 @@
 			};
 			name = Release;
 		};
+		2D475EFB1BC0E309001813D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUGGING_SYMBOLS = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2D475EFC1BC0E309001813D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -237,6 +282,14 @@
 			buildConfigurations = (
 				2D475EF41BC08ADF001813D0 /* Debug */,
 				2D475EF51BC08ADF001813D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2D475EFA1BC0E309001813D0 /* Build configuration list for PBXLegacyTarget "DeployScript" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D475EFB1BC0E309001813D0 /* Debug */,
+				2D475EFC1BC0E309001813D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
