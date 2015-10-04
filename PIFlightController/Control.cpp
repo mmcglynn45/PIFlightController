@@ -22,8 +22,8 @@
     
     
 Control::Control(){
-    MinTime = 1.5;
-    MaxTime = 2.5;
+    MinTime = 1.0;
+    MaxTime = 2.0;
 }
     
     
