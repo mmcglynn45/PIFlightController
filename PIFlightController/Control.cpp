@@ -13,10 +13,10 @@
 #define PIN_BASE 300
 #define MAX_PWM 4096
 #define HERTZ 50
-#define YPMOTOR 1
-#define YNMOTOR 2
-#define XPMOTOR 3
-#define XNMOTOR 4
+#define YPMOTOR 0
+#define YNMOTOR 1
+#define XPMOTOR 2
+#define XNMOTOR 3
 
 
     
