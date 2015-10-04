@@ -11,8 +11,9 @@
 
 #include <stdio.h>
 class Control{
-    Control();
+    
 public:
+    Control();
     int calcTicks(float impulseMs, int hertz);
     float map(float input, float min, float max);
     void demo();
