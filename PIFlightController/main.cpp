@@ -21,10 +21,9 @@ int main(void)
 {
     printf("Welcome to Flight Controller\n");
      
-    controller = new Control();
-    
-
-
+    Control controller;
+    controller.setup();
+    controller.demo();
     
     
     return 0;
