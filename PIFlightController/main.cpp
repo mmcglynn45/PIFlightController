@@ -10,7 +10,7 @@
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    std::cout << "How did the Irish lose!?";
+    std::cout << "How did the Irish lose! Twice???";
     
     return 0;
 }
