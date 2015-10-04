@@ -30,9 +30,9 @@ int main(void)
     for (int stepper = 0; stepper<1; stepper+=0.05) {
         printf("Stepper = %d\n",stepper);
         controller.adjustYPMotor(stepper);
-        usleep(1000000);
+        usleep(100000);
         controller.adjustYPMotor(0);
-        usleep(5000000);
+        usleep(500000);
     }
     
     return 0;
