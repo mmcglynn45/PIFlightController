@@ -30,7 +30,7 @@ int main(void)
         controller.adjustYPMotor(stepper);
         usleep(1000000);
         controller.adjustYPMotor(0);
-        usleep(5000000);
+        usleep(2000000);
     }
     
     return 0;
