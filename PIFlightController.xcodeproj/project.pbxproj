@@ -82,15 +82,16 @@
 /* Begin PBXLegacyTarget section */
 		2D475EFF1BC0E557001813D0 /* DeploymentScript */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(ACTION)";
+			buildArgumentsString = Script.sh;
 			buildConfigurationList = 2D475F001BC0E557001813D0 /* Build configuration list for PBXLegacyTarget "DeploymentScript" */;
 			buildPhases = (
 			);
 			buildToolPath = /bin/sh;
+			buildWorkingDirectory = /Users/mmcglynn/Desktop/PIFlightController;
 			dependencies = (
 			);
 			name = DeploymentScript;
-			passBuildSettingsInEnvironment = 1;
+			passBuildSettingsInEnvironment = 0;
 			productName = DeploymentScript;
 		};
 /* End PBXLegacyTarget section */
