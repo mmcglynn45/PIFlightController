@@ -11,13 +11,13 @@
 
 #include <stdio.h>
 class Control{
-
+    Control();
 public:
     int calcTicks(float impulseMs, int hertz);
     float map(float input, float min, float max);
     void demo();
     void setup();
-    Control();
+    
     
 };
 

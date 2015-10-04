@@ -17,7 +17,9 @@
 
     
     
-Control::Control(){}
+Control::Control(){
+    printf("Hello");
+}
     
     
 void Control::setup(){
