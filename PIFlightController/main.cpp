@@ -25,7 +25,7 @@ int main(void)
     controller.setup();
     
     
-    
+    printf("Loop");
     for (int stepper = 0; stepper<1; stepper+=0.05) {
         printf("Stepper = %d",stepper);
         controller.adjustYPMotor(stepper);
