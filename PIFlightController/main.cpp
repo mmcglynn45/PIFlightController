@@ -22,17 +22,15 @@ int main(void)
     printf("Welcome to Flight Controller\n");
      
     Control controller;
-    printf("Loop1\n");
     controller.setup();
     
-    
-    printf("Loop\n");
+
     for (double stepper = 0; stepper<1; stepper+=0.05) {
         printf("Stepper = %f\n",stepper);
         controller.adjustYPMotor(stepper);
-        usleep(100000);
+        usleep(1000000);
         controller.adjustYPMotor(0);
-        usleep(500000);
+        usleep(5000000);
     }
     
     return 0;
