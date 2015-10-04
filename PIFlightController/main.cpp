@@ -27,8 +27,8 @@ int main(void)
     
     
     printf("Loop\n");
-    for (int stepper = 0; stepper<1; stepper+=0.05) {
-        printf("Stepper = %d\n",stepper);
+    for (double stepper = 0; stepper<1; stepper+=0.05) {
+        printf("Stepper = %f\n",stepper);
         controller.adjustYPMotor(stepper);
         usleep(100000);
         controller.adjustYPMotor(0);
