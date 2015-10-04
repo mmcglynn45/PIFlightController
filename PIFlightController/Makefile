@@ -1,2 +1,2 @@
 all:
-    g++ main.cpp -o FlightController
+	g++ main.cpp -o FlightController
