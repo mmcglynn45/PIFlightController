@@ -10,6 +10,7 @@
 		2D475EF71BC0BDC3001813D0 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 2D475EF61BC0BDC3001813D0 /* Makefile */; };
 		2D475F0B1BC0F70F001813D0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D475EEF1BC08ADF001813D0 /* main.cpp */; };
 		2D475F131BC0F920001813D0 /* pca9685.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D475F111BC0F920001813D0 /* pca9685.c */; };
+		2D475F171BC0FE86001813D0 /* Control.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D475F151BC0FE86001813D0 /* Control.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		2D475F111BC0F920001813D0 /* pca9685.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pca9685.c; sourceTree = "<group>"; };
 		2D475F121BC0F920001813D0 /* pca9685.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pca9685.h; sourceTree = "<group>"; };
 		2D475F141BC0F999001813D0 /* wiringPi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = wiringPi.h; path = wiringPi/wiringPi/wiringPi.h; sourceTree = "<group>"; };
+		2D475F151BC0FE86001813D0 /* Control.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Control.cpp; sourceTree = "<group>"; };
+		2D475F161BC0FE86001813D0 /* Control.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Control.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +79,8 @@
 			isa = PBXGroup;
 			children = (
 				2D475EEF1BC08ADF001813D0 /* main.cpp */,
+				2D475F151BC0FE86001813D0 /* Control.cpp */,
+				2D475F161BC0FE86001813D0 /* Control.h */,
 				2D475F111BC0F920001813D0 /* pca9685.c */,
 				2D475F121BC0F920001813D0 /* pca9685.h */,
 				2D475F141BC0F999001813D0 /* wiringPi.h */,
@@ -163,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D475F0B1BC0F70F001813D0 /* main.cpp in Sources */,
+				2D475F171BC0FE86001813D0 /* Control.cpp in Sources */,
 				2D475EF71BC0BDC3001813D0 /* Makefile in Sources */,
 				2D475F131BC0F920001813D0 /* pca9685.c in Sources */,
 			);
