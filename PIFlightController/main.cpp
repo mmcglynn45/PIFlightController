@@ -7,7 +7,7 @@
 //
 
 #include "pca9685.h"
-#include "wiringPi/wiringPi/wiringPi.h"
+#include <wiringPi.h>
 
 #include <stdio.h>
 #include <stdlib.h>
