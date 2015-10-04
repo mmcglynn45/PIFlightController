@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D475EF01BC08ADF001813D0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D475EEF1BC08ADF001813D0 /* main.cpp */; };
+		2D475EF71BC0BDC3001813D0 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 2D475EF61BC0BDC3001813D0 /* Makefile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		2D475EEC1BC08ADF001813D0 /* PIFlightController */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PIFlightController; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D475EEF1BC08ADF001813D0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		2D475EF61BC0BDC3001813D0 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				2D475EEF1BC08ADF001813D0 /* main.cpp */,
+				2D475EF61BC0BDC3001813D0 /* Makefile */,
 			);
 			path = PIFlightController;
 			sourceTree = "<group>";
@@ -118,6 +121,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D475EF71BC0BDC3001813D0 /* Makefile in Sources */,
 				2D475EF01BC08ADF001813D0 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
