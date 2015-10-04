@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2D475EF71BC0BDC3001813D0 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 2D475EF61BC0BDC3001813D0 /* Makefile */; };
 		2D475F0B1BC0F70F001813D0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D475EEF1BC08ADF001813D0 /* main.cpp */; };
+		2D475F131BC0F920001813D0 /* pca9685.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D475F111BC0F920001813D0 /* pca9685.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,9 @@
 		2D475EEF1BC08ADF001813D0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2D475EF61BC0BDC3001813D0 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
 		2D475F031BC0E57A001813D0 /* Script.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = Script.sh; sourceTree = "<group>"; };
-		2D475F0C1BC0F825001813D0 /* wiringPi */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wiringPi; sourceTree = "<group>"; };
+		2D475F111BC0F920001813D0 /* pca9685.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pca9685.c; sourceTree = "<group>"; };
+		2D475F121BC0F920001813D0 /* pca9685.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pca9685.h; sourceTree = "<group>"; };
+		2D475F141BC0F999001813D0 /* wiringPi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = wiringPi.h; path = wiringPi/wiringPi/wiringPi.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +76,9 @@
 			isa = PBXGroup;
 			children = (
 				2D475EEF1BC08ADF001813D0 /* main.cpp */,
-				2D475F0C1BC0F825001813D0 /* wiringPi */,
+				2D475F111BC0F920001813D0 /* pca9685.c */,
+				2D475F121BC0F920001813D0 /* pca9685.h */,
+				2D475F141BC0F999001813D0 /* wiringPi.h */,
 				2D475EF61BC0BDC3001813D0 /* Makefile */,
 			);
 			path = PIFlightController;
@@ -159,6 +164,7 @@
 			files = (
 				2D475F0B1BC0F70F001813D0 /* main.cpp in Sources */,
 				2D475EF71BC0BDC3001813D0 /* Makefile in Sources */,
+				2D475F131BC0F920001813D0 /* pca9685.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
