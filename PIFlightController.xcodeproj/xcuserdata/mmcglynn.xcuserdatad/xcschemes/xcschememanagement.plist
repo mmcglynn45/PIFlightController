@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>DeploymentScript.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>PIFlightController.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -23,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>2D475EF91BC0E309001813D0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2D475EFF1BC0E557001813D0</key>
 		<dict>
 			<key>primary</key>
 			<true/>

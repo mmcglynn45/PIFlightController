@@ -11,6 +11,16 @@
 		2D475EF71BC0BDC3001813D0 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 2D475EF61BC0BDC3001813D0 /* Makefile */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2D475F041BC0E5AA001813D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D475EE41BC08ADF001813D0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D475EFF1BC0E557001813D0;
+			remoteInfo = DeploymentScript;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		2D475EEA1BC08ADF001813D0 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -27,6 +37,7 @@
 		2D475EEC1BC08ADF001813D0 /* PIFlightController */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PIFlightController; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D475EEF1BC08ADF001813D0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2D475EF61BC0BDC3001813D0 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
+		2D475F031BC0E57A001813D0 /* Script.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = Script.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +54,7 @@
 		2D475EE31BC08ADF001813D0 = {
 			isa = PBXGroup;
 			children = (
+				2D475F031BC0E57A001813D0 /* Script.sh */,
 				2D475EEE1BC08ADF001813D0 /* PIFlightController */,
 				2D475EED1BC08ADF001813D0 /* Products */,
 			);
@@ -68,18 +80,18 @@
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
-		2D475EF91BC0E309001813D0 /* DeployScript */ = {
+		2D475EFF1BC0E557001813D0 /* DeploymentScript */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = "$(ACTION)";
-			buildConfigurationList = 2D475EFA1BC0E309001813D0 /* Build configuration list for PBXLegacyTarget "DeployScript" */;
+			buildConfigurationList = 2D475F001BC0E557001813D0 /* Build configuration list for PBXLegacyTarget "DeploymentScript" */;
 			buildPhases = (
 			);
-			buildToolPath = /usr/bin/make;
+			buildToolPath = /bin/sh;
 			dependencies = (
 			);
-			name = DeployScript;
+			name = DeploymentScript;
 			passBuildSettingsInEnvironment = 1;
-			productName = DeployScript;
+			productName = DeploymentScript;
 		};
 /* End PBXLegacyTarget section */
 
@@ -95,6 +107,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				2D475F051BC0E5AA001813D0 /* PBXTargetDependency */,
 			);
 			name = PIFlightController;
 			productName = PIFlightController;
@@ -113,7 +126,7 @@
 					2D475EEB1BC08ADF001813D0 = {
 						CreatedOnToolsVersion = 6.3.2;
 					};
-					2D475EF91BC0E309001813D0 = {
+					2D475EFF1BC0E557001813D0 = {
 						CreatedOnToolsVersion = 6.3.2;
 					};
 				};
@@ -131,7 +144,7 @@
 			projectRoot = "";
 			targets = (
 				2D475EEB1BC08ADF001813D0 /* PIFlightController */,
-				2D475EF91BC0E309001813D0 /* DeployScript */,
+				2D475EFF1BC0E557001813D0 /* DeploymentScript */,
 			);
 		};
 /* End PBXProject section */
@@ -147,6 +160,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2D475F051BC0E5AA001813D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D475EFF1BC0E557001813D0 /* DeploymentScript */;
+			targetProxy = 2D475F041BC0E5AA001813D0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2D475EF11BC08ADF001813D0 /* Debug */ = {
@@ -240,7 +261,7 @@
 			};
 			name = Release;
 		};
-		2D475EFB1BC0E309001813D0 /* Debug */ = {
+		2D475F011BC0E557001813D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEBUGGING_SYMBOLS = YES;
@@ -256,7 +277,7 @@
 			};
 			name = Debug;
 		};
-		2D475EFC1BC0E309001813D0 /* Release */ = {
+		2D475F021BC0E557001813D0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				OTHER_CFLAGS = "";
@@ -285,11 +306,11 @@
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		2D475EFA1BC0E309001813D0 /* Build configuration list for PBXLegacyTarget "DeployScript" */ = {
+		2D475F001BC0E557001813D0 /* Build configuration list for PBXLegacyTarget "DeploymentScript" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2D475EFB1BC0E309001813D0 /* Debug */,
-				2D475EFC1BC0E309001813D0 /* Release */,
+				2D475F011BC0E557001813D0 /* Debug */,
+				2D475F021BC0E557001813D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
