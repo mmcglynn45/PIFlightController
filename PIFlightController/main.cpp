@@ -22,11 +22,11 @@ int main(void)
     printf("Welcome to Flight Controller\n");
      
     Control controller;
-    printf("Loop");
+    printf("Loop\n");
     controller.setup();
     
     
-    printf("Loop");
+    printf("Loop\n");
     for (int stepper = 0; stepper<1; stepper+=0.05) {
         printf("Stepper = %d",stepper);
         controller.adjustYPMotor(stepper);
