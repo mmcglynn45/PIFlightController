@@ -21,7 +21,7 @@ int main(void)
 {
     printf("Welcome to Flight Controller\n");
      
-    
+    controller = new Control();
     
 
 

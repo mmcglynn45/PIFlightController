@@ -10,10 +10,16 @@
 #define __PIFlightController__Control__
 
 #include <stdio.h>
+class Control{
 
-int calcTicks(float impulseMs, int hertz);
-float map(float input, float min, float max);
-void demo();
-void setup();
+public:
+    int calcTicks(float impulseMs, int hertz);
+    float map(float input, float min, float max);
+    void demo();
+    void setup();
+    Control();
+    
+};
+
 
 #endif /* defined(__PIFlightController__Control__) */

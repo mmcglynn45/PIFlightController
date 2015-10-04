@@ -14,11 +14,13 @@
 #define MAX_PWM 4096
 #define HERTZ 50
 
-class Control {
+
     
     
-public:
-    void setup(){
+Control::Control(){}
+    
+    
+    void Control::setup(){
         int fd = pca9685Setup(PIN_BASE, 0x40, HERTZ);
         if (fd < 0)
         {
@@ -29,7 +31,7 @@ public:
         pca9685PWMReset(fd);
     }
     
-    void demo(){
+    void Control::demo(){
         // Set servo to neutral position at 1.5 milliseconds
         // (View http://en.wikipedia.org/wiki/Servo_control#Pulse_duration)
         float millis = 1.0;
@@ -52,7 +54,7 @@ public:
     /**
      * Calculate the number of ticks the signal should be high for the required amount of time
      */
-    int calcTicks(float impulseMs, int hertz)
+    int Control::calcTicks(float impulseMs, int hertz)
     {
         float cycleMs = 1000.0f / hertz;
         return (int)(MAX_PWM * impulseMs / cycleMs + 0.5f);
@@ -62,10 +64,10 @@ public:
      * input is [0..1]
      * output is [min..max]
      */
-    float map(float input, float min, float max)
+    float Control::map(float input, float min, float max)
     {
         return (input * max) + (1 - input) * min;
     }
-};
+
 
 
