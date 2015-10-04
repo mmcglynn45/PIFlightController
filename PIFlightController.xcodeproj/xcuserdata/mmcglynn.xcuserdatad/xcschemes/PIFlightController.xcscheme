@@ -14,13 +14,6 @@
                shellToInvoke = "/bin/sh/">
             </ActionContent>
          </ExecutionAction>
-         <ExecutionAction
-            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
-            <ActionContent
-               title = "Run Script"
-               scriptText = "cd /Users/mmcglynn/Desktop/PIFlightController&#10;git commit -m &quot;Build Update&quot; -a&#10;git push">
-            </ActionContent>
-         </ExecutionAction>
       </PreActions>
       <BuildActionEntries>
          <BuildActionEntry
