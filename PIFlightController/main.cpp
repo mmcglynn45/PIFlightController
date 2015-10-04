@@ -22,6 +22,7 @@ int main(void)
     printf("Welcome to Flight Controller\n");
      
     Control controller;
+    printf("Loop");
     controller.setup();
     
     
