@@ -13,12 +13,17 @@
 #define PIN_BASE 300
 #define MAX_PWM 4096
 #define HERTZ 50
+#define YPMOTOR 1
+#define YNMOTOR 2
+#define XPMOTOR 3
+#define XNMOTOR 4
 
 
     
     
 Control::Control(){
-    printf("Hello");
+    MinTime = 1.5;
+    MaxTime = 2.5;
 }
     
     
@@ -52,6 +57,27 @@ void Control::demo(){
     }
 }
 
+void Control::adjustMotorSpeed(int motor, double speed){
+    double milliseconds = speed*(MaxTime-MinTime)+MinTime;
+    double tick = calcTicks(milliseconds, HERTZ);
+    pwmWrite(PIN_BASE + motor, tick);
+}
+
+void Control::adjustYPMotor(double speed){
+    adjustMotorSpeed(YPMOTOR, speed);
+}
+
+void Control::adjustYNMotor(double speed){
+    adjustMotorSpeed(YNMOTOR, speed);
+}
+
+void Control::adjustXPMotor(double speed){
+    adjustMotorSpeed(XPMOTOR, speed);
+}
+
+void Control::adjustXNMotor(double speed){
+    adjustMotorSpeed(XNMOTOR, speed);
+}
 
 /**
  * Calculate the number of ticks the signal should be high for the required amount of time
