@@ -15,7 +15,7 @@
 #define PIN_BASE 300
 #define MAX_PWM 4096
 #define HERTZ 50
-
+l,l,
 
 /**
  * Calculate the number of ticks the signal should be high for the required amount of time
