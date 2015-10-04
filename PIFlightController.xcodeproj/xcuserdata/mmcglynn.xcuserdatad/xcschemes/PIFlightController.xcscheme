@@ -10,7 +10,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "cd /Users/mmcglynn/Desktop/PIFlightController&#10;git commit -m &quot;Build Update&quot;&#10;git push"
+               scriptText = "cd /Users/mmcglynn/Desktop/PIFlightController&#10;git commit -m &quot;Build Update&quot; -a&#10;git push"
                shellToInvoke = "/bin/sh/">
             </ActionContent>
          </ExecutionAction>
@@ -63,7 +63,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "cd /Users/mmcglynn/Desktop/PIFlightController&#10;git commit -m &quot;Build Update&quot;&#10;git push"
+               scriptText = ""
                shellToInvoke = "/bin/sh">
             </ActionContent>
          </ExecutionAction>
