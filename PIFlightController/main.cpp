@@ -31,7 +31,7 @@ int main(void)
     std::clock_t    start;
     
     start = std::clock();
-    for (int i = 0; i<100; i++) {
+    for (int i = 0; i<5000; i++) {
         if(!piIMU.updateIMU()){
             i--;
         }
