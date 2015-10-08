@@ -1,6 +1,10 @@
 #include "IMU.h"
 #include "math.h"
 
+inline double to_degrees(double radians) {
+    return radians * (180.0 / M_PI);
+}
+
 void IMU::setup(){
     RTIMUSettings *settings = new RTIMUSettings("RTIMULib");
     
@@ -25,12 +29,10 @@ void IMU::setup(){
 void IMU::updateIMU(){
     int sampleCount = 0;
     int sampleRate = 0;
-  
-    
     if (imu->IMURead()) {
         RTIMU_DATA imuData = imu->getIMUData();
         sampleCount++;
-        printf("Test one piece: Roll = %f\n",imuData.fusionPose.data(0));
+        printf("Test one piece: Roll = %f\n",to_degrees(imuData.fusionPose.data(0)));
         //printf("Sample rate %d: %s\r", sampleRate, RTMath::displayDegrees("", imuData.fusionPose));
         fflush(stdout);
         
