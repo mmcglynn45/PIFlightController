@@ -16,8 +16,12 @@
 #include <ctime>
 #include <iostream>
 #include <chrono>
+#include <pthread.h>
+
 
 using namespace std;
+
+void* threaded(void * controller);
 
 int main(void)
 {
@@ -28,20 +32,21 @@ int main(void)
     
     IMU piIMU;
     piIMU.setup();
-
+    pthread_t thread1;
     auto t1 = std::chrono::high_resolution_clock::now();
     for (int i = 0; i<5000; i++) {
         if(!piIMU.updateIMU()){
             i--;
         }
-        controller.adjustYPMotor(0.2);
-        controller.adjustXPMotor(0.7);
-        controller.adjustYNMotor(0.7);
-        controller.adjustXNMotor(0.7);
-        controller.adjustYPMotor(0.2);
-        controller.adjustXPMotor(0.7);
-        controller.adjustYNMotor(0.7);
-        controller.adjustXNMotor(0.7);
+        pthread_create(&thread1, NULL, threaded, &controller);
+        //controller.adjustYPMotor(0.2);
+        //controller.adjustXPMotor(0.7);
+        //controller.adjustYNMotor(0.7);
+        //controller.adjustXNMotor(0.7);
+        //controller.adjustYPMotor(0.2);
+        //controller.adjustXPMotor(0.7);
+        //controller.adjustYNMotor(0.7);
+        //controller.adjustXNMotor(0.7);
         //printf("hi");
     }
     auto t2 = std::chrono::high_resolution_clock::now();
@@ -60,6 +65,21 @@ int main(void)
     }
     
     return 0;
+}
+
+void* threaded(void * controller){
+    Control * controller2;
+    controller2 = (Control *)controller;
+    controller2->adjustYPMotor(0.2);
+    controller2->adjustYNMotor(0.2);
+    controller2->adjustXPMotor(0.2);
+    controller2->adjustXNMotor(0.2);
+    controller2->adjustYPMotor(0.2);
+    controller2->adjustYNMotor(0.2);
+    controller2->adjustXPMotor(0.2);
+    controller2->adjustXNMotor(0.2);
+    printf("Hi");
+    return NULL;
 }
 
 
