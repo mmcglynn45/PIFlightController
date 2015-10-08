@@ -27,12 +27,8 @@ int main(void)
     
     IMU piIMU;
     piIMU.setup();
-    
-    std::clock_t    start;
-    
-    printf("Started");
-    fflush(stdout);
-    start = std::clock();
+
+    auto t1 = std::chrono::high_resolution_clock::now();
     for (int i = 0; i<5000; i++) {
         if(!piIMU.updateIMU()){
             i--;
@@ -41,13 +37,13 @@ int main(void)
         controller.adjustXPMotor(0.7);
         controller.adjustYNMotor(0.7);
         controller.adjustXNMotor(0.7);
-//printf("hi");
+        //printf("hi");
     }
-    printf("Finished");
-    fflush(stdout);
-    cout << "Time: " << (std::clock() - start) / (double)(CLOCKS_PER_SEC / 1000) << " ms" << std::endl;
-    
-    
+    auto t2 = std::chrono::high_resolution_clock::now();
+    std::cout << "f() took "
+    << std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count()
+    << " milliseconds\n";
+   
 
     
     for (double stepper = 0; stepper<1; stepper+=0.05) {
