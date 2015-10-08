@@ -1,5 +1,5 @@
 #include "IMU.h"
-
+#include "math.h"
 
 void IMU::setup(){
     RTIMUSettings *settings = new RTIMUSettings("RTIMULib");
