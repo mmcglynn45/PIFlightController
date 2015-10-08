@@ -32,14 +32,20 @@ int main(void)
     
     IMU piIMU;
     piIMU.setup();
-    pthread_t thread1;
+    pthread_t thread1,thread2,thread3,thread4;
     auto t1 = std::chrono::high_resolution_clock::now();
     for (int i = 0; i<5000; i++) {
         pthread_create(&thread1, NULL, threaded, &controller);
+        pthread_create(&thread2, NULL, threaded, &controller);
+        pthread_create(&thread3, NULL, threaded, &controller);
+        pthread_create(&thread4, NULL, threaded, &controller);
         while(!piIMU.updateIMU()){
             //i--;
         }
         pthread_join( thread1, NULL);
+        pthread_join( thread2, NULL);
+        pthread_join( thread3, NULL);
+        pthread_join( thread4, NULL);
         //controller.adjustYPMotor(0.2);
         //controller.adjustXPMotor(0.7);
         //controller.adjustYNMotor(0.7);
@@ -73,12 +79,6 @@ void* threaded(void * controller){
     controller2 = (Control *)controller;
     controller2->adjustYPMotor(0.2);
     controller2->adjustYNMotor(0.2);
-    controller2->adjustXPMotor(0.2);
-    controller2->adjustXNMotor(0.2);
-    controller2->adjustYPMotor(0.2);
-    controller2->adjustYNMotor(0.2);
-    controller2->adjustXPMotor(0.2);
-    controller2->adjustXNMotor(0.2);
     //printf("Hi");
     return NULL;
 }
