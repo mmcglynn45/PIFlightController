@@ -1,7 +1,7 @@
 
 #include "RTIMULib/RTIMULib.h"
 
-int readIMU()
+IMU::int readIMU()
 {
     int sampleCount = 0;
     int sampleRate = 0;

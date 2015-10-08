@@ -39,8 +39,6 @@ void Control::setup(){
 }
 
 void Control::demo(){
-    // Set servo to neutral position at 1.5 milliseconds
-    // (View http://en.wikipedia.org/wiki/Servo_control#Pulse_duration)
     float millis = 1.0;
     int tick = calcTicks(millis, HERTZ);
     while(1){

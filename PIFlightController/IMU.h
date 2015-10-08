@@ -10,7 +10,15 @@
 #define __PIFlightController__IMU__
 
 #include <stdio.h>
+class IMU{
+    double pitch;
+    double roll;
+    double yaw;
+public:
+    void updateIMU();
+    int readIMU();
+    
+};
 
-int readIMU();
 
 #endif /* defined(__PIFlightController__IMU__) */
