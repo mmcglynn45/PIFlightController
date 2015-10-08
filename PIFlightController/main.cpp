@@ -31,9 +31,9 @@ int main(void)
 
     auto t1 = std::chrono::high_resolution_clock::now();
     for (int i = 0; i<5000; i++) {
-        if(!piIMU.updateIMU()){
-            i--;
-        }
+        //if(!piIMU.updateIMU()){
+        //    i--;
+        //}
         controller.adjustYPMotor(0.2);
         controller.adjustXPMotor(0.7);
         controller.adjustYNMotor(0.7);
