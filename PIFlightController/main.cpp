@@ -26,7 +26,12 @@ int main(void)
     
     IMU piIMU;
     piIMU.setup();
-    piIMU.updateIMU();
+    
+    while (1) {
+        piIMU.updateIMU();
+        usleep(1000000);
+    }
+
     
     for (double stepper = 0; stepper<1; stepper+=0.05) {
         printf("Stepper = %f\n",stepper);
