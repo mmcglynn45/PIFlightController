@@ -17,7 +17,7 @@ class IMU{
     double roll;
     double yaw;
 public:
-    void updateIMU();
+    int updateIMU();
     int readIMU();
     void setup();
 };

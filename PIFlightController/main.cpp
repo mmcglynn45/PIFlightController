@@ -32,7 +32,9 @@ int main(void)
     
     start = std::clock();
     for (int i = 0; i<10000; i++) {
-        piIMU.updateIMU();
+        if(!piIMU.updateIMU()){
+            i--;
+        }
     }
     cout << "Time: " << (std::clock() - start) / (double)(CLOCKS_PER_SEC / 1000) << " ms" << std::endl;
     

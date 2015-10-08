@@ -26,17 +26,19 @@ void IMU::setup(){
     imu->setCompassEnable(true);
 }
 
-void IMU::updateIMU(){
+int IMU::updateIMU(){
     int sampleCount = 0;
     int sampleRate = 0;
-    while (!imu->IMURead()) {
+    if (imu->IMURead()) {
         RTIMU_DATA imuData = imu->getIMUData();
         sampleCount++;
         roll = to_degrees(imuData.fusionPose.data(0));
         //printf("Test one piece: Roll = %f\n",to_degrees(imuData.fusionPose.data(0)));
         //printf("Sample rate %d: %s\r", sampleRate, RTMath::displayDegrees("", imuData.fusionPose));
         fflush(stdout);
-        
+        return 1;
+    }else{
+        return 0;
     }
 
 }
