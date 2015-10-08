@@ -29,7 +29,7 @@ int main(void)
     
     while (1) {
         piIMU.updateIMU();
-        usleep(1000000);
+        usleep(1000);
     }
 
     
