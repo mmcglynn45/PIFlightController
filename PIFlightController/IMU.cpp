@@ -35,7 +35,6 @@ int IMU::updateIMU(){
         roll = to_degrees(imuData.fusionPose.data(0));
         //printf("Test one piece: Roll = %f\n",to_degrees(imuData.fusionPose.data(0)));
         //printf("Sample rate %d: %s\r", sampleRate, RTMath::displayDegrees("", imuData.fusionPose));
-        fflush(stdout);
         return 1;
     }else{
         return 0;

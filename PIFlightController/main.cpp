@@ -30,6 +30,8 @@ int main(void)
     
     std::clock_t    start;
     
+    printf("Started");
+    fflush(stdout);
     start = std::clock();
     for (int i = 0; i<5000; i++) {
         if(!piIMU.updateIMU()){
@@ -41,6 +43,8 @@ int main(void)
         controller.adjustXNMotor(0.7);
 //printf("hi");
     }
+    printf("Finished");
+    fflush(stdout);
     cout << "Time: " << (std::clock() - start) / (double)(CLOCKS_PER_SEC / 1000) << " ms" << std::endl;
     
     
