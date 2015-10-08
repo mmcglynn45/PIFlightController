@@ -58,10 +58,6 @@ int main(void)
         controller.adjustXPMotor(0.7);
         controller.adjustYNMotor(0.7);
         controller.adjustXNMotor(0.7);
-        controller.adjustYPMotor(0.2);
-        controller.adjustXPMotor(0.7);
-        controller.adjustYNMotor(0.7);
-        controller.adjustXNMotor(0.7);
         //printf("hi");
     }
     auto t2 = std::chrono::high_resolution_clock::now();
