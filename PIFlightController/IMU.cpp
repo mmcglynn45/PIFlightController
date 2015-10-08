@@ -25,36 +25,15 @@ void IMU::setup(){
 void IMU::updateIMU(){
     int sampleCount = 0;
     int sampleRate = 0;
-    uint64_t rateTimer;
-    uint64_t displayTimer;
-    uint64_t now;
+  
     
-    rateTimer = displayTimer = RTMath::currentUSecsSinceEpoch();
-    
-    while (imu->IMURead()) {
+    if (imu->IMURead()) {
         RTIMU_DATA imuData = imu->getIMUData();
         sampleCount++;
-        
         printf("Test one piece: Roll = %f\n",imuData.fusionPose.data(0));
+        printf("Sample rate %d: %s\r", sampleRate, RTMath::displayDegrees("", imuData.fusionPose));
+        fflush(stdout);
         
-        
-        now = RTMath::currentUSecsSinceEpoch();
-        
-        //  display 10 times per second
-        
-        if ((now - displayTimer) > 100000) {
-            printf("Sample rate %d: %s\r", sampleRate, RTMath::displayDegrees("", imuData.fusionPose));
-            fflush(stdout);
-            displayTimer = now;
-        }
-        
-        //  update rate every second
-        
-        if ((now - rateTimer) > 1000000) {
-            sampleRate = sampleCount;
-            sampleCount = 0;
-            rateTimer = now;
-        }
     }
 
 }
