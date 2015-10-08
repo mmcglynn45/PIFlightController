@@ -4,7 +4,7 @@
 void IMU::setup(){
     RTIMUSettings *settings = new RTIMUSettings("RTIMULib");
     
-    RTIMU *imu = RTIMU::createIMU(settings);
+    imu = RTIMU::createIMU(settings);
     
     if ((imu == NULL) || (imu->IMUType() == RTIMU_TYPE_NULL)) {
         printf("No IMU found\n");
