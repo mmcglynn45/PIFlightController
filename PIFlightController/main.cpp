@@ -35,8 +35,11 @@ int main(void)
         if(!piIMU.updateIMU()){
             i--;
         }
-        controller.adjustYPMotor(0.7);
-        printf("hi");
+        controller.adjustYPMotor(0.2);
+        controller.adjustXPMotor(0.7);
+        controller.adjustYNMotor(0.7);
+        controller.adjustXNMotor(0.7);
+//printf("hi");
     }
     cout << "Time: " << (std::clock() - start) / (double)(CLOCKS_PER_SEC / 1000) << " ms" << std::endl;
     
