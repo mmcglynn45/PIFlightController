@@ -36,6 +36,7 @@ int main(void)
             i--;
         }
         controller.adjustYPMotor(0.7);
+        printf("hi");
     }
     cout << "Time: " << (std::clock() - start) / (double)(CLOCKS_PER_SEC / 1000) << " ms" << std::endl;
     
