@@ -35,10 +35,11 @@ int main(void)
     pthread_t thread1;
     auto t1 = std::chrono::high_resolution_clock::now();
     for (int i = 0; i<5000; i++) {
+        pthread_create(&thread1, NULL, threaded, &controller);
         if(!piIMU.updateIMU()){
             i--;
         }
-        pthread_create(&thread1, NULL, threaded, &controller);
+        pthread_join( thread1, NULL);
         //controller.adjustYPMotor(0.2);
         //controller.adjustXPMotor(0.7);
         //controller.adjustYNMotor(0.7);
