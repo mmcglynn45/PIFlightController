@@ -79,7 +79,7 @@ void* threaded(void * controller){
     controller2->adjustYNMotor(0.2);
     controller2->adjustXPMotor(0.2);
     controller2->adjustXNMotor(0.2);
-    printf("Hi");
+    //printf("Hi");
     return NULL;
 }
 
