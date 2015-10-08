@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "Control.h"
-
+#include "IMU.h"
 
 
 
@@ -24,7 +24,8 @@ int main(void)
     Control controller;
     controller.setup();
     
-
+    readIMU();
+    
     for (double stepper = 0; stepper<1; stepper+=0.05) {
         printf("Stepper = %f\n",stepper);
         controller.adjustYPMotor(stepper);
