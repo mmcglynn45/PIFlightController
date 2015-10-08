@@ -40,6 +40,7 @@
 		2D45A5781BC62C6C0000511F /* IMU.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IMU.cpp; sourceTree = "<group>"; };
 		2D45A5791BC62C6C0000511F /* IMU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMU.h; sourceTree = "<group>"; };
 		2D45A57B1BC62F1D0000511F /* RTIMULib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RTIMULib; sourceTree = "<group>"; };
+		2D45A57F1BC64EE40000511F /* RTIMULib.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RTIMULib.ini; sourceTree = "<group>"; };
 		2D475EEC1BC08ADF001813D0 /* PIFlightController */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PIFlightController; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D475EEF1BC08ADF001813D0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2D475EF61BC0BDC3001813D0 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
@@ -92,6 +93,7 @@
 				2D475F121BC0F920001813D0 /* pca9685.h */,
 				2D475F141BC0F999001813D0 /* wiringPi.h */,
 				2D475EF61BC0BDC3001813D0 /* Makefile */,
+				2D45A57F1BC64EE40000511F /* RTIMULib.ini */,
 			);
 			path = PIFlightController;
 			sourceTree = "<group>";
