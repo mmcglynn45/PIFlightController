@@ -1,5 +1,5 @@
 LDFLAGS = -L/usr/local/lib
-LDLIBS  = -lwiringPi -lwiringPiDev -lpthread -lm -lwiringPiPca9685
+LDLIBS  = -lwiringPi -lwiringPiDev -lpthread -lm -lwiringPiPca9685 -lRTIMULib
 
 all:
-	g++ $(LDFLAGS) $(LDLIBS) main.cpp Control.cpp -o FlightController
+	g++ $(LDFLAGS) $(LDLIBS) main.cpp Control.cpp IMU.cpp -o FlightController

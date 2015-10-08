@@ -25,12 +25,12 @@ int main(void)
     controller.setup();
     
 
-    for (double stepper = 0; stepper<1; stepper+=0.01) {
+    for (double stepper = 0; stepper<1; stepper+=0.05) {
         printf("Stepper = %f\n",stepper);
         controller.adjustYPMotor(stepper);
-        usleep(500000);
+        usleep(1000000);
         controller.adjustYPMotor(0);
-        usleep(500000);
+        usleep(2000000);
     }
     
     return 0;

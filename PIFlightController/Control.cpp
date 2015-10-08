@@ -86,7 +86,6 @@ int Control::calcTicks(float impulseMs, int hertz)
 {
     float cycleMs = 1000.0f / hertz;
     int output = (int)(MAX_PWM * impulseMs / cycleMs + 0.5f);
-    printf("Output = %i", output);
     return output;
 }
 

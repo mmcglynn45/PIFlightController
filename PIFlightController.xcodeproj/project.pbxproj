@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D45A57A1BC62C6C0000511F /* IMU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D45A5781BC62C6C0000511F /* IMU.cpp */; };
 		2D475EF71BC0BDC3001813D0 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 2D475EF61BC0BDC3001813D0 /* Makefile */; };
 		2D475F0B1BC0F70F001813D0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D475EEF1BC08ADF001813D0 /* main.cpp */; };
 		2D475F131BC0F920001813D0 /* pca9685.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D475F111BC0F920001813D0 /* pca9685.c */; };
@@ -36,6 +37,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2D45A5781BC62C6C0000511F /* IMU.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IMU.cpp; sourceTree = "<group>"; };
+		2D45A5791BC62C6C0000511F /* IMU.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMU.h; sourceTree = "<group>"; };
+		2D45A57B1BC62F1D0000511F /* RTIMULib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RTIMULib; sourceTree = "<group>"; };
+		2D45A57C1BC6304F0000511F /* RTIMULib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RTIMULib.h; path = RTIMULib/RTIMULib.h; sourceTree = "<group>"; };
 		2D475EEC1BC08ADF001813D0 /* PIFlightController */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PIFlightController; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D475EEF1BC08ADF001813D0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2D475EF61BC0BDC3001813D0 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
@@ -58,6 +63,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D45A57D1BC630CD0000511F /* RTIMULibComponents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = RTIMULibComponents;
+			sourceTree = "<group>";
+		};
 		2D475EE31BC08ADF001813D0 = {
 			isa = PBXGroup;
 			children = (
@@ -78,12 +90,17 @@
 		2D475EEE1BC08ADF001813D0 /* PIFlightController */ = {
 			isa = PBXGroup;
 			children = (
+				2D45A57B1BC62F1D0000511F /* RTIMULib */,
 				2D475EEF1BC08ADF001813D0 /* main.cpp */,
+				2D45A57C1BC6304F0000511F /* RTIMULib.h */,
 				2D475F151BC0FE86001813D0 /* Control.cpp */,
+				2D45A5781BC62C6C0000511F /* IMU.cpp */,
+				2D45A5791BC62C6C0000511F /* IMU.h */,
 				2D475F161BC0FE86001813D0 /* Control.h */,
 				2D475F111BC0F920001813D0 /* pca9685.c */,
 				2D475F121BC0F920001813D0 /* pca9685.h */,
 				2D475F141BC0F999001813D0 /* wiringPi.h */,
+				2D45A57D1BC630CD0000511F /* RTIMULibComponents */,
 				2D475EF61BC0BDC3001813D0 /* Makefile */,
 			);
 			path = PIFlightController;
@@ -171,6 +188,7 @@
 				2D475F171BC0FE86001813D0 /* Control.cpp in Sources */,
 				2D475EF71BC0BDC3001813D0 /* Makefile in Sources */,
 				2D475F131BC0F920001813D0 /* pca9685.c in Sources */,
+				2D45A57A1BC62C6C0000511F /* IMU.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +338,7 @@
 				2D475EF51BC08ADF001813D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2D475F001BC0E557001813D0 /* Build configuration list for PBXLegacyTarget "DeploymentScript" */ = {
 			isa = XCConfigurationList;
@@ -328,6 +347,7 @@
 				2D475F021BC0E557001813D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
