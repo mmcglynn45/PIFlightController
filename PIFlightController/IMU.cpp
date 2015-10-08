@@ -32,7 +32,8 @@ void IMU::updateIMU(){
     while (!imu->IMURead()) {
         RTIMU_DATA imuData = imu->getIMUData();
         sampleCount++;
-        printf("Test one piece: Roll = %f\n",to_degrees(imuData.fusionPose.data(0)));
+        roll = to_degrees(imuData.fusionPose.data(0));
+        //printf("Test one piece: Roll = %f\n",to_degrees(imuData.fusionPose.data(0)));
         //printf("Sample rate %d: %s\r", sampleRate, RTMath::displayDegrees("", imuData.fusionPose));
         fflush(stdout);
         
