@@ -31,7 +31,7 @@ void IMU::updateIMU(){
         RTIMU_DATA imuData = imu->getIMUData();
         sampleCount++;
         printf("Test one piece: Roll = %f\n",imuData.fusionPose.data(0));
-        printf("Sample rate %d: %s\r", sampleRate, RTMath::displayDegrees("", imuData.fusionPose));
+        //printf("Sample rate %d: %s\r", sampleRate, RTMath::displayDegrees("", imuData.fusionPose));
         fflush(stdout);
         
     }
