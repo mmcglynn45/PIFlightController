@@ -29,7 +29,7 @@ void IMU::setup(){
 void IMU::updateIMU(){
     int sampleCount = 0;
     int sampleRate = 0;
-    if (imu->IMURead()) {
+    while (!imu->IMURead()) {
         RTIMU_DATA imuData = imu->getIMUData();
         sampleCount++;
         printf("Test one piece: Roll = %f\n",to_degrees(imuData.fusionPose.data(0)));

@@ -13,9 +13,10 @@
 #include <unistd.h>
 #include "Control.h"
 #include "IMU.h"
+#include <ctime>
+#include <iostream>
 
-
-
+using namespace std;
 
 int main(void)
 {
@@ -27,10 +28,15 @@ int main(void)
     IMU piIMU;
     piIMU.setup();
     
-    while (1) {
+    std::clock_t    start;
+    
+    start = std::clock();
+    for (int i = 0; i<10000; i++) {
         piIMU.updateIMU();
-        usleep(1000);
     }
+    cout << "Time: " << (std::clock() - start) / (double)(CLOCKS_PER_SEC / 1000) << " ms" << std::endl;
+    
+    
 
     
     for (double stepper = 0; stepper<1; stepper+=0.05) {
