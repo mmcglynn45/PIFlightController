@@ -9,15 +9,17 @@
 #ifndef __PIFlightController__IMU__
 #define __PIFlightController__IMU__
 
+#include "RTIMULib/RTIMULib.h"
 #include <stdio.h>
 class IMU{
+    RTIMU *imu;
     double pitch;
     double roll;
     double yaw;
 public:
     void updateIMU();
     int readIMU();
-    
+    void setup();
 };
 
 

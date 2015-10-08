@@ -24,7 +24,9 @@ int main(void)
     Control controller;
     controller.setup();
     
-    readIMU();
+    IMU piIMU;
+    piIMU.setup();
+    piIMU.updateIMU();
     
     for (double stepper = 0; stepper<1; stepper+=0.05) {
         printf("Stepper = %f\n",stepper);

@@ -1,5 +1,64 @@
 #include "IMU.h"
-#include "RTIMULib/RTIMULib.h"
+
+
+void IMU::setup(){
+    RTIMUSettings *settings = new RTIMUSettings("RTIMULib");
+    
+    RTIMU *imu = RTIMU::createIMU(settings);
+    
+    if ((imu == NULL) || (imu->IMUType() == RTIMU_TYPE_NULL)) {
+        printf("No IMU found\n");
+        exit(1);
+    }
+    
+    //  This is an opportunity to manually override any settings before the call IMUInit
+    imu->IMUInit();
+    
+    //  this is a convenient place to change fusion parameters
+    
+    imu->setSlerpPower(0.02);
+    imu->setGyroEnable(true);
+    imu->setAccelEnable(true);
+    imu->setCompassEnable(true);
+}
+
+void IMU::updateIMU(){
+    int sampleCount = 0;
+    int sampleRate = 0;
+    uint64_t rateTimer;
+    uint64_t displayTimer;
+    uint64_t now;
+    
+    rateTimer = displayTimer = RTMath::currentUSecsSinceEpoch();
+    
+    while (imu->IMURead()) {
+        RTIMU_DATA imuData = imu->getIMUData();
+        sampleCount++;
+        
+        printf("Test one piece: Roll = %f\n",imuData.fusionPose.data(0));
+        
+        
+        now = RTMath::currentUSecsSinceEpoch();
+        
+        //  display 10 times per second
+        
+        if ((now - displayTimer) > 100000) {
+            printf("Sample rate %d: %s\r", sampleRate, RTMath::displayDegrees("", imuData.fusionPose));
+            fflush(stdout);
+            displayTimer = now;
+        }
+        
+        //  update rate every second
+        
+        if ((now - rateTimer) > 1000000) {
+            sampleRate = sampleCount;
+            sampleCount = 0;
+            rateTimer = now;
+        }
+    }
+
+}
+
 
 int IMU::readIMU()
 {
