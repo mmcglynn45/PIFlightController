@@ -32,6 +32,9 @@ int IMU::updateIMU(){
     if (imu->IMURead()) {
         RTIMU_DATA imuData;
         imuData = imu->getIMUData();
+        while (imu->IMURead()) { //Clear buffer
+            imuData = imu->getIMUData();
+        }
         
         sampleCount++;
         roll = to_degrees(imuData.fusionPose.data(0));
