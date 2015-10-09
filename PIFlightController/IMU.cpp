@@ -30,12 +30,10 @@ int IMU::updateIMU(){
     int sampleCount = 0;
     int sampleRate = 0;
     if (imu->IMURead()) {
-        RTIMU_DATA imuData;
-        imuData = imu->getIMUData();
-        while (imu->IMURead()) { //Clear buffer
+        RTIMU_DATA imuData;        
+        while (imu->IMURead()) {
             imuData = imu->getIMUData();
         }
-        
         sampleCount++;
         roll = to_degrees(imuData.fusionPose.data(0));
         //printf("Test one piece: Roll = %f\n",to_degrees(imuData.fusionPose.data(0)));
