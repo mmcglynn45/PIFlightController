@@ -22,6 +22,7 @@
 using namespace std;
 
 void* threaded(void * controller);
+void* threaded2(void * controller);
 
 int main(void)
 {
@@ -43,10 +44,11 @@ int main(void)
         //pthread_create(&thread6, NULL, threaded, &controller);
         //pthread_create(&thread7, NULL, threaded, &controller);
         //pthread_create(&thread8, NULL, threaded, &controller);
-        while(!piIMU.updateIMU()){
+        pthread_create(&thread1, NULL, threaded2, &piIMU);
+        //while(!piIMU.updateIMU()){
             //i--;
-        }
-        //pthread_join( thread1, NULL);
+        //}
+        pthread_join( thread1, NULL);
         //pthread_join( thread2, NULL);
         //pthread_join( thread3, NULL);
         //pthread_join( thread4, NULL);
@@ -87,4 +89,10 @@ void* threaded(void * controller){
     return NULL;
 }
 
+void* threaded2(void * realIMU){
+    IMU* IMUpoint;
+    IMUpoint = (IMU*)realIMU;
+    while(!IMUpoint->updateIMU()){}
+    return NULL;
+}
 
