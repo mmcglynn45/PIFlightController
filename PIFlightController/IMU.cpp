@@ -31,8 +31,9 @@ int IMU::updateIMU(){
     int sampleRate = 0;
     if (imu->IMURead()) {
         RTIMU_DATA imuData;
+        imuData = imu->getIMUData();
         while (imu->IMURead()) {
-             imuData = imu->getIMUData();
+            imuData = imu->getIMUData();
         }
         
         sampleCount++;
