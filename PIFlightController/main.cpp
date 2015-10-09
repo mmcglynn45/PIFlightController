@@ -35,7 +35,7 @@ int main(void)
     piIMU.setup();
     pthread_t thread1,thread2,thread3,thread4,thread5,thread6,thread7,thread8;
     auto t1 = std::chrono::high_resolution_clock::now();
-    for (int i = 0; i<600; i++) {
+    for (int i = 0; i<400; i++) {
         //pthread_create(&thread1, NULL, threaded, &controller);
         //pthread_create(&thread2, NULL, threaded, &controller);
         //pthread_create(&thread3, NULL, threaded, &controller);
