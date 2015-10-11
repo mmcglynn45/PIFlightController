@@ -11,10 +11,13 @@
 #include <iostream>
 
 float input::getThrottle(){
-    waitForInterrupt(4, 5000);
+    //waitForInterrupt(4, 5000);
+    
+    //std::cout << digitalRead(4)<< std::endl;
+    //delay(3000);
+    while (!digitalRead(4)) {
+    }
     int start = millis();
-    std::cout << digitalRead(4)<< std::endl;
-    delay(3000);
     while (digitalRead(4)) {
     }
     int now = millis();
