@@ -17,7 +17,7 @@
 #include <iostream>
 #include <chrono>
 #include <pthread.h>
-
+#include "input.h"
 
 using namespace std;
 
@@ -30,6 +30,8 @@ int main(void)
      
     Control controller;
     controller.setup();
+    
+    input radio;
     
     IMU piIMU;
     piIMU.setup();
@@ -68,6 +70,9 @@ int main(void)
     << " milliseconds\n";
    
 
+    while (1) {
+        radio.getThrottle();
+    }
     
     for (double stepper = 0; stepper<1; stepper+=0.05) {
         printf("Stepper = %f\n",stepper);
