@@ -15,7 +15,7 @@ float input::getThrottle(){
     while (digitalRead(4)) {
     }
     int now = millis();
-    printf("Time returned was %i",(now-start));
+    printf("Time returned was %i\r",(now-start));
     fflush(stdout);
     return (float)(now-start);
 }
