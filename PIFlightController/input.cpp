@@ -11,6 +11,7 @@
 #include <iostream>
 
 float input::getThrottle(){
+    wiringPiSetup();
     //waitForInterrupt(4, 5000);
     
     //std::cout << digitalRead(4)<< std::endl;
