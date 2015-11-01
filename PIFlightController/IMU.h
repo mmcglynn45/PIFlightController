@@ -26,6 +26,7 @@ public:
     double pitch;
     double roll;
     double yaw;
+    void IMU::rotation(double yawShift, double rollInRad, double pitchInRad, double yawInRad)
 };
 
 

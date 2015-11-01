@@ -35,9 +35,10 @@ int IMU::updateIMU(){
             imuData = imu->getIMUData();
         }
         sampleCount++;
-        roll = to_degrees(imuData.fusionPose.x());
-        pitch = to_degrees(imuData.fusionPose.y());
-        yaw = to_degrees(imuData.fusionPose.z());
+        //roll = to_degrees(imuData.fusionPose.x());
+        //pitch = to_degrees(imuData.fusionPose.y());
+        //yaw = to_degrees(imuData.fusionPose.z());
+        rotation(45,imuData.fusionPose.x(),imuData.fusionPose.y(),imuData.fusionPose.z());
         //printf("Test one piece: Roll = %f\n",to_degrees(imuData.fusionPose.data(0)));
         //printf("Sample rate %d: %s\r", sampleRate, RTMath::displayDegrees("", imuData.fusionPose));
         return 1;
@@ -47,6 +48,24 @@ int IMU::updateIMU(){
 
 }
 
+//Rotate yaw of IMU to align roll and pitch with motors
+void IMU::rotation(double yawShift, double rollInRad, double pitchInRad, double yawInRad){
+    //To Coordinates
+    double a = rollInRad, b = pitchInRad, c = yawInRad;
+    double x = 0,y = 0,z = 0;
+    double xPrime, yPrime, zPrime;
+    x = cos(a)*cos(b) + cos(a)*sin(b)*sin(c) - sin(a)*cos(c) + cos(a)*sin(b)*cos(c)+sin(a)*sin(c);
+    y = sin(a)*cos(b) + sin(a)*sin(b)*sin(c) + cos(a)*cos(c) + sin(a)*sin(b)*cos(c) - cos(a)*sin(c);
+    z = -sin(b) + cos(b)*sin(c) + cos(b)*cos(c);
+    xPrime = x*cos(yawShift)-y*sin(yawShift);
+    yPrime = x*sin(yawShift) + y*cos(yawShift);
+    zPrime = z;
+    roll = to_degrees(atan2(y,z));
+    pitch = to_degrees(atan2(x,z));
+    yaw = to_degrees(atan2(y,x));
+    printf("Roll: %f, Pitch: %f, Yaw %f\n",roll,pitch,yaw);
+    fflush(stdout);
+}
 
 int IMU::readIMU()
 {
