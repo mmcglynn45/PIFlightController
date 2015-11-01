@@ -18,12 +18,12 @@
 #define XPMOTOR 2
 #define XNMOTOR 3
 
-
+int h = 0;
     
     
 Control::Control(){
     MinTime = 1.2;
-    MaxTime = 2.0;
+    MaxTime = 1.6;
 }
     
     
