@@ -77,7 +77,7 @@ void Control::ManageOrientation(double roll, double pitch, double yaw){
 
 double Control::PitchPIDComputation(double current, double desired){
     double Kp = 0.01;
-    double Ki = 0.001;
+    double Ki = 0.0001;
     double Kd = 0.005;
     std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-pitchTime);
