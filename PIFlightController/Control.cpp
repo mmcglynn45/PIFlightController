@@ -18,7 +18,7 @@
 #define XPMOTOR 2
 #define XNMOTOR 3
 
-int h = 0;
+
     
     
 Control::Control(){
