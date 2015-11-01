@@ -9,6 +9,7 @@
 #include "Control.h"
 #include "pca9685.h"
 #include "wiringPi.h"
+#include <iostream>
 
 #define PIN_BASE 300
 #define MAX_PWM 4096
@@ -24,6 +25,10 @@
 Control::Control(){
     MinTime = 1.2;
     MaxTime = 1.6;
+    pitchError =  0;
+    pitchIntegration = 0;
+    pitchTime = std::chrono::high_resolution_clock::now();
+
 }
     
     
@@ -57,23 +62,70 @@ void Control::demo(){
 
 void Control::adjustMotorSpeed(int motor, double speed){
     double milliseconds = speed*(MaxTime-MinTime)+MinTime;
+    milliseconds = inputNormalizer(milliseconds, MinTime, MaxTime);
     double tick = calcTicks(milliseconds, HERTZ);
     pwmWrite(PIN_BASE + motor, tick);
 }
 
+void Control::ManageOrientation(double roll, double pitch, double yaw){
+    double pitchControl = PitchPIDComputation(pitch, 0);
+    std::cout<<"Pitch Control: "<<pitchControl;
+    MapMotorOutput(pitchControl, 0, 0);
+}
+
+double Control::PitchPIDComputation(double current, double desired){
+    double Kp = 0.001;
+    double Ki = 0.00001;
+    double Kd = 0.0005;
+    std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-pitchTime);
+    double deltaT = time_span.count();
+    pitchTime = now;
+    double error = desired - current;
+    pitchIntegration = pitchIntegration + error*deltaT;
+    double deriviative = (error - pitchError)/deltaT;
+    double output = Kp * error + Ki *pitchIntegration + Kd * deriviative;
+    pitchError = error;
+    return output;
+}
+
+void Control::MapMotorOutput(double pitchControl,double rollControl, double yawControl){
+    pitchControl = inputNormalizer(pitchControl,-1,1);
+    rollControl = inputNormalizer(rollControl,-1,1);
+    yawControl = inputNormalizer(yawControl,-1,1);
+    double motorXPOutput = (pitchControl+1)/2;
+    double motorXNOutput = 1-motorXPOutput;
+    adjustXNMotor(motorXNOutput);
+    adjustXPMotor(motorXPOutput);
+}
+
+double Control::inputNormalizer(double input, double min, double max){
+    if (input<min) {
+        input= min;
+    }
+    if (input>max) {
+        input = max;
+    }
+    return input;
+}
+
 void Control::adjustYPMotor(double speed){
+    speed = inputNormalizer(speed, 0, 1);
     adjustMotorSpeed(YPMOTOR, speed);
 }
 
 void Control::adjustYNMotor(double speed){
+    speed = inputNormalizer(speed, 0, 1);
     adjustMotorSpeed(YNMOTOR, speed);
 }
 
 void Control::adjustXPMotor(double speed){
+    speed = inputNormalizer(speed, 0, 1);
     adjustMotorSpeed(XPMOTOR, speed);
 }
 
 void Control::adjustXNMotor(double speed){
+    speed = inputNormalizer(speed, 0, 1);
     adjustMotorSpeed(XNMOTOR, speed);
 }
 

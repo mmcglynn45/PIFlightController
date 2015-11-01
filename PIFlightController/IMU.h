@@ -13,13 +13,14 @@
 #include <stdio.h>
 class IMU{
     RTIMU *imu;
-    double pitch;
-    double roll;
-    double yaw;
+    
 public:
     int updateIMU();
     int readIMU();
     void setup();
+    double pitch;
+    double roll;
+    double yaw;
 };
 
 

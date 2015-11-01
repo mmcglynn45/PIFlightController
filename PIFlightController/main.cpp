@@ -35,9 +35,17 @@ int main(void)
     
     IMU piIMU;
     piIMU.setup();
-    pthread_t thread1,thread2,thread3,thread4,thread5,thread6,thread7,thread8;
-    auto t1 = std::chrono::high_resolution_clock::now();
-    for (int i = 0; i<400; i++) {
+    
+    while (1) {
+        while(!piIMU.updateIMU()){}
+        cout << "Pitch = " << piIMU.pitch;
+        controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw);
+    }
+    
+    
+    //pthread_t thread1,thread2,thread3,thread4,thread5,thread6,thread7,thread8;
+    //auto t1 = std::chrono::high_resolution_clock::now();
+    //for (int i = 0; i<400; i++) {
         //pthread_create(&thread1, NULL, threaded, &controller);
         //pthread_create(&thread2, NULL, threaded, &controller);
         //pthread_create(&thread3, NULL, threaded, &controller);
@@ -46,11 +54,11 @@ int main(void)
         //pthread_create(&thread6, NULL, threaded, &controller);
         //pthread_create(&thread7, NULL, threaded, &controller);
         //pthread_create(&thread8, NULL, threaded, &controller);
-        pthread_create(&thread1, NULL, threaded2, &piIMU);
+        //pthread_create(&thread1, NULL, threaded2, &piIMU);
         //while(!piIMU.updateIMU()){
             //i--;
         //}
-        pthread_join( thread1, NULL);
+        //pthread_join( thread1, NULL);
         //pthread_join( thread2, NULL);
         //pthread_join( thread3, NULL);
         //pthread_join( thread4, NULL);
@@ -58,29 +66,16 @@ int main(void)
         //pthread_join( thread6, NULL);
         //pthread_join( thread7, NULL);
         //pthread_join( thread8, NULL);
-        controller.adjustYPMotor(0.2);
-        controller.adjustXPMotor(0.7);
-        controller.adjustYNMotor(0.7);
-        controller.adjustXNMotor(0.7);
+        //controller.
         //printf("hi");
-    }
-    auto t2 = std::chrono::high_resolution_clock::now();
-    std::cout << "f() took "
-    << std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count()
-    << " milliseconds\n";
+    //}
+    //auto t2 = std::chrono::high_resolution_clock::now();
+    //std::cout << "f() took "
+    //<< std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count()
+    //<< " milliseconds\n";
    
 
-    while (1) {
-        radio.getThrottle();
-    }
     
-    for (double stepper = 0; stepper<1; stepper+=0.05) {
-        printf("Stepper = %f\n",stepper);
-        controller.adjustYPMotor(stepper);
-        usleep(1000000);
-        controller.adjustYPMotor(0);
-        usleep(2000000);
-    }
     
     return 0;
 }
