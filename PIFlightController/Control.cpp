@@ -69,7 +69,7 @@ void Control::adjustMotorSpeed(int motor, double speed){
 
 void Control::ManageOrientation(double roll, double pitch, double yaw){
     double pitchControl = PitchPIDComputation(pitch, 0);
-    std::cout<<"Pitch Control: "<<pitchControl;
+    std::cout<<"Pitch Control: "<<pitchControl<<endl;
     MapMotorOutput(pitchControl, 0, 0);
 }
 
