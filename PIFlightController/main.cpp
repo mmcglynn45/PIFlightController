@@ -38,7 +38,7 @@ int main(void)
     
     while (1) {
         while(!piIMU.updateIMU()){}
-        cout << "Pitch = " << piIMU.pitch;
+        cout << "Pitch = " << piIMU.pitch << endl;
         controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw);
     }
     
