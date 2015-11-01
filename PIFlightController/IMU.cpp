@@ -60,9 +60,9 @@ void IMU::rotation(double yawShift, double rollInRad, double pitchInRad, double 
     xPrime = x*cos(yawShift)-y*sin(yawShift);
     yPrime = x*sin(yawShift) + y*cos(yawShift);
     zPrime = z;
-    roll = to_degrees(atan2(y,z));
-    pitch = to_degrees(atan2(x,z));
-    yaw = to_degrees(atan2(y,x));
+    roll = to_degrees(atan2(yPrime,zPrime));
+    pitch = to_degrees(atan2(xPrime,zPrime));
+    yaw = to_degrees(atan2(yPrime,xPrime));
     printf("Roll: %f, Pitch: %f, Yaw %f\n",roll,pitch,yaw);
     fflush(stdout);
 }
