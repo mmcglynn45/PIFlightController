@@ -35,9 +35,9 @@ int IMU::updateIMU(){
             imuData = imu->getIMUData();
         }
         sampleCount++;
-        roll = to_degrees(imuData.fusionPose.data(0));
-        pitch = to_degrees(imuData.fusionPose.data(1));
-        yaw = to_degrees(imuData.fusionPose.data(2));
+        roll = to_degrees(imuData.fusionPose.x());
+        pitch = to_degrees(imuData.fusionPose.y());
+        yaw = to_degrees(imuData.fusionPose.z());
         printf("Test one piece: Roll = %f\n",to_degrees(imuData.fusionPose.data(0)));
         return 1;
     }else{

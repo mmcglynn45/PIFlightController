@@ -11,6 +11,11 @@
 
 #include "RTIMULib/RTIMULib.h"
 #include <stdio.h>
+
+#define	PI					3.1415926535
+#define	DEGREE_TO_RAD		(RTMATH_PI / 180.0)
+#define	RAD_TO_DEGREE		(180.0 / RTMATH_PI)
+
 class IMU{
     RTIMU *imu;
     
