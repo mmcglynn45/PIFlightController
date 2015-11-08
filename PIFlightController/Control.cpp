@@ -57,6 +57,12 @@ void Control::safetyCheck(double roll,double pitch){
     }
 }
 
+void Control::shutdown(){
+    adjustYPMotor(0);
+    adjustXPMotor(0);
+    adjustYNMotor(0);
+    adjustXNMotor(0);
+}
 
 void Control::demo(){
     float millis = 1.0;
