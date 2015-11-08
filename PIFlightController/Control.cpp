@@ -10,6 +10,7 @@
 #include "pca9685.h"
 #include "wiringPi.h"
 #include <iostream>
+#include "Math.h"
 
 #define PIN_BASE 300
 #define MAX_PWM 4096
@@ -44,6 +45,18 @@ void Control::setup(){
     // Reset all output
     pca9685PWMReset(fd);
 }
+
+
+void Control::safetyCheck(double roll,double pitch){
+    if ((abs(roll)>15) || (abs(pitch)>15)) {
+        adjustYPMotor(0);
+        adjustXPMotor(0);
+        adjustYNMotor(0);
+        adjustXNMotor(0);
+        delay(2000);
+    }
+}
+
 
 void Control::demo(){
     float millis = 1.0;

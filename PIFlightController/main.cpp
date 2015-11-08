@@ -36,10 +36,18 @@ int main(void)
     IMU piIMU;
     piIMU.setup();
     
+    auto t1 = std::chrono::high_resolution_clock::now();
+    
     while (1) {
         while(!piIMU.updateIMU()){}
         cout << "Pitch = " << piIMU.pitch << endl;
+        controller.safetyCheck(piIMU.roll, piIMU.pitch);
         controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw);
+        auto t2 = std::chrono::high_resolution_clock::now();
+        double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
+        if (count>10000) {
+            exit(0);
+        }
     }
     
     

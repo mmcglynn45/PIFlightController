@@ -39,6 +39,7 @@ public:
     double inputNormalizer(double input, double min, double max);
     void MapMotorOutput(double pitchControl,double rollControl, double yawControl);
     void ManageOrientation(double roll, double pitch, double yaw);
+    void safetyCheck(double roll,double pitch);
     
 };
 
