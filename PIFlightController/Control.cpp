@@ -10,7 +10,7 @@
 #include "pca9685.h"
 #include "wiringPi.h"
 #include <iostream>
-#include "Math.h"
+
 
 #define PIN_BASE 300
 #define MAX_PWM 4096
