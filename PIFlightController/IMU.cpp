@@ -48,6 +48,7 @@ int IMU::updateIMU(){
 
 }
 
+/*
 //Rotate yaw of IMU to align roll and pitch with motors
 void IMU::rotation(double yawShift, double rollInRad, double pitchInRad, double yawInRad){
     //To Coordinates
@@ -66,6 +67,7 @@ void IMU::rotation(double yawShift, double rollInRad, double pitchInRad, double 
     printf("Roll: %f, Pitch: %f, Yaw %f\n",roll,pitch,yaw);
     fflush(stdout);
 }
+*/
 
 int IMU::readIMU()
 {
