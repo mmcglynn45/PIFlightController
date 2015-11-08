@@ -47,7 +47,7 @@ int main(void)
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
         if (count>10000) {
             controller.shutdown();
-            exit(0);
+            return 0;
         }
     }
     
