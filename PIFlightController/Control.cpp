@@ -27,7 +27,7 @@
     
 Control::Control(){
     MinTime = 1.2;
-    MaxTime = 1.6;
+    MaxTime = 1.3;
     pitchError =  0;
     pitchIntegration = 0;
     pitchTime = std::chrono::high_resolution_clock::now();
