@@ -156,7 +156,7 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
         std::cout<<XNMOTOR << " : "<< XNSpeed <<std::endl;
         std::cout<<YPMOTOR << " : "<< YPSpeed <<std::endl;
         std::cout<<YNMOTOR << " : "<< YNSpeed <<std::endl;
-        sys.stdout.flush();
+        std::cout.flush();
     }
 }
 
