@@ -15,10 +15,10 @@
 #define PIN_BASE 300
 #define MAX_PWM 4096
 #define HERTZ 50
-#define YPMOTOR 3
-#define YNMOTOR 7
-#define XPMOTOR 8
-#define XNMOTOR 12
+#define YPMOTOR 3 //Pitch minus -
+#define YNMOTOR 7 //Pitch minus -
+#define XPMOTOR 8 //Pitch plus -
+#define XNMOTOR 12 //Pitch plus - 
 
 #define	PI					3.1415926535
 #define	DEGREE_TO_RAD		(RTMATH_PI / 180.0)
