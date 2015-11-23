@@ -151,10 +151,12 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
     XNSpeed = inputNormalizer(XNSpeed, 0, 1);
     YPSpeed = inputNormalizer(YPSpeed, 0, 1);
     YNSpeed = inputNormalizer(XNSpeed, 0, 1);
-    std::cout<<XPMOTOR << " : "<< XPSpeed <<std::endl;
-    std::cout<<XNMOTOR << " : "<< XNSpeed <<std::endl;
-    std::cout<<YPMOTOR << " : "<< YPSpeed <<std::endl;
-    std::cout<<YNMOTOR << " : "<< YNSpeed <<std::endl;
+    if(rand()%100 == 0){
+        std::cout<<XPMOTOR << " : "<< XPSpeed <<std::endl;
+        std::cout<<XNMOTOR << " : "<< XNSpeed <<std::endl;
+        std::cout<<YPMOTOR << " : "<< YPSpeed <<std::endl;
+        std::cout<<YNMOTOR << " : "<< YNSpeed <<std::endl;
+    }
 }
 
 double Control::inputNormalizer(double input, double min, double max){
