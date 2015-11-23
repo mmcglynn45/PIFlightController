@@ -17,8 +17,8 @@
 #define HERTZ 50
 #define YPMOTOR 3
 #define YNMOTOR 7
-#define XPMOTOR 9
-#define XNMOTOR 9
+#define XPMOTOR 8
+#define XNMOTOR 8
 
 #define	PI					3.1415926535
 #define	DEGREE_TO_RAD		(RTMATH_PI / 180.0)
