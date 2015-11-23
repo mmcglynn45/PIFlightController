@@ -35,12 +35,14 @@ public:
     void adjustYNMotor(double speed);
     void adjustXPMotor(double speed);
     void adjustXNMotor(double speed);
+    double getThrottleBaseline();
     double RollPIDComputation(double current, double desired);
     double PitchPIDComputation(double current, double desired);
     double YawPIDComputation(double current, double desired);
     double inputNormalizer(double input, double min, double max);
-    void MapMotorOutput(double pitchControl,double rollControl, double yawControl);
+    void MapMotorOutput(double pitchControl,double rollControl, double yawControl, double throttleBaseline);
     void ManageOrientation(double roll, double pitch, double yaw);
+    double Control::shiftNormalized(double input);
     void safetyCheck(double roll,double pitch);
     void shutdown();
 };

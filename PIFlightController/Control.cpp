@@ -80,6 +80,10 @@ void Control::demo(){
     }
 }
 
+double Control::getThrottleBaseline(){
+    return 0.5;
+}
+
 void Control::adjustMotorSpeed(int motor, double speed){
     double milliseconds = speed*(MaxTime-MinTime)+MinTime;
     milliseconds = inputNormalizer(milliseconds, MinTime, MaxTime);
@@ -92,7 +96,7 @@ void Control::ManageOrientation(double roll, double pitch, double yaw){
     std::cout<<"Pitch Control: "<<pitchControl<<std::endl;
     double rollControl = PitchPIDComputation(pitch, 0);
     std::cout<<"Roll Control: "<<rollControl<<std::endl;
-    MapMotorOutput(pitchControl, rollControl, 0);
+    MapMotorOutput(pitchControl, rollControl, 0, getThrottleBaseline());
 }
 
 double Control::PitchPIDComputation(double current, double desired){
@@ -128,14 +132,23 @@ double Control::RollPIDComputation(double current, double desired){
 }
 
 
-void Control::MapMotorOutput(double pitchControl,double rollControl, double yawControl){
+void Control::MapMotorOutput(double pitchControl,double rollControl, double yawControl, double throttleBaseline){
+    //Basic algo is establish baseline then use roll, pitch, and yaw to modify
     pitchControl = inputNormalizer(pitchControl,-1,1);
     rollControl = inputNormalizer(rollControl,-1,1);
     yawControl = inputNormalizer(yawControl,-1,1);
-    double motorXPOutput = (pitchControl+1)/2;
-    double motorXNOutput = 1-motorXPOutput;
-    adjustXNMotor(motorXNOutput);
-    adjustXPMotor(motorXPOutput);
+    double pitchP = shiftNormalized(pitchControl);
+    double rollP = shiftNormalized(pitchControl);
+    double rollN = 1 - rollP;
+    double pitchN = 1 - pitchP;
+    double XPSpeed = throttleBaseline * pitchP * rollP;
+    double XNSpeed = throttleBaseline * pitchP * rollN;
+    double YPSpeed = throttleBaseline * pitchN * rollN;
+    double YNSpeed = throttleBaseline * pitchP * rollN;
+    std::cout<<XPMOTOR << " : "<< XPSpeed <<std::endl;
+    std::cout<<XNMOTOR << " : "<< XNSpeed <<std::endl;
+    std::cout<<YPMOTOR << " : "<< YPSpeed <<std::endl;
+    std::cout<<YNMOTOR << " : "<< YNSpeed <<std::endl;
 }
 
 double Control::inputNormalizer(double input, double min, double max){
@@ -145,6 +158,12 @@ double Control::inputNormalizer(double input, double min, double max){
     if (input>max) {
         input = max;
     }
+    return input;
+}
+
+
+double Control::shiftNormalized(double input){
+    input = (input+1)/2;
     return input;
 }
 
