@@ -143,7 +143,7 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
     rollControl = inputNormalizer(rollControl,-1,1);
     yawControl = inputNormalizer(yawControl,-1,1);
     double pitchP = shiftNormalized(pitchControl);
-    double rollP = shiftNormalized(pitchControl);
+    double rollP = shiftNormalized(rollControl);
     double rollN = 1 - rollP;
     double pitchN = 1 - pitchP;
     double XPSpeed = throttleBaseline * pitchP * rollP;
