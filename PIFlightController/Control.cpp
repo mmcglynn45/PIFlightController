@@ -15,10 +15,10 @@
 #define PIN_BASE 300
 #define MAX_PWM 4096
 #define HERTZ 50
-#define YPMOTOR 0
-#define YNMOTOR 0
-#define XPMOTOR 0
-#define XNMOTOR 0
+#define YPMOTOR 3
+#define YNMOTOR 3
+#define XPMOTOR 3
+#define XNMOTOR 3
 
 #define	PI					3.1415926535
 #define	DEGREE_TO_RAD		(RTMATH_PI / 180.0)
@@ -72,8 +72,7 @@ void Control::demo(){
         delay(2000);
         millis=1.6;
         tick = calcTicks(millis, HERTZ);
-        pwmWrite(PIN_BASE + 16, tick);
-        delay(2000);
+        pwmWrite(PIN_BASE + 16, tick);         delay(2000);
         millis=1.0;
         tick = calcTicks(millis, HERTZ);
         pwmWrite(PIN_BASE + 16, tick);
