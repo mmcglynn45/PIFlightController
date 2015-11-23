@@ -16,9 +16,9 @@
 #define MAX_PWM 4096
 #define HERTZ 50
 #define YPMOTOR 3
-#define YNMOTOR 3
-#define XPMOTOR 3
-#define XNMOTOR 3
+#define YNMOTOR 7
+#define XPMOTOR 7
+#define XNMOTOR 7
 
 #define	PI					3.1415926535
 #define	DEGREE_TO_RAD		(RTMATH_PI / 180.0)
