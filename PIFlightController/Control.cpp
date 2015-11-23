@@ -81,7 +81,7 @@ void Control::demo(){
 }
 
 double Control::getThrottleBaseline(){
-    return 0.5;
+    return 1;
 }
 
 void Control::adjustMotorSpeed(int motor, double speed){
