@@ -96,6 +96,7 @@ void Control::ManageOrientation(double roll, double pitch, double yaw){
     std::cout<<"Pitch Control: "<<pitchControl<<std::endl;
     double rollControl = PitchPIDComputation(pitch, 0);
     std::cout<<"Roll Control: "<<rollControl<<std::endl;
+    std::cout<<"Roll Control: "<<rollControl<<std::endl;
     MapMotorOutput(pitchControl, rollControl, 0, getThrottleBaseline());
 }
 
@@ -145,7 +146,6 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
     double XNSpeed = throttleBaseline * pitchP * rollN;
     double YPSpeed = throttleBaseline * pitchN * rollN;
     double YNSpeed = throttleBaseline * pitchP * rollN;
-    std::cout<<"Hello";
     std::cout<<XPMOTOR << " : "<< XPSpeed <<std::endl;
     std::cout<<XNMOTOR << " : "<< XNSpeed <<std::endl;
     std::cout<<YPMOTOR << " : "<< YPSpeed <<std::endl;
