@@ -31,6 +31,7 @@ Control::Control(){
     pitchError =  0;
     pitchIntegration = 0;
     pitchTime = std::chrono::high_resolution_clock::now();
+    rollTime = std::chrono::high_resolution_clock::now();
 
 }
     
