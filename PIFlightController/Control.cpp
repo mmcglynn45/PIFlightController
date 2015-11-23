@@ -15,10 +15,10 @@
 #define PIN_BASE 300
 #define MAX_PWM 4096
 #define HERTZ 50
-#define YPMOTOR 3 //Pitch minus -
-#define YNMOTOR 7 //Pitch minus -
-#define XPMOTOR 8 //Pitch plus -
-#define XNMOTOR 12 //Pitch plus - 
+#define YPMOTOR 3 //Pitch minus - Roll positive
+#define YNMOTOR 7 //Pitch minus - Roll minus
+#define XNMOTOR 8 //Pitch plus - Roll minus
+#define XPMOTOR 12 //Pitch plus - Roll Positive
 
 #define	PI					3.1415926535
 #define	DEGREE_TO_RAD		(RTMATH_PI / 180.0)
@@ -90,7 +90,9 @@ void Control::adjustMotorSpeed(int motor, double speed){
 void Control::ManageOrientation(double roll, double pitch, double yaw){
     double pitchControl = PitchPIDComputation(pitch, 0);
     std::cout<<"Pitch Control: "<<pitchControl<<std::endl;
-    MapMotorOutput(pitchControl, 0, 0);
+    double rollControl = PitchPIDComputation(pitch, 0);
+    std::cout<<"Roll Control: "<<rollControl<<std::endl;
+    MapMotorOutput(pitchControl, rollControl, 0);
 }
 
 double Control::PitchPIDComputation(double current, double desired){
@@ -108,6 +110,23 @@ double Control::PitchPIDComputation(double current, double desired){
     pitchError = error;
     return output;
 }
+
+double Control::RollPIDComputation(double current, double desired){
+    double Kp = 0.01;
+    double Ki = 0.0001;
+    double Kd = 0.005;
+    std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-rollTime);
+    double deltaT = time_span.count();
+    rollTime = now;
+    double error = desired - current;
+    rollIntegration = rollIntegration + error*deltaT;
+    double deriviative = (error - rollError)/deltaT;
+    double output = Kp * error + Ki * rollIntegration + Kd * deriviative;
+    rollError = error;
+    return output;
+}
+
 
 void Control::MapMotorOutput(double pitchControl,double rollControl, double yawControl){
     pitchControl = inputNormalizer(pitchControl,-1,1);
