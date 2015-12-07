@@ -91,7 +91,7 @@ void Control::demo(){
 }
 
 double Control::getThrottleBaseline(){
-    double input = 4;
+    double input = 2;
     input = inputNormalizer(input, 0, 4);
     return input;
 }
