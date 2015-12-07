@@ -169,7 +169,7 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
     //Basic algo is establish baseline then use roll, pitch, and yaw to modify
     pitchControl = inputNormalizer(pitchControl,-1,1);
     rollControl = inputNormalizer(rollControl,-1,1);
-    yawControl = inputNormalizer(yawControl,-.5,.5);//Roll and Pitch are weighted at 100%, yaw is less important weight at 10%
+    yawControl = inputNormalizer(yawControl,-.2,.2);//Roll and Pitch are weighted at 100%, yaw is less important weight at 10%
     double pitchP = shiftNormalized(pitchControl);
     double rollP = shiftNormalized(rollControl);
     double yawP = shiftNormalized(yawControl);
