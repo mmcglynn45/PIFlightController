@@ -27,7 +27,7 @@
     
 Control::Control(){
     MinTime = 1.2;
-    MaxTime = 1.3;
+    MaxTime = 1.5;
     pitchError =  0;
     pitchIntegration = 0;
     rollError =  0;
@@ -187,17 +187,17 @@ double Control::shiftNormalized(double input){
 
 void Control::adjustYPMotor(double speed){
     speed = inputNormalizer(speed, 0, 1);
-    adjustMotorSpeed(YPMOTOR, speed);
+    //adjustMotorSpeed(YPMOTOR, speed);
 }
 
 void Control::adjustYNMotor(double speed){
     speed = inputNormalizer(speed, 0, 1);
-    adjustMotorSpeed(YNMOTOR, speed);
+    //adjustMotorSpeed(YNMOTOR, speed);
 }
 
 void Control::adjustXPMotor(double speed){
     speed = inputNormalizer(speed, 0, 1);
-    adjustMotorSpeed(XPMOTOR, speed);
+    //adjustMotorSpeed(XPMOTOR, speed);
 }
 
 void Control::adjustXNMotor(double speed){
