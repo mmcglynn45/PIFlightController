@@ -187,17 +187,17 @@ double Control::shiftNormalized(double input){
 
 void Control::adjustYPMotor(double speed){
     speed = inputNormalizer(speed, 0, 1);
-    //adjustMotorSpeed(YPMOTOR, speed);
+    adjustMotorSpeed(YPMOTOR, speed);
 }
 
 void Control::adjustYNMotor(double speed){
     speed = inputNormalizer(speed, 0, 1);
-    //adjustMotorSpeed(YNMOTOR, speed);
+    adjustMotorSpeed(YNMOTOR, speed);
 }
 
 void Control::adjustXPMotor(double speed){
     speed = inputNormalizer(speed, 0, 1);
-    //adjustMotorSpeed(XPMOTOR, speed);
+    adjustMotorSpeed(XPMOTOR, speed);
 }
 
 void Control::adjustXNMotor(double speed){
