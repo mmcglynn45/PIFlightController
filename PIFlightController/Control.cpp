@@ -151,7 +151,7 @@ double Control::RollPIDComputation(double current, double desired){
 double Control::YawPIDComputation(double current, double desired){
     double Kp = 0.02;
     double Ki = 0.0005;
-    double Kd = 0.0005;
+    double Kd = 0.009;
     std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-yawTime);
     double deltaT = time_span.count();
