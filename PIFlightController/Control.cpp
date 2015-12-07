@@ -51,7 +51,7 @@ void Control::setup(){
     adjustXPMotor(0);
     adjustYNMotor(0);
     adjustXNMotor(0);
-    delay(5000);
+    delay(1000);
     std::cout<< "Ready for test..."<<std::endl;
 }
 
