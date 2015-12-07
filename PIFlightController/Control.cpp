@@ -27,7 +27,7 @@
     
 Control::Control(){
     MinTime = 1.2;
-    MaxTime = 1.6;
+    MaxTime = 1.7;
     pitchError =  0;
     pitchIntegration = 0;
     rollError =  0;
