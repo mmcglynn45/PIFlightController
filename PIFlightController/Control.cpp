@@ -47,6 +47,12 @@ void Control::setup(){
     
     // Reset all output
     pca9685PWMReset(fd);
+    adjustYPMotor(0);
+    adjustXPMotor(0);
+    adjustYNMotor(0);
+    adjustXNMotor(0);
+    delay(5000);
+    std::cout<< "Ready for test..."<<std::endl;
 }
 
 
