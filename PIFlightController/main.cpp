@@ -47,7 +47,7 @@ int main(void)
         controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw);
         auto t2 = std::chrono::high_resolution_clock::now();
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
-        cout<< count <<endl;
+        //cout<< count <<endl;
         if (count>10000) {
             controller.shutdown();
             return 0;
