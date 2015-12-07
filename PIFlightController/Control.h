@@ -21,8 +21,10 @@ class Control{
     double MinTime;
     double pitchError,pitchIntegration,pitchOutput;
     double rollError,rollIntegration,rollOutput;
+    double yawError,yawIntegration,yawOutput;
     std::chrono::high_resolution_clock::time_point pitchTime;
     std::chrono::high_resolution_clock::time_point rollTime;
+    std::chrono::high_resolution_clock::time_point yawTime;
     
 public:
     Control();

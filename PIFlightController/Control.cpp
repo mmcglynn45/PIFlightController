@@ -15,10 +15,10 @@
 #define PIN_BASE 300
 #define MAX_PWM 4096
 #define HERTZ 50
-#define YPMOTOR 3 //Pitch minus - Roll positive
-#define YNMOTOR 7 //Pitch minus - Roll minus
-#define XNMOTOR 8 //Pitch plus - Roll minus
-#define XPMOTOR 12 //Pitch plus - Roll Positive
+#define YPMOTOR 3 //Pitch minus - Roll positive - Yaw Plus
+#define YNMOTOR 7 //Pitch minus - Roll minus - Yaw Minus
+#define XNMOTOR 8 //Pitch plus - Roll minus - Yaw Plus
+#define XPMOTOR 12 //Pitch plus - Roll Positive - Yaw Minus
 
 #define	PI					3.1415926535
 #define	DEGREE_TO_RAD		(RTMATH_PI / 180.0)
@@ -34,6 +34,7 @@ Control::Control(){
     rollIntegration = 0;
     pitchTime = std::chrono::high_resolution_clock::now();
     rollTime = std::chrono::high_resolution_clock::now();
+    yawTime = std::chrono::high_resolution_clock::now();
 
 }
     
@@ -90,7 +91,7 @@ void Control::demo(){
 }
 
 double Control::getThrottleBaseline(){
-    double input = 2;
+    double input = 4;
     input = inputNormalizer(input, 0, 4);
     return input;
 }
@@ -108,7 +109,9 @@ void Control::ManageOrientation(double roll, double pitch, double yaw){
     std::cout<<"Pitch Control: "<<pitchControl<<std::endl;
     double rollControl = RollPIDComputation(roll, 0);
     std::cout<<"Roll Control: "<<rollControl<<std::endl;
-    MapMotorOutput(pitchControl, rollControl, 0, getThrottleBaseline());
+    double yawControl = RollPIDComputation(yaw, -50);
+    std::cout<<"Roll Control: "<<rollControl<<std::endl;
+    MapMotorOutput(pitchControl, rollControl, yawControl, getThrottleBaseline());
 }
 
 double Control::PitchPIDComputation(double current, double desired){
@@ -143,20 +146,38 @@ double Control::RollPIDComputation(double current, double desired){
     return output;
 }
 
+double Control::YawPIDComputation(double current, double desired){
+    double Kp = 0.01;
+    double Ki = 0.005;
+    double Kd = 0.005;
+    std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-yawTime);
+    double deltaT = time_span.count();
+    yawTime = now;
+    double error = desired - current;
+    yawIntegration = yawIntegration + error*deltaT;
+    double deriviative = (error - yawError)/deltaT;
+    double output = Kp * error + Ki * yawIntegration + Kd * deriviative;
+    yawError = error;
+    return output;
+}
+
 
 void Control::MapMotorOutput(double pitchControl,double rollControl, double yawControl, double throttleBaseline){
     //Basic algo is establish baseline then use roll, pitch, and yaw to modify
     pitchControl = inputNormalizer(pitchControl,-1,1);
     rollControl = inputNormalizer(rollControl,-1,1);
-    yawControl = inputNormalizer(yawControl,-1,1);
+    yawControl = inputNormalizer(yawControl,-.3,.3);//Roll and Pitch are weighted at 100%, yaw is less important weight at 10%
     double pitchP = shiftNormalized(pitchControl);
     double rollP = shiftNormalized(rollControl);
+    double yawP = shiftNormalized(yawControl);
     double rollN = 1 - rollP;
     double pitchN = 1 - pitchP;
-    double XPSpeed = throttleBaseline * pitchP * rollP;
-    double XNSpeed = throttleBaseline * pitchP * rollN;
-    double YPSpeed = throttleBaseline * pitchN * rollP;
-    double YNSpeed = throttleBaseline * pitchN * rollN;
+    double yawN = 1 - yawP;
+    double XPSpeed = throttleBaseline * pitchP * rollP *yawN;
+    double XNSpeed = throttleBaseline * pitchP * rollN *yawP;
+    double YPSpeed = throttleBaseline * pitchN * rollP *yawP;
+    double YNSpeed = throttleBaseline * pitchN * rollN *yawN;
     XPSpeed = inputNormalizer(XPSpeed, 0, 1);
     XNSpeed = inputNormalizer(XNSpeed, 0, 1);
     YPSpeed = inputNormalizer(YPSpeed, 0, 1);
