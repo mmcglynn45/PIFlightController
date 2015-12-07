@@ -111,7 +111,7 @@ void Control::ManageOrientation(double roll, double pitch, double yaw){
     //std::cout<<"Pitch Control: "<<pitchControl<<std::endl;
     double rollControl = RollPIDComputation(roll, 0);
     //std::cout<<"Roll Control: "<<rollControl<<std::endl;
-    double yawControl = YawPIDComputation(yaw, -70);
+    double yawControl = YawPIDComputation(yaw, -100);
     //std::cout<<"Yaw Control: "<<yawControl<<std::endl;
     MapMotorOutput(pitchControl, rollControl, yawControl, getThrottleBaseline());
 }
