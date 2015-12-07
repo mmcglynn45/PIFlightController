@@ -40,9 +40,9 @@ int main(void)
     
     while (1) {
         while(!piIMU.updateIMU()){}
-        cout << "Pitch = " << piIMU.pitch << endl;
-        cout << "Roll = " << piIMU.roll << endl;
-        cout << "Yaw = " << piIMU.yaw << endl;
+        //cout << "Pitch = " << piIMU.pitch << endl;
+        //cout << "Roll = " << piIMU.roll << endl;
+        //cout << "Yaw = " << piIMU.yaw << endl;
         controller.safetyCheck(piIMU.roll, piIMU.pitch);
         controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw);
         auto t2 = std::chrono::high_resolution_clock::now();

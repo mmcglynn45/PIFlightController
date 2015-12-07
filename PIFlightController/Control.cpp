@@ -108,11 +108,11 @@ void Control::adjustMotorSpeed(int motor, double speed){
 
 void Control::ManageOrientation(double roll, double pitch, double yaw){
     double pitchControl = PitchPIDComputation(pitch, 0);
-    std::cout<<"Pitch Control: "<<pitchControl<<std::endl;
+    //std::cout<<"Pitch Control: "<<pitchControl<<std::endl;
     double rollControl = RollPIDComputation(roll, 0);
-    std::cout<<"Roll Control: "<<rollControl<<std::endl;
+    //std::cout<<"Roll Control: "<<rollControl<<std::endl;
     double yawControl = YawPIDComputation(yaw, -70);
-    std::cout<<"Yaw Control: "<<yawControl<<std::endl;
+    //std::cout<<"Yaw Control: "<<yawControl<<std::endl;
     MapMotorOutput(pitchControl, rollControl, yawControl, getThrottleBaseline());
 }
 
@@ -185,11 +185,11 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
     YPSpeed = inputNormalizer(YPSpeed, 0, 1);
     YNSpeed = inputNormalizer(YNSpeed, 0, 1);
     if(rand()%1 == 0){
-        std::cout<<XPMOTOR << " : "<< XPSpeed <<std::endl;
-        std::cout<<XNMOTOR << " : "<< XNSpeed <<std::endl;
-        std::cout<<YPMOTOR << " : "<< YPSpeed <<std::endl;
-        std::cout<<YNMOTOR << " : "<< YNSpeed <<std::endl;
-        std::cout.flush();
+        //std::cout<<XPMOTOR << " : "<< XPSpeed <<std::endl;
+        //std::cout<<XNMOTOR << " : "<< XNSpeed <<std::endl;
+        //std::cout<<YPMOTOR << " : "<< YPSpeed <<std::endl;
+        //std::cout<<YNMOTOR << " : "<< YNSpeed <<std::endl;
+        //std::cout.flush();
     }
     adjustYPMotor(YPSpeed);
     adjustYNMotor(YNSpeed);
