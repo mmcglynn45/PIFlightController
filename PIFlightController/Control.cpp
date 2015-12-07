@@ -98,6 +98,7 @@ double Control::getThrottleBaseline(){
 void Control::adjustMotorSpeed(int motor, double speed){
     double milliseconds = speed*(MaxTime-MinTime)+MinTime;
     milliseconds = inputNormalizer(milliseconds, MinTime, MaxTime);
+    printf("Milliseconds: %i", milliseconds);
     double tick = calcTicks(milliseconds, HERTZ);
     pwmWrite(PIN_BASE + motor, tick);
 }
