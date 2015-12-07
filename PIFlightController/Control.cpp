@@ -27,7 +27,7 @@
     
 Control::Control(){
     MinTime = 1.2;
-    MaxTime = 1.7;
+    MaxTime = 1.4;
     pitchError =  0;
     pitchIntegration = 0;
     rollError =  0;
@@ -168,6 +168,10 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
         std::cout<<YNMOTOR << " : "<< YNSpeed <<std::endl;
         std::cout.flush();
     }
+    adjustYPMotor(YPSpeed);
+    adjustYNMotor(YNSpeed);
+    adjustXPMotor(XPSpeed);
+    adjustXNMotor(XNSpeed);
 }
 
 double Control::inputNormalizer(double input, double min, double max){
