@@ -32,6 +32,8 @@ Control::Control(){
     pitchIntegration = 0;
     rollError =  0;
     rollIntegration = 0;
+    yawError =  0;
+    yawIntegration = 0;
     pitchTime = std::chrono::high_resolution_clock::now();
     rollTime = std::chrono::high_resolution_clock::now();
     yawTime = std::chrono::high_resolution_clock::now();
