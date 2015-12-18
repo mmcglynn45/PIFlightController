@@ -19,6 +19,7 @@
 #include <pthread.h>
 #include "input.h"
 #include "Sonar.h"
+#include "wiringPi.h"
 
 using namespace std;
 
@@ -39,7 +40,7 @@ int main(void)
     Sonar firstSonar;
     firstSonar.setup();
     
-    
+    long beginning = millis();
     
     auto t1 = std::chrono::high_resolution_clock::now();
     
@@ -56,6 +57,8 @@ int main(void)
         firstSonar.demo();
         if (count>10000) {
             controller.shutdown();
+            long end = millis();
+            printf("Total time taken for 10000 iterations was %ld milliseconds/n ", end-beginning);
             return 0;
         }
     }
@@ -96,6 +99,14 @@ int main(void)
     
     
     return 0;
+}
+
+
+void* sonar(void * sonar){
+    Sonar * sonar2;
+    sonar2 = (Sonar *)sonar;
+    sonar2->demo();
+    return NULL;
 }
 
 void* threaded(void * controller){
