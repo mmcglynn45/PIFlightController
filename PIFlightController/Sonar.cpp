@@ -34,6 +34,7 @@ double Sonar::getCM() {
     while(digitalRead(ECHO) == HIGH);
     long travelTime = micros() - startTime;
     
+    printf("%ld",travelTime);
     //Get distance in cm
     double distance = travelTime / 58;
     
@@ -43,7 +44,7 @@ double Sonar::getCM() {
 int Sonar::demo(void) {
     printf("Made it");
     
-    printf("Distance: %fcm\n", getCM());
+    printf("Distance: %f cm\n", getCM());
     
     return 0;
 }
