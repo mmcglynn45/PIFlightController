@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2D45A57A1BC62C6C0000511F /* IMU.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D45A5781BC62C6C0000511F /* IMU.cpp */; };
 		2D45A5821BCB15600000511F /* input.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D45A5801BCB15600000511F /* input.cpp */; };
+		2D468A0E1C23F4B200ECE847 /* Sonar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D468A0C1C23F4B200ECE847 /* Sonar.cpp */; };
 		2D475EF71BC0BDC3001813D0 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 2D475EF61BC0BDC3001813D0 /* Makefile */; };
 		2D475F0B1BC0F70F001813D0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D475EEF1BC08ADF001813D0 /* main.cpp */; };
 		2D475F131BC0F920001813D0 /* pca9685.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D475F111BC0F920001813D0 /* pca9685.c */; };
@@ -44,6 +45,8 @@
 		2D45A57F1BC64EE40000511F /* RTIMULib.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RTIMULib.ini; sourceTree = "<group>"; };
 		2D45A5801BCB15600000511F /* input.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = input.cpp; sourceTree = "<group>"; };
 		2D45A5811BCB15600000511F /* input.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input.h; sourceTree = "<group>"; };
+		2D468A0C1C23F4B200ECE847 /* Sonar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sonar.cpp; sourceTree = "<group>"; };
+		2D468A0D1C23F4B200ECE847 /* Sonar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sonar.h; sourceTree = "<group>"; };
 		2D475EEC1BC08ADF001813D0 /* PIFlightController */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PIFlightController; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D475EEF1BC08ADF001813D0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2D475EF61BC0BDC3001813D0 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
@@ -93,6 +96,8 @@
 				2D475F151BC0FE86001813D0 /* Control.cpp */,
 				2D475F161BC0FE86001813D0 /* Control.h */,
 				2D45A5781BC62C6C0000511F /* IMU.cpp */,
+				2D468A0C1C23F4B200ECE847 /* Sonar.cpp */,
+				2D468A0D1C23F4B200ECE847 /* Sonar.h */,
 				2D45A5791BC62C6C0000511F /* IMU.h */,
 				2D475F111BC0F920001813D0 /* pca9685.c */,
 				2D475F121BC0F920001813D0 /* pca9685.h */,
@@ -186,6 +191,7 @@
 				2D45A5821BCB15600000511F /* input.cpp in Sources */,
 				2D475EF71BC0BDC3001813D0 /* Makefile in Sources */,
 				2D475F131BC0F920001813D0 /* pca9685.c in Sources */,
+				2D468A0E1C23F4B200ECE847 /* Sonar.cpp in Sources */,
 				2D45A57A1BC62C6C0000511F /* IMU.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
