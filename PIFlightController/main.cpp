@@ -36,8 +36,8 @@ int main(void)
     
     IMU piIMU;
     piIMU.setup();
-    Sonar firstSonar;
-    firstSonar.setup();
+    //Sonar firstSonar;
+    //firstSonar.setup();
     
     
     
@@ -53,7 +53,7 @@ int main(void)
         auto t2 = std::chrono::high_resolution_clock::now();
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
         //cout<< count <<endl;
-        firstSonar.demo();
+        //firstSonar.demo();
         if (count>10000) {
             controller.shutdown();
             return 0;
