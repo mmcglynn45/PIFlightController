@@ -21,17 +21,26 @@ void Sonar::setup() {
 }
 
 double Sonar::getCM() {
+    long startTime = micros();
     //Send trig pulse
     digitalWrite(TRIG, HIGH);
     delayMicroseconds(20);
     digitalWrite(TRIG, LOW);
     
     //Wait for echo start
-    while(digitalRead(ECHO) == LOW);
+    while(digitalRead(ECHO) == LOW){
+        if ((micros()-startTime)>1000) {
+            break;
+        }
+    }
     
     //Wait for echo end
-    long startTime = micros();
-    while(digitalRead(ECHO) == HIGH);
+    startTime = micros();
+    while(digitalRead(ECHO) == HIGH){
+        if ((micros()-startTime)>10000) {
+            break;
+        }
+    }
     long travelTime = micros() - startTime;
     
     //Get distance in cm
