@@ -39,7 +39,7 @@ double Sonar::getCM() {
 }
 
 int Sonar::demo(void) {
-
+    printf("Made it");
     
     printf("Distance: %fcm\n", getCM());
     
