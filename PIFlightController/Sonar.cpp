@@ -9,7 +9,7 @@
 #define ECHO 5
 
 void Sonar::setup() {
-    printf("Made it to setup");
+    //printf("Made it to setup");
     wiringPiSetupGpio();
     
     pinMode(TRIG, OUTPUT);
@@ -50,9 +50,9 @@ double Sonar::getCM() {
 }
 
 int Sonar::demo(void) {
-    printf("Made it");
+    //printf("Made it");
     
-    printf("Distance: %f cm\n", getCM());
+    //printf("Distance: %f cm\n", getCM());
     
     return 0;
 }
