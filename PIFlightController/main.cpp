@@ -41,6 +41,7 @@ int main(void)
     firstSonar.setup();
     
     long beginning = millis();
+    int iterations = 0;
     
     auto t1 = std::chrono::high_resolution_clock::now();
     
@@ -53,12 +54,13 @@ int main(void)
         controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw);
         auto t2 = std::chrono::high_resolution_clock::now();
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
+        iterations++;
         //cout<< count <<endl;
         firstSonar.demo();
         if (count>10000) {
             controller.shutdown();
             long end = millis();
-            printf("Total time taken for 10000 iterations was %ld milliseconds/n ", end-beginning);
+            printf("Total amount of iterations in 10 seconds is %i", iterations);
             return 0;
         }
     }
