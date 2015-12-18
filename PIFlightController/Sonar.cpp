@@ -36,7 +36,7 @@ double Sonar::getCM() {
     
     printf("%ld",travelTime);
     //Get distance in cm
-    double distance = travelTime / 58;
+    distance = travelTime / 58;
     
     return distance;
 }
