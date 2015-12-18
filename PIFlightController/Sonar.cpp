@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "wiringPi.h"
+#include <wiringPi.h>
 #include "Sonar.h"
 
 #define TRUE 1
@@ -9,6 +9,7 @@
 #define ECHO 5
 
 void Sonar::setup() {
+    printf("Made it to setup");
     wiringPiSetup();
     pinMode(TRIG, OUTPUT);
     pinMode(ECHO, INPUT);
