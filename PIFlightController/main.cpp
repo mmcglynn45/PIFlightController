@@ -25,6 +25,7 @@ using namespace std;
 
 void* threaded(void * controller);
 void* threaded2(void * controller);
+void* sonar(void * sonar);
 
 int main(void)
 {
@@ -42,10 +43,11 @@ int main(void)
     
     long beginning = millis();
     int iterations = 0;
-    
+    pthread_t thread1;
     auto t1 = std::chrono::high_resolution_clock::now();
     
     while (1) {
+        pthread_create(&thread1, NULL, sonar, &firstSonar);
         while(!piIMU.updateIMU()){}
         //cout << "Pitch = " << piIMU.pitch << endl;
         //cout << "Roll = " << piIMU.roll << endl;
@@ -56,7 +58,8 @@ int main(void)
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
         iterations++;
         //cout<< count <<endl;
-        firstSonar.demo();
+        //firstSonar.demo();
+        pthread_join( thread1, NULL);
         if (count>10000) {
             controller.shutdown();
             long end = millis();
