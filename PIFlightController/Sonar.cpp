@@ -30,7 +30,7 @@ double Sonar::getCM() {
     //Wait for echo start
     while(digitalRead(ECHO) == LOW){
         if ((micros()-startTime)>1000) {
-            break;
+            return distance;
         }
     }
     
@@ -38,7 +38,7 @@ double Sonar::getCM() {
     startTime = micros();
     while(digitalRead(ECHO) == HIGH){
         if ((micros()-startTime)>10000) {
-            break;
+            return distance;
         }
     }
     long travelTime = micros() - startTime;
