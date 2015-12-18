@@ -10,7 +10,8 @@
 
 void Sonar::setup() {
     printf("Made it to setup");
-    wiringPiSetup();
+    wiringPiSetupGpio();
+    
     pinMode(TRIG, OUTPUT);
     pinMode(ECHO, INPUT);
     
