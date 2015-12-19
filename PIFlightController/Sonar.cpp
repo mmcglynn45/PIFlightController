@@ -46,7 +46,7 @@ double Sonar::getCM() {
     
     //Get distance in cm
     distance = travelTime / 58.0;
-    active=0;
+    active = 0;
     return distance;
 }
 

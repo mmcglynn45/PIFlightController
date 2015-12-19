@@ -62,6 +62,7 @@ int main(void)
         
         //cout<< count <<endl;
         //firstSonar.getDistance();
+        while (firstSonar.active);
         printf("Sonar Active: %i /n",firstSonar.active);
         pthread_join( thread1, NULL);
         if (count>10000) {
