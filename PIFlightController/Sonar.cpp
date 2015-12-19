@@ -30,7 +30,7 @@ double Sonar::getCM() {
     
     //Wait for echo start
     while(digitalRead(ECHO) == LOW){
-        if ((micros()-startTime)>10000) { //maximum of 160cm
+        if ((micros()-startTime)>100) { //maximum of 160cm
             active = 0;
             return distance;
         }
@@ -39,7 +39,7 @@ double Sonar::getCM() {
     //Wait for echo end
     startTime = micros();
     while(digitalRead(ECHO) == HIGH){
-        if ((micros()-startTime)>10000) { //maximum of 160cm
+        if ((micros()-startTime)>100) { //maximum of 160cm
             active = 0;
             return distance;
         }
