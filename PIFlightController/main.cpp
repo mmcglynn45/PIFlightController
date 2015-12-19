@@ -51,12 +51,12 @@ int main(void)
             pthread_create(&thread1, NULL, sonar, &firstSonar);
             created = 1;
         }
-        printf("Sonar Active: %i \n",firstSonar.active);
+        //printf("Sonar Active: %i \n",firstSonar.active);
         while(!piIMU.updateIMU()){}
         //cout << "Pitch = " << piIMU.pitch << endl;
         //cout << "Roll = " << piIMU.roll << endl;
         //cout << "Yaw = " << piIMU.yaw << endl;
-        printf("Sonar Reading: %f \n",firstSonar.distance);
+        //printf("Sonar Reading: %f \n",firstSonar.distance);
         controller.safetyCheck(piIMU.roll, piIMU.pitch);
         controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw);
         auto t2 = std::chrono::high_resolution_clock::now();
