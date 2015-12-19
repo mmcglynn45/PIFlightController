@@ -50,6 +50,10 @@ double Sonar::getCM() {
     return distance;
 }
 
+double Sonar::getDistance(){
+    return getCM();
+}
+
 int Sonar::demo(void) {
     //printf("Made it");
     
