@@ -48,18 +48,21 @@ int main(void)
     
     while (1) {
         pthread_create(&thread1, NULL, sonar, &firstSonar);
+        printf("Sonar Active: %i /n",firstSonar.active);
         while(!piIMU.updateIMU()){}
         //cout << "Pitch = " << piIMU.pitch << endl;
         //cout << "Roll = " << piIMU.roll << endl;
         //cout << "Yaw = " << piIMU.yaw << endl;
+        printf("Sonar Active: %i /n",firstSonar.active);
         controller.safetyCheck(piIMU.roll, piIMU.pitch);
         controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw);
         auto t2 = std::chrono::high_resolution_clock::now();
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
         iterations++;
+        
         //cout<< count <<endl;
         //firstSonar.getDistance();
-        
+        printf("Sonar Active: %i /n",firstSonar.active);
         pthread_join( thread1, NULL);
         if (count>10000) {
             controller.shutdown();
