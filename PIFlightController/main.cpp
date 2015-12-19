@@ -39,6 +39,7 @@ int main(void)
     IMU piIMU;
     piIMU.setup();
     Sonar firstSonar;
+     printf("hello");
     firstSonar.active = 0;
     firstSonar.setup();
     bool* done;
