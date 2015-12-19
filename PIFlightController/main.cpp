@@ -38,27 +38,18 @@ int main(void)
     
     IMU piIMU;
     piIMU.setup();
-    printf("hello");
     Sonar firstSonar;
-     printf("hello");
-    firstSonar.active = 0;
     firstSonar.setup();
-    bool* done;
     
     long beginning = millis();
     int iterations = 0;
-    pthread_t thread1;
+    //pthread_t thread1;
     auto t1 = std::chrono::high_resolution_clock::now();
     
-    *done = 0;
     while (1) {
-        printf("hello");
-        if (!firstSonar.active) {
-            printf("initialized");
-            pthread_create(&thread1, NULL, sonar, &firstSonar);
-        }
+        //pthread_create(&thread1, NULL, sonar, &firstSonar);
         while(!piIMU.updateIMU()){}
-        cout << "Pitch = " << piIMU.pitch << endl;
+        //cout << "Pitch = " << piIMU.pitch << endl;
         //cout << "Roll = " << piIMU.roll << endl;
         //cout << "Yaw = " << piIMU.yaw << endl;
         controller.safetyCheck(piIMU.roll, piIMU.pitch);
@@ -67,11 +58,9 @@ int main(void)
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
         iterations++;
         //cout<< count <<endl;
-        //firstSonar.demo();
-        if (!firstSonar.active) {
-            pthread_join(thread1, NULL);
-        }
+        firstSonar.demo();
         
+        //pthread_join( thread1, NULL);
         if (count>10000) {
             controller.shutdown();
             long end = millis();
