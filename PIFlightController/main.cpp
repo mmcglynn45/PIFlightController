@@ -115,7 +115,7 @@ int main(void)
 void* sonar(void * sonar){
     Sonar * sonar2;
     sonar2 = (Sonar *)sonar;
-    sonar2->demo();
+    sonar2->getDistance();
     return NULL;
 }
 
