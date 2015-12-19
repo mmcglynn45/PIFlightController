@@ -39,7 +39,7 @@ int main(void)
     IMU piIMU;
     piIMU.setup();
     Sonar firstSonar;
-    first.active = 0;
+    firstSonar.active = 0;
     firstSonar.setup();
     bool* done;
     
