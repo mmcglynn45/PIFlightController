@@ -40,14 +40,18 @@ int main(void)
     piIMU.setup();
     Sonar firstSonar;
     firstSonar.setup();
+    bool* done;
     
     long beginning = millis();
     int iterations = 0;
     pthread_t thread1;
     auto t1 = std::chrono::high_resolution_clock::now();
     
+    *done = 0;
     while (1) {
-        pthread_create(&thread1, NULL, sonar, &firstSonar);
+        if (!firstSonar.active) {
+            pthread_create(&thread1, NULL, sonar, &firstSonar);
+        }
         while(!piIMU.updateIMU()){}
         //cout << "Pitch = " << piIMU.pitch << endl;
         //cout << "Roll = " << piIMU.roll << endl;
@@ -59,7 +63,10 @@ int main(void)
         iterations++;
         //cout<< count <<endl;
         //firstSonar.demo();
-        pthread_join( thread1, NULL);
+        if (!firstSonar.active) {
+            pthread_join(thread1, NULL);
+        }
+        
         if (count>10000) {
             controller.shutdown();
             long end = millis();

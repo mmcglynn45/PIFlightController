@@ -21,6 +21,7 @@ void Sonar::setup() {
 }
 
 double Sonar::getCM() {
+    active = 1;
     long startTime = micros();
     //Send trig pulse
     digitalWrite(TRIG, HIGH);
@@ -45,7 +46,7 @@ double Sonar::getCM() {
     
     //Get distance in cm
     distance = travelTime / 58.0;
-    
+    active=0;
     return distance;
 }
 

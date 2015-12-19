@@ -17,6 +17,7 @@ class Sonar {
     double getCM();
 
 public:
+    int active;
     void setup();
     double getDistance();
     int demo();
