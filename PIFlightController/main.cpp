@@ -50,6 +50,7 @@ int main(void)
     
     *done = 0;
     while (1) {
+        printf("hello");
         if (!firstSonar.active) {
             printf("initialized");
             pthread_create(&thread1, NULL, sonar, &firstSonar);
