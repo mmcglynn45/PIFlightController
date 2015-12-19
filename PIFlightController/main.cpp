@@ -43,11 +43,11 @@ int main(void)
     
     long beginning = millis();
     int iterations = 0;
-    //pthread_t thread1;
+    pthread_t thread1;
     auto t1 = std::chrono::high_resolution_clock::now();
     
     while (1) {
-        //pthread_create(&thread1, NULL, sonar, &firstSonar);
+        pthread_create(&thread1, NULL, sonar, &firstSonar);
         while(!piIMU.updateIMU()){}
         //cout << "Pitch = " << piIMU.pitch << endl;
         //cout << "Roll = " << piIMU.roll << endl;
@@ -60,7 +60,7 @@ int main(void)
         //cout<< count <<endl;
         //firstSonar.getDistance();
         
-        //pthread_join( thread1, NULL);
+        pthread_join( thread1, NULL);
         if (count>10000) {
             controller.shutdown();
             long end = millis();
