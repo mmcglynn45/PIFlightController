@@ -58,7 +58,7 @@ int main(void)
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
         iterations++;
         //cout<< count <<endl;
-        firstSonar.getDistance();
+        //firstSonar.getDistance();
         
         //pthread_join( thread1, NULL);
         if (count>10000) {
