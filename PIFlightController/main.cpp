@@ -52,6 +52,7 @@ int main(void)
         if (!firstSonar.active) {
             pthread_create(&thread1, NULL, sonar, &firstSonar);
         }
+        printf("initialized");
         while(!piIMU.updateIMU()){}
         cout << "Pitch = " << piIMU.pitch << endl;
         //cout << "Roll = " << piIMU.roll << endl;
