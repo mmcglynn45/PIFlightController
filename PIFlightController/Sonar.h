@@ -13,10 +13,11 @@
 
 
 class Sonar {
-    double distance;
+   
     double getCM();
 
 public:
+    double distance;
     int active;
     void setup();
     double getDistance();
