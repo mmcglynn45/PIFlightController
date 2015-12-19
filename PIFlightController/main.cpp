@@ -56,7 +56,7 @@ int main(void)
         //cout << "Pitch = " << piIMU.pitch << endl;
         //cout << "Roll = " << piIMU.roll << endl;
         //cout << "Yaw = " << piIMU.yaw << endl;
-        //printf("Sonar Reading: %f \n",firstSonar.distance);
+        printf("Sonar Reading: %f \n",firstSonar.distance);
         controller.safetyCheck(piIMU.roll, piIMU.pitch);
         controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw);
         auto t2 = std::chrono::high_resolution_clock::now();
