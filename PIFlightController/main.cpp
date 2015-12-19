@@ -53,7 +53,7 @@ int main(void)
             pthread_create(&thread1, NULL, sonar, &firstSonar);
         }
         while(!piIMU.updateIMU()){}
-        //cout << "Pitch = " << piIMU.pitch << endl;
+        cout << "Pitch = " << piIMU.pitch << endl;
         //cout << "Roll = " << piIMU.roll << endl;
         //cout << "Yaw = " << piIMU.yaw << endl;
         controller.safetyCheck(piIMU.roll, piIMU.pitch);
