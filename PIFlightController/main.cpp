@@ -20,6 +20,7 @@
 #include "input.h"
 #include "Sonar.h"
 #include "wiringPi.h"
+#include "math.h"
 
 using namespace std;
 
@@ -64,6 +65,8 @@ int main(void)
         if (!controller.safetyCheck(piIMU.roll, piIMU.pitch)) {
             return 0;
         }
+        totalPitch += fabs(piIMU.pitch);
+        totalRoll += fabs(piIMU.roll);
         cout << "TotalPitch = " << totalPitch << endl;
         cout << "TotalRoll = " << totalRoll << endl;
         controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw,firstSonar.distance,piIMU.mX,piIMU.mY);
