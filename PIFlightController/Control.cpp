@@ -190,6 +190,7 @@ double Control::YawPIDComputation(double current, double desired){
 
 void Control::MapMotorOutput(double pitchControl,double rollControl, double yawControl, double throttleBaseline){
     //Basic algo is establish baseline then use roll, pitch, and yaw to modify
+    throttleBaseline = throttleBaseline * 8; //Scale up for scale down of .5 across 3 inputs
     throttleBaseline = inputNormalizer(throttleBaseline, 0, 8);
     pitchControl = inputNormalizer(pitchControl,-1,1);
     rollControl = inputNormalizer(rollControl,-1,1);
