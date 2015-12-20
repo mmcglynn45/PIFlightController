@@ -25,7 +25,7 @@ double Sonar::getCM() {
     long startTime = micros();
     //Send trig pulse
     digitalWrite(TRIG, HIGH);
-    delayMicroseconds(2000000);
+    delayMicroseconds(20);
     digitalWrite(TRIG, LOW);
     
     //Wait for echo start
