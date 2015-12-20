@@ -56,6 +56,8 @@ int main(void)
         cout << "Pitch = " << piIMU.pitch << endl;
         cout << "Roll = " << piIMU.roll << endl;
         cout << "Yaw = " << piIMU.yaw << endl;
+        cout << "MX = " << piIMU.mX << endl;
+        cout << "MY = " << piIMU.mY << endl;
         printf("Sonar Reading: %f \n",firstSonar.distance);
         controller.safetyCheck(piIMU.roll, piIMU.pitch);
         controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw,firstSonar.distance);
