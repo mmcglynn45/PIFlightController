@@ -55,7 +55,7 @@ double Sonar::getCM() {
     if (delta<1) {
         distance = newDistance;
     }else{
-        distance = distance*.8 + newDistance*.2 //Otherwise, weight between the old and new readings
+        distance = distance*.8 + newDistance*.2; //Otherwise, weight between the old and new readings
     }
     active = 0;
     return distance;
