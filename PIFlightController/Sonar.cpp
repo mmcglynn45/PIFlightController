@@ -20,6 +20,7 @@ void Sonar::setup() {
     //TRIG pin must start LOW
     digitalWrite(TRIG, LOW);
     delay(30);
+    distance = 4;
 }
 
 double Sonar::getCM() {
