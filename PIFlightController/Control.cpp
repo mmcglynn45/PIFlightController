@@ -120,8 +120,8 @@ void Control::adjustMotorSpeed(int motor, double speed){
 void Control::ManageOrientation(double roll, double pitch, double yaw, double altitude, double mX, double mY){
     double desiredPitch = mXPIDComputation(mX, 0);
     double desiredRoll = mYPIDComputation(mY, 0);
-    desiredPitch = inputNormalizer(desiredPitch, -0, 0);
-    desiredRoll = inputNormalizer(desiredRoll, -0, 0);
+    desiredPitch = inputNormalizer(desiredPitch, -1, 1);
+    desiredRoll = inputNormalizer(desiredRoll, -1, 1);
     printf("desiredRoll: %f \n", desiredRoll);
     printf("desiredPitch: %f \n", desiredPitch);
     double pitchControl = PitchPIDComputation(pitch, desiredPitch);
@@ -242,8 +242,8 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
     //Basic algo is establish baseline then use roll, pitch, and yaw to modify
     throttleBaseline = throttleBaseline * 8; //Scale up for scale down of .5 across 3 inputs
     throttleBaseline = inputNormalizer(throttleBaseline, 0, 8);
-    pitchControl = inputNormalizer(pitchControl,-.3,.3);
-    rollControl = inputNormalizer(rollControl,-.3,.3);
+    pitchControl = inputNormalizer(pitchControl,-.4,.4);
+    rollControl = inputNormalizer(rollControl,-.4,.4);
     yawControl = inputNormalizer(yawControl,-.0,.0);//Roll and Pitch are weighted at 100%, yaw is less important weight at 10%
     double pitchP = shiftNormalized(pitchControl);
     double rollP = shiftNormalized(rollControl);
