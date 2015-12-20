@@ -58,7 +58,7 @@ int main(void)
         //cout << "Yaw = " << piIMU.yaw << endl;
         printf("Sonar Reading: %f \n",firstSonar.distance);
         controller.safetyCheck(piIMU.roll, piIMU.pitch);
-        controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw);
+        controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw,firstSonar.distance);
         auto t2 = std::chrono::high_resolution_clock::now();
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
         iterations++;

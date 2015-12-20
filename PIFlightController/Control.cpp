@@ -34,9 +34,12 @@ Control::Control(){
     rollIntegration = 0;
     yawError =  0;
     yawIntegration = 0;
+    altitudeError = 0;
+    altitudeIntegration = 0;
     pitchTime = std::chrono::high_resolution_clock::now();
     rollTime = std::chrono::high_resolution_clock::now();
     yawTime = std::chrono::high_resolution_clock::now();
+    altitudeTime = std::chrono::high_resolution_clock::now();
 
 }
     
@@ -106,14 +109,31 @@ void Control::adjustMotorSpeed(int motor, double speed){
     pwmWrite(PIN_BASE + motor, tick);
 }
 
-void Control::ManageOrientation(double roll, double pitch, double yaw){
+void Control::ManageOrientation(double roll, double pitch, double yaw, double altitude){
     double pitchControl = PitchPIDComputation(pitch, 0);
     //std::cout<<"Pitch Control: "<<pitchControl<<std::endl;
     double rollControl = RollPIDComputation(roll, 0);
     //std::cout<<"Roll Control: "<<rollControl<<std::endl;
-    double yawControl = YawPIDComputation(yaw, -100);
+    double yawControl = YawPIDComputation(yaw, 60);
     //std::cout<<"Yaw Control: "<<yawControl<<std::endl;
-    MapMotorOutput(pitchControl, rollControl, yawControl, getThrottleBaseline());
+    double altitudeControl = AltitudePIDComputation(altitude, 7);
+    MapMotorOutput(pitchControl, rollControl, yawControl, altitudeControl);
+}
+
+double Control::AltitudePIDComputation(double current, double desired){
+    double Kp = 0.01;
+    double Ki = 0.005;
+    double Kd = 0.005;
+    std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-altitudeTime);
+    double deltaT = time_span.count();
+    altitudeTime = now;
+    double error = desired - current;
+    altitudeIntegration = altitudeIntegration + error*deltaT;
+    double deriviative = (error - altitudeError)/deltaT;
+    double output = Kp * error + Ki * altitudeIntegration + Kd * deriviative;
+    altitudeError = error;
+    return output;
 }
 
 double Control::PitchPIDComputation(double current, double desired){
@@ -167,9 +187,10 @@ double Control::YawPIDComputation(double current, double desired){
 
 void Control::MapMotorOutput(double pitchControl,double rollControl, double yawControl, double throttleBaseline){
     //Basic algo is establish baseline then use roll, pitch, and yaw to modify
+    throttleBaseline = inputNormalizer(throttleBaseline, 0, 8);
     pitchControl = inputNormalizer(pitchControl,-1,1);
     rollControl = inputNormalizer(rollControl,-1,1);
-    yawControl = inputNormalizer(yawControl,-.2,.2);//Roll and Pitch are weighted at 100%, yaw is less important weight at 10%
+    yawControl = inputNormalizer(yawControl,-.1,.1);//Roll and Pitch are weighted at 100%, yaw is less important weight at 10%
     double pitchP = shiftNormalized(pitchControl);
     double rollP = shiftNormalized(rollControl);
     double yawP = shiftNormalized(yawControl);
