@@ -251,8 +251,8 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
     double rollN = 1 - rollP;
     double pitchN = 1 - pitchP;
     double yawN = 1 - yawP;
-    std::cout<<"Pitch: " << pitchP << std::endl;
-    std::cout<<"Roll: " << rollP << std::endl;
+    std::cout<<"PitchP: " << pitchP << std::endl;
+    std::cout<<"RollP: " << rollP << std::endl;
     double XPSpeed = throttleBaseline * pitchP * rollP *yawP;
     double XNSpeed = throttleBaseline * pitchP * rollN *yawN;
     double YPSpeed = throttleBaseline * pitchN * rollP *yawN;
