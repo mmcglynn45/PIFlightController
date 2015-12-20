@@ -38,6 +38,8 @@ int main(void)
     input radio;
     double totalRoll = 0;
     double totalPitch = 0;
+    
+    int index = 0;
     IMU piIMU;
     piIMU.setup();
     Sonar firstSonar;
@@ -55,7 +57,7 @@ int main(void)
         }
         //printf("Sonar Active: %i \n",firstSonar.active);
         while(!piIMU.updateIMU()){}
-        
+        index++;
         cout << "Pitch = " << piIMU.pitch << endl;
         cout << "Roll = " << piIMU.roll << endl;
         cout << "Yaw = " << piIMU.yaw << endl;
@@ -67,8 +69,8 @@ int main(void)
         }
         totalPitch += fabs(piIMU.pitch);
         totalRoll += fabs(piIMU.roll);
-        cout << "TotalPitch = " << totalPitch/10 << endl;
-        cout << "TotalRoll = " << totalRoll/10 << endl;
+        cout << "TotalPitch = " << totalPitch/index << endl;
+        cout << "TotalRoll = " << totalRoll/index << endl;
         controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw,firstSonar.distance,piIMU.mX,piIMU.mY);
         auto t2 = std::chrono::high_resolution_clock::now();
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
