@@ -122,6 +122,8 @@ void Control::ManageOrientation(double roll, double pitch, double yaw, double al
 }
 
 double Control::AltitudePIDComputation(double current, double desired){
+    printf("current: %f \n", current);
+    printf("desired: %f \n", desired);
     double Kp = 0.01;
     double Ki = 0.005;
     double Kd = 0.005;
