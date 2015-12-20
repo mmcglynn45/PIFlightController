@@ -117,6 +117,7 @@ void Control::ManageOrientation(double roll, double pitch, double yaw, double al
     double yawControl = YawPIDComputation(yaw, 60);
     //std::cout<<"Yaw Control: "<<yawControl<<std::endl;
     double altitudeControl = AltitudePIDComputation(altitude, 7);
+    printf("altitudeControl: %f \n", altitudeControl);
     MapMotorOutput(pitchControl, rollControl, yawControl, altitudeControl);
 }
 
