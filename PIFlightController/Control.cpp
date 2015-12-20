@@ -124,7 +124,7 @@ void Control::ManageOrientation(double roll, double pitch, double yaw, double al
 double Control::AltitudePIDComputation(double current, double desired){
     printf("current: %f \n", current);
     printf("desired: %f \n", desired);
-    double Kp = 0.1;
+    double Kp = 0.05;
     double Ki = 0.05;
     double Kd = 0.005;
     std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
