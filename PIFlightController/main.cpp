@@ -59,7 +59,10 @@ int main(void)
         cout << "MX = " << piIMU.mX << endl;
         cout << "MY = " << piIMU.mY << endl;
         printf("Sonar Reading: %f \n",firstSonar.distance);
-        controller.safetyCheck(piIMU.roll, piIMU.pitch);
+        if (!controller.safetyCheck(piIMU.roll, piIMU.pitch)) {
+            return 0;
+        }
+        
         controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw,firstSonar.distance,piIMU.mX,piIMU.mY);
         auto t2 = std::chrono::high_resolution_clock::now();
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();

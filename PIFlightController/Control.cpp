@@ -68,14 +68,16 @@ void Control::setup(){
 }
 
 
-void Control::safetyCheck(double roll,double pitch){
-    if ((fabs(roll)>15) || (fabs(pitch)>15)) {
+int Control::safetyCheck(double roll,double pitch){
+    if ((fabs(roll)>10) || (fabs(pitch)>10)) {
         adjustYPMotor(0);
         adjustXPMotor(0);
         adjustYNMotor(0);
         adjustXNMotor(0);
         delay(2000);
+        return 0;
     }
+    return 1;
 }
 
 void Control::shutdown(){

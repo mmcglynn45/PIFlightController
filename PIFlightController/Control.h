@@ -54,7 +54,7 @@ public:
     void MapMotorOutput(double pitchControl,double rollControl, double yawControl, double throttleBaseline);
     void ManageOrientation(double roll, double pitch, double yaw,double altitude, double mX, double mY);
     double shiftNormalized(double input);
-    void safetyCheck(double roll,double pitch);
+    int safetyCheck(double roll,double pitch);
     void shutdown();
 };
 
