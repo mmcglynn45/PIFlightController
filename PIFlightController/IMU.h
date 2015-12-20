@@ -26,6 +26,8 @@ public:
     double pitch;
     double roll;
     double yaw;
+    double mX;
+    double mY;
     //void rotation(double yawShift, double rollInRad, double pitchInRad, double yawInRad);
 };
 
