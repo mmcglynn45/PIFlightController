@@ -35,7 +35,8 @@ int main(void)
     controller.setup();
     
     input radio;
-    
+    double totalRoll = 0;
+    double totalPitch = 0;
     IMU piIMU;
     piIMU.setup();
     Sonar firstSonar;
@@ -53,6 +54,7 @@ int main(void)
         }
         //printf("Sonar Active: %i \n",firstSonar.active);
         while(!piIMU.updateIMU()){}
+        
         cout << "Pitch = " << piIMU.pitch << endl;
         cout << "Roll = " << piIMU.roll << endl;
         cout << "Yaw = " << piIMU.yaw << endl;
@@ -62,7 +64,8 @@ int main(void)
         if (!controller.safetyCheck(piIMU.roll, piIMU.pitch)) {
             return 0;
         }
-        
+        cout << "TotalPitch = " << totalPitch << endl;
+        cout << "TotalRoll = " << totalRoll << endl;
         controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw,firstSonar.distance,piIMU.mX,piIMU.mY);
         auto t2 = std::chrono::high_resolution_clock::now();
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
@@ -74,7 +77,7 @@ int main(void)
             created = 0;
             pthread_join( thread1, NULL);
         }
-        if (count>5000) {
+        if (count>3000) {
             controller.shutdown();
             long end = millis();
             printf("Total amount of iterations in 10 seconds is %i", iterations);
