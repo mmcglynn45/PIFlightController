@@ -53,7 +53,7 @@ double Sonar::getCM() {
     //Get distance in cm
     double newDistance = travelTime / 58.0;
     double delta = fabs(newDistance-lastReading);
-    if (delta<1) {
+    if (delta<.5) {
         distance = newDistance;
     }else{
         distance = distance*.99 + newDistance*.01; //Otherwise, weight between the old and new readings
