@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <wiringPi.h>
 #include "Sonar.h"
+#include <math.h>
+#include <iostream>
 
 #define TRUE 1
 
@@ -21,6 +23,7 @@ void Sonar::setup() {
 }
 
 double Sonar::getCM() {
+    double lastReading = distance;
     active = 1;
     long startTime = micros();
     //Send trig pulse
@@ -47,7 +50,11 @@ double Sonar::getCM() {
     long travelTime = micros() - startTime;
     
     //Get distance in cm
-    distance = travelTime / 58.0;
+    double newDistance = travelTime / 58.0;
+    double delta = fabs(newDistance-lastReading);
+    if (delta<1) {
+        distance = newDistance;
+    }
     active = 0;
     return distance;
 }
