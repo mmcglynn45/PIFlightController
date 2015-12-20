@@ -27,7 +27,7 @@
     
 Control::Control(){
     MinTime = 1.2;
-    MaxTime = 1.2;
+    MaxTime = 2.0;
     pitchError =  0;
     pitchIntegration = 0;
     rollError =  0;
@@ -116,7 +116,7 @@ void Control::ManageOrientation(double roll, double pitch, double yaw, double al
     //std::cout<<"Roll Control: "<<rollControl<<std::endl;
     double yawControl = YawPIDComputation(yaw, 60);
     //std::cout<<"Yaw Control: "<<yawControl<<std::endl;
-    double altitudeControl = AltitudePIDComputation(altitude, 5.5);
+    double altitudeControl = AltitudePIDComputation(altitude, 6);
     printf("altitudeControl: %f \n", altitudeControl);
     MapMotorOutput(pitchControl, rollControl, yawControl, altitudeControl);
 }
