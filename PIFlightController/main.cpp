@@ -67,8 +67,8 @@ int main(void)
         }
         totalPitch += fabs(piIMU.pitch);
         totalRoll += fabs(piIMU.roll);
-        cout << "TotalPitch = " << totalPitch << endl;
-        cout << "TotalRoll = " << totalRoll << endl;
+        cout << "TotalPitch = " << totalPitch/1000 << endl;
+        cout << "TotalRoll = " << totalRoll/1000 << endl;
         controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw,firstSonar.distance,piIMU.mX,piIMU.mY);
         auto t2 = std::chrono::high_resolution_clock::now();
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
