@@ -194,7 +194,7 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
     throttleBaseline = inputNormalizer(throttleBaseline, 0, 8);
     pitchControl = inputNormalizer(pitchControl,-.2,.2);
     rollControl = inputNormalizer(rollControl,-.2,.2);
-    yawControl = inputNormalizer(yawControl,-.001,.001);//Roll and Pitch are weighted at 100%, yaw is less important weight at 10%
+    yawControl = inputNormalizer(yawControl,-.0,.0);//Roll and Pitch are weighted at 100%, yaw is less important weight at 10%
     double pitchP = shiftNormalized(pitchControl);
     double rollP = shiftNormalized(rollControl);
     double yawP = shiftNormalized(yawControl);
