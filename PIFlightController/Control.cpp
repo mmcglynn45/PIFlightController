@@ -251,10 +251,10 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
     double rollN = 1 - rollP;
     double pitchN = 1 - pitchP;
     double yawN = 1 - yawP;
-    double XPSpeed = throttleBaseline * pitchN * rollN *yawP;
-    double XNSpeed = throttleBaseline * pitchN * rollP *yawN;
-    double YPSpeed = throttleBaseline * pitchP * rollN *yawN;
-    double YNSpeed = throttleBaseline * pitchP * rollP *yawP;
+    double XPSpeed = throttleBaseline * pitchN * rollP *yawP;
+    double XNSpeed = throttleBaseline * pitchN * rollN *yawN;
+    double YPSpeed = throttleBaseline * pitchP * rollP *yawN;
+    double YNSpeed = throttleBaseline * pitchP * rollN *yawP;
     XPSpeed = inputNormalizer(XPSpeed, 0, 1);
     XNSpeed = inputNormalizer(XNSpeed, 0, 1);
     YPSpeed = inputNormalizer(YPSpeed, 0, 1);
