@@ -22,11 +22,15 @@ class Control{
     double pitchError,pitchIntegration,pitchOutput;
     double rollError,rollIntegration,rollOutput;
     double yawError,yawIntegration,yawOutput;
+    double mXError,mXIntegration,mXOutput;
+     double mYError,mYIntegration,mYOutput;
     double altitudeError,altitudeIntegration,altitudeOutput;
     std::chrono::high_resolution_clock::time_point pitchTime;
     std::chrono::high_resolution_clock::time_point rollTime;
     std::chrono::high_resolution_clock::time_point yawTime;
     std::chrono::high_resolution_clock::time_point altitudeTime;
+    std::chrono::high_resolution_clock::time_point mxTime;
+    std::chrono::high_resolution_clock::time_point myTime;
     
 public:
     Control();
@@ -44,9 +48,11 @@ public:
     double AltitudePIDComputation(double current, double desired);
     double PitchPIDComputation(double current, double desired);
     double YawPIDComputation(double current, double desired);
+    double mXPIDComputation(double current, double desired);
+    double mYPIDComputation(double current, double desired);
     double inputNormalizer(double input, double min, double max);
     void MapMotorOutput(double pitchControl,double rollControl, double yawControl, double throttleBaseline);
-    void ManageOrientation(double roll, double pitch, double yaw,double altitude);
+    void ManageOrientation(double roll, double pitch, double yaw,double altitude, double mX, double mY);
     double shiftNormalized(double input);
     void safetyCheck(double roll,double pitch);
     void shutdown();

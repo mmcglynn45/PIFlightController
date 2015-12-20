@@ -15,10 +15,10 @@
 #define PIN_BASE 300
 #define MAX_PWM 4096
 #define HERTZ 50
-#define YPMOTOR 3 //Pitch minus - Roll positive - Yaw Plus
-#define YNMOTOR 7 //Pitch minus - Roll minus - Yaw Minus
-#define XNMOTOR 8 //Pitch plus - Roll minus - Yaw Plus
-#define XPMOTOR 12 //Pitch plus - Roll Positive - Yaw Minus
+#define YPMOTOR 3 //Pitch minus - Roll positive - Yaw Plus - mY neg - mx pos
+#define YNMOTOR 7 //Pitch minus - Roll minus - Yaw Minus - mY pos - mx pos
+#define XNMOTOR 8 //Pitch plus - Roll minus - Yaw Plus - mY pos - mx neg
+#define XPMOTOR 12 //Pitch plus - Roll Positive - Yaw Minus  - mY neg - mx neg
 
 #define	PI					3.1415926535
 #define	DEGREE_TO_RAD		(RTMATH_PI / 180.0)
@@ -36,10 +36,16 @@ Control::Control(){
     yawIntegration = 0;
     altitudeError = 0;
     altitudeIntegration = 10;
+    mXError = 0;
+    mXIntegration = 0;
+    mYError = 0;
+    mYIntegration = 0;
     pitchTime = std::chrono::high_resolution_clock::now();
     rollTime = std::chrono::high_resolution_clock::now();
     yawTime = std::chrono::high_resolution_clock::now();
     altitudeTime = std::chrono::high_resolution_clock::now();
+    mxTime = std::chrono::high_resolution_clock::now();
+    myTime = std::chrono::high_resolution_clock::now();
 
 }
     
@@ -109,10 +115,15 @@ void Control::adjustMotorSpeed(int motor, double speed){
     pwmWrite(PIN_BASE + motor, tick);
 }
 
-void Control::ManageOrientation(double roll, double pitch, double yaw, double altitude){
-    double pitchControl = PitchPIDComputation(pitch, 0);
+void Control::ManageOrientation(double roll, double pitch, double yaw, double altitude, double mX, double mY){
+    double desiredPitch = mXPIDComputation(mX, 0);
+    double desiredRoll = mYPIDComputation(mY, 0);
+    desiredPitch = inputNormalizer(desiredPitch, -3, 3);
+    desiredRoll = inputNormalizer(desiredPitch, -3, 3);
+    
+    double pitchControl = PitchPIDComputation(pitch, desiredPitch);
     //std::cout<<"Pitch Control: "<<pitchControl<<std::endl;
-    double rollControl = RollPIDComputation(roll, 0);
+    double rollControl = RollPIDComputation(roll, desiredRoll);
     //std::cout<<"Roll Control: "<<rollControl<<std::endl;
     double yawControl = YawPIDComputation(yaw, 60);
     //std::cout<<"Yaw Control: "<<yawControl<<std::endl;
@@ -121,6 +132,42 @@ void Control::ManageOrientation(double roll, double pitch, double yaw, double al
     MapMotorOutput(pitchControl, rollControl, yawControl, altitudeControl);
 }
 
+double Control::mXPIDComputation(double current, double desired){
+    printf("current: %f \n", current);
+    printf("desired: %f \n", desired);
+    double Kp = 0.7;
+    double Ki = 0.3;
+    double Kd = 0.2;
+    std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-mxTime);
+    double deltaT = time_span.count();
+    mxTime = now;
+    double error = desired - current;
+    mXIntegration = mXIntegration + error*deltaT;
+    double deriviative = (error - mXError)/deltaT;
+    double output = Kp * error + Ki * mXIntegration + Kd * deriviative;
+    mXError = error;
+    return output;
+}
+
+
+double Control::mYPIDComputation(double current, double desired){
+    printf("current: %f \n", current);
+    printf("desired: %f \n", desired);
+    double Kp = 0.7;
+    double Ki = 0.3;
+    double Kd = 0.2;
+    std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-myTime);
+    double deltaT = time_span.count();
+    myTime = now;
+    double error = desired - current;
+    mYIntegration = mYIntegration + error*deltaT;
+    double deriviative = (error - mYError)/deltaT;
+    double output = Kp * error + Ki * mYIntegration + Kd * deriviative;
+    mYError = error;
+    return output;
+}
 double Control::AltitudePIDComputation(double current, double desired){
     printf("current: %f \n", current);
     printf("desired: %f \n", desired);
