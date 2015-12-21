@@ -28,6 +28,8 @@ public:
     double yaw;
     double mX;
     double mY;
+    double mXComp;
+    double mYComp;
     double pitchComp;
     double rollComp;
     //void rotation(double yawShift, double rollInRad, double pitchInRad, double yawInRad);
