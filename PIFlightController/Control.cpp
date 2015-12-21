@@ -249,8 +249,8 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
     //Basic algo is establish baseline then use roll, pitch, and yaw to modify
     throttleBaseline = throttleBaseline * 2; //Scale up for scale down of .5 across 3 inputs
     throttleBaseline = inputNormalizer(throttleBaseline, 0, 8);
-    pitchControl = inputNormalizer(pitchControl,-.2,.2);
-    rollControl = inputNormalizer(rollControl,-.2,.2);
+    pitchControl = inputNormalizer(pitchControl,-.4,.4);
+    rollControl = inputNormalizer(rollControl,-.4,.4);
     yawControl = inputNormalizer(yawControl,-.0,.0);//Roll and Pitch are weighted at 100%, yaw is less important weight at 10%
     double pitchP = shiftNormalized(pitchControl);
     double rollP = shiftNormalized(rollControl);
