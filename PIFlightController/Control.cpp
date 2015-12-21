@@ -15,10 +15,17 @@
 #define PIN_BASE 300
 #define MAX_PWM 4096
 #define HERTZ 50
-#define YPMOTOR 3 //Pitch minus - Roll positive - Yaw Plus - mY neg - mx pos
-#define YNMOTOR 7 //Pitch minus - Roll minus - Yaw Minus - mY pos - mx pos
-#define XNMOTOR 8 //Pitch plus - Roll minus - Yaw Plus - mY pos - mx neg
-#define XPMOTOR 12 //Pitch plus - Roll Positive - Yaw Minus  - mY neg - mx neg
+
+//Mixed layout
+//#define YPMOTOR 3 //Pitch minus - Roll positive - Yaw Plus - mY neg - mx pos
+//#define YNMOTOR 7 //Pitch minus - Roll minus - Yaw Minus - mY pos - mx pos
+//#define XNMOTOR 8 //Pitch plus - Roll minus - Yaw Plus - mY pos - mx neg
+//#define XPMOTOR 12 //Pitch plus - Roll Positive - Yaw Minus  - mY neg - mx neg
+
+#define YPMOTOR 3 //Pitch positive
+#define YNMOTOR 7 //Roll Positive
+#define XNMOTOR 8 //Pitch negative
+#define XPMOTOR 12 //Roll negative
 
 #define	PI					3.1415926535
 #define	DEGREE_TO_RAD		(RTMATH_PI / 180.0)
@@ -120,8 +127,8 @@ void Control::adjustMotorSpeed(int motor, double speed){
 void Control::ManageOrientation(double roll, double pitch, double yaw, double altitude, double mX, double mY){
     double desiredPitch = mXPIDComputation(mX, 0);
     double desiredRoll = mYPIDComputation(mY, 0);
-    desiredPitch = inputNormalizer(-desiredPitch*5, -4, 4);
-    desiredRoll = inputNormalizer(desiredRoll, -4, 4);
+    desiredPitch = inputNormalizer(-desiredPitch*5, 0, 0);
+    desiredRoll = inputNormalizer(desiredRoll, 0, 0);
     //printf("desiredRoll: %f \n", desiredRoll);
     //printf("desiredPitch: %f \n", desiredPitch);
     double pitchControl = PitchPIDComputation(pitch, desiredPitch);
@@ -253,10 +260,18 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
     double yawN = 1 - yawP;
     std::cout<<"PitchP: " << pitchP << std::endl;
     std::cout<<"RollP: " << rollP << std::endl;
-    double XPSpeed = throttleBaseline * pitchP * rollP *yawP;
-    double XNSpeed = throttleBaseline * pitchP * rollN *yawN;
-    double YPSpeed = throttleBaseline * pitchN * rollP *yawN;
-    double YNSpeed = throttleBaseline * pitchN * rollN *yawP;
+    
+    //Old mapping
+    //double XPSpeed = throttleBaseline * pitchP * rollP *yawP;
+    //double XNSpeed = throttleBaseline * pitchP * rollN *yawN;
+    //double YPSpeed = throttleBaseline * pitchN * rollP *yawN;
+    //double YNSpeed = throttleBaseline * pitchN * rollN *yawP;
+    
+    //new mapping
+    double XPSpeed = throttleBaseline * rollN;
+    double XNSpeed = throttleBaseline * pitchN;
+    double YPSpeed = throttleBaseline * pitchP;
+    double YNSpeed = throttleBaseline * rollP;
     XPSpeed = inputNormalizer(XPSpeed, 0, 1);
     XNSpeed = inputNormalizer(XNSpeed, 0, 1);
     YPSpeed = inputNormalizer(YPSpeed, 0, 1);
