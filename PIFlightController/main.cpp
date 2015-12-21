@@ -78,19 +78,19 @@ int main(void)
         yPosDrift += yVelDrift; //(t2-mYTime).count())/1000;
         mYTime = t2;
         
-        cout << "Total mX drift (meters) = " << xPosDrift << endl;
-        cout << "Total mY drift (meters) = " << yPosDrift << endl;
-        cout << "Total Distance (meters) = " << sqrt(xPosDrift*xPosDrift + yPosDrift*yPosDrift) << endl;
+        //cout << "Total mX drift (meters) = " << xPosDrift << endl;
+        //cout << "Total mY drift (meters) = " << yPosDrift << endl;
+        //cout << "Total Distance (meters) = " << sqrt(xPosDrift*xPosDrift + yPosDrift*yPosDrift) << endl;
     
         
-        printf("Sonar Reading: %f \n",firstSonar.distance);
+        //printf("Sonar Reading: %f \n",firstSonar.distance);
         if (!controller.safetyCheck(piIMU.roll, piIMU.pitch)) {
             return 0;
         }
         totalPitch += fabs(piIMU.pitch);
         totalRoll += fabs(piIMU.roll);
-        cout << "TotalPitch = " << totalPitch/index << endl;
-        cout << "TotalRoll = " << totalRoll/index << endl;
+        //cout << "TotalPitch = " << totalPitch/index << endl;
+        //cout << "TotalRoll = " << totalRoll/index << endl;
         controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw,firstSonar.distance,piIMU.mX,piIMU.mY);
         
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();

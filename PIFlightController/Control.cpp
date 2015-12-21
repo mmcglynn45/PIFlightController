@@ -122,8 +122,8 @@ void Control::ManageOrientation(double roll, double pitch, double yaw, double al
     double desiredRoll = mYPIDComputation(mY, 0);
     desiredPitch = inputNormalizer(-desiredPitch*5, -4, 4);
     desiredRoll = inputNormalizer(desiredRoll, -4, 4);
-    printf("desiredRoll: %f \n", desiredRoll);
-    printf("desiredPitch: %f \n", desiredPitch);
+    //printf("desiredRoll: %f \n", desiredRoll);
+    //printf("desiredPitch: %f \n", desiredPitch);
     double pitchControl = PitchPIDComputation(pitch, desiredPitch);
     //std::cout<<"Pitch Control: "<<pitchControl<<std::endl;
     double rollControl = RollPIDComputation(roll, desiredRoll);
@@ -136,8 +136,8 @@ void Control::ManageOrientation(double roll, double pitch, double yaw, double al
 }
 
 double Control::mXPIDComputation(double current, double desired){
-    printf("current: %f \n", current);
-    printf("desired: %f \n", desired);
+    //printf("current: %f \n", current);
+    //printf("desired: %f \n", desired);
     double Kp = 2.0;
     double Ki = 40;
     double Kd = 0.02;
@@ -155,8 +155,8 @@ double Control::mXPIDComputation(double current, double desired){
 
 
 double Control::mYPIDComputation(double current, double desired){
-    printf("current: %f \n", current);
-    printf("desired: %f \n", desired);
+    //printf("current: %f \n", current);
+    //printf("desired: %f \n", desired);
     double Kp = 2.0;
     double Ki = 40;
     double Kd = 0.02;
