@@ -128,7 +128,7 @@ void Control::ManageOrientation(double roll, double pitch, double yaw, double al
     double desiredPitch = mXPIDComputation(mX, 0);
     double desiredRoll = mYPIDComputation(mY, 0);
     desiredPitch = inputNormalizer(-desiredPitch, -1, 1);
-    desiredRoll = inputNormalizer(desiredRoll, -1, 1);
+    desiredRoll = inputNormalizer(-desiredRoll, -1, 1);
     //printf("desiredRoll: %f \n", desiredRoll);
     //printf("desiredPitch: %f \n", desiredPitch);
     double pitchControl = PitchPIDComputation(pitch, desiredPitch);
