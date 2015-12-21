@@ -39,8 +39,8 @@ int IMU::updateIMU(){
         pitch = to_degrees(imuData.fusionPose.y()) + pitchComp;
         yaw = to_degrees(imuData.fusionPose.z());
         
-        mX = imuData.accel.x();
-        mY = imuData.accel.y();
+        mX = imuData.accel.x()+  mXComp;
+        mY = imuData.accel.y() + mYComp;
         //rotation(1,imuData.fusionPose.x(),imuData.fusionPose.y(),imuData.fusionPose.z());
         //printf("Test one piece: Roll = %f\n",to_degrees(imuData.fusionPose.data(0)));
         //printf("Sample rate %d: %s\r", sampleRate, RTMath::displayDegrees("", imuData.fusionPose));
