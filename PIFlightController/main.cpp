@@ -49,10 +49,15 @@ int main(void)
     int index = 0;
     IMU piIMU;
     piIMU.setup();
-    piIMU.pitchComp = pitchComp;
-    piIMU.rollComp = rollComp;
-    piIMU.mXComp = 0.2785;
-    piIMU.mYComp = .079;
+    piIMU.pitchComp = 0;
+    piIMU.rollComp = 0;
+    piIMU.mXComp = 0;
+    piIMU.mYComp = 0;
+    while(!piIMU.updateIMU()){}
+    piIMU.pitchComp = -piIMU.pitch;
+    piIMU.rollComp = -piIMU.roll;
+    piIMU.mXComp = -piIMU.mX;
+    piIMU.mYComp = -piIMU.mY;
     Sonar firstSonar;
     firstSonar.setup();
     
