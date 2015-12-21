@@ -38,7 +38,12 @@ int main(void)
     input radio;
     double totalRoll = 0;
     double totalPitch = 0;
-    
+    double xPosDrift = 0;
+    double xVelDrift = 0;
+    double yPosDrift = 0;
+    double yVelDrift = 0;
+    auto mXTime = std::chrono::high_resolution_clock::now();
+    auto mYTime = std::chrono::high_resolution_clock::now();
     int index = 0;
     IMU piIMU;
     piIMU.setup();
@@ -51,6 +56,7 @@ int main(void)
     auto t1 = std::chrono::high_resolution_clock::now();
     int created = 0;
     while (1) {
+        auto t2 = std::chrono::high_resolution_clock::now();
         if (!created) {
             pthread_create(&thread1, NULL, sonar, &firstSonar);
             created = 1;
@@ -63,6 +69,20 @@ int main(void)
         cout << "Yaw = " << piIMU.yaw << endl;
         cout << "MX = " << piIMU.mX << endl;
         cout << "MY = " << piIMU.mY << endl;
+        
+        xVelDrift += piIMU.mX * (t2-mXTime).count()/1000;
+        xPosDrift += xVelDrift * (t2-mXTime).count()/1000;
+        mXTime = t2;
+        
+        yVelDrift += piIMU.mY * (t2-mYTime).count()/1000;
+        yPosDrift += yVelDrift * (t2-mYTime).count()/1000;
+        mYTime = t2;
+        
+        cout << "Total mX drift (meters) = " << xPosDrift << endl;
+        cout << "Total mY drift (meters) = " << yPosDrift << endl;        
+        cout << "Total Distance (meters) = " << sqrt(xPosDrift*xPosDrift + yPosDrift*yPosDrift) << endl;
+    
+        
         printf("Sonar Reading: %f \n",firstSonar.distance);
         if (!controller.safetyCheck(piIMU.roll, piIMU.pitch)) {
             return 0;
@@ -72,7 +92,7 @@ int main(void)
         cout << "TotalPitch = " << totalPitch/index << endl;
         cout << "TotalRoll = " << totalRoll/index << endl;
         controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw,firstSonar.distance,piIMU.mX,piIMU.mY);
-        auto t2 = std::chrono::high_resolution_clock::now();
+        
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
         iterations++;
         
