@@ -42,6 +42,8 @@ int main(void)
     double xVelDrift = 0;
     double yPosDrift = 0;
     double yVelDrift = 0;
+    double pitchComp = 1.81;
+    double rollComp = 0.16;
     auto mXTime = std::chrono::high_resolution_clock::now();
     auto mYTime = std::chrono::high_resolution_clock::now();
     int index = 0;
