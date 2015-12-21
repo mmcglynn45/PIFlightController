@@ -197,7 +197,7 @@ double Control::AltitudePIDComputation(double current, double desired){
 }
 
 double Control::PitchPIDComputation(double current, double desired){
-    double Kp = 0.03;
+    double Kp = 0.05;
     double Ki = 0.00020;
     double Kd = 0.00010;
     std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
@@ -213,7 +213,7 @@ double Control::PitchPIDComputation(double current, double desired){
 }
 
 double Control::RollPIDComputation(double current, double desired){
-    double Kp = 0.03;
+    double Kp = 0.05;
     double Ki = 0.00020;
     double Kd = 0.00010;
     std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
@@ -249,8 +249,8 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
     //Basic algo is establish baseline then use roll, pitch, and yaw to modify
     throttleBaseline = throttleBaseline * 2; //Scale up for scale down of .5 across 3 inputs
     throttleBaseline = inputNormalizer(throttleBaseline, 0, 8);
-    pitchControl = inputNormalizer(pitchControl,-.4,.4);
-    rollControl = inputNormalizer(rollControl,-.4,.4);
+    pitchControl = inputNormalizer(pitchControl,-.5,.5);
+    rollControl = inputNormalizer(rollControl,-.5,.5);
     yawControl = inputNormalizer(yawControl,-.0,.0);//Roll and Pitch are weighted at 100%, yaw is less important weight at 10%
     double pitchP = shiftNormalized(pitchControl);
     double rollP = shiftNormalized(rollControl);
