@@ -49,6 +49,8 @@ int main(void)
     int index = 0;
     IMU piIMU;
     piIMU.setup();
+    piIMU.pitchComp = pitchComp;
+    piIMU.rollComp = rollComp;
     Sonar firstSonar;
     firstSonar.setup();
     
