@@ -51,8 +51,8 @@ int main(void)
     piIMU.setup();
     piIMU.pitchComp = pitchComp;
     piIMU.rollComp = rollComp;
-    piIMU.mXComp = -0.03;
-    piIMU.mYComp = -0.02;
+    piIMU.mXComp = 0.28;
+    piIMU.mYComp = .088;
     Sonar firstSonar;
     firstSonar.setup();
     
