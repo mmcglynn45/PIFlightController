@@ -198,7 +198,7 @@ double Control::AltitudePIDComputation(double current, double desired){
 
 double Control::PitchPIDComputation(double current, double desired){
     double Kp = 0.05;
-    double Ki = 0.00020;
+    double Ki = 0.020;
     double Kd = 0.00010;
     std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-pitchTime);
@@ -214,7 +214,7 @@ double Control::PitchPIDComputation(double current, double desired){
 
 double Control::RollPIDComputation(double current, double desired){
     double Kp = 0.05;
-    double Ki = 0.00020;
+    double Ki = 0.020;
     double Kd = 0.00010;
     std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-rollTime);
