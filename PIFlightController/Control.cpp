@@ -200,7 +200,7 @@ double Control::AltitudePIDComputation(double current, double desired){
 double Control::PitchPIDComputation(double current, double desired){
     double Kp = 0.1;
     double Ki = 0.080;
-    double Kd = 0.00750;
+    double Kd = 0.0200;
     std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-pitchTime);
     double deltaT = time_span.count();
@@ -216,7 +216,7 @@ double Control::PitchPIDComputation(double current, double desired){
 double Control::RollPIDComputation(double current, double desired){
     double Kp = 0.1;
     double Ki = 0.080;
-    double Kd = 0.00750;
+    double Kd = 0.0200;
     std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-rollTime);
     double deltaT = time_span.count();
@@ -278,10 +278,10 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
     YPSpeed = inputNormalizer(YPSpeed, 0, 1);
     YNSpeed = inputNormalizer(YNSpeed, 0, 1);
     if(rand()%1 == 0){
-        //std::cout<<XPMOTOR << " : "<< XPSpeed <<std::endl;
-        //std::cout<<XNMOTOR << " : "<< XNSpeed <<std::endl;
-        //std::cout<<YPMOTOR << " : "<< YPSpeed <<std::endl;
-        //std::cout<<YNMOTOR << " : "<< YNSpeed <<std::endl;
+        std::cout<<XPMOTOR << " : "<< XPSpeed <<std::endl;
+        std::cout<<XNMOTOR << " : "<< XNSpeed <<std::endl;
+        std::cout<<YPMOTOR << " : "<< YPSpeed <<std::endl;
+        std::cout<<YNMOTOR << " : "<< YNSpeed <<std::endl;
         //std::cout.flush();
     }
     adjustYPMotor(YPSpeed);
