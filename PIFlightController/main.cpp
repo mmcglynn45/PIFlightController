@@ -42,8 +42,6 @@ int main(void)
     double xVelDrift = 0;
     double yPosDrift = 0;
     double yVelDrift = 0;
-    double pitchComp = 1.81;
-    double rollComp = -.67;
     auto mXTime = std::chrono::high_resolution_clock::now();
     auto mYTime = std::chrono::high_resolution_clock::now();
     int index = 0;
@@ -94,7 +92,7 @@ int main(void)
         //cout << "Total Distance (meters) = " << sqrt(xPosDrift*xPosDrift + yPosDrift*yPosDrift) << endl;
     
         
-        //printf("Sonar Reading: %f \n",firstSonar.distance);
+        printf("Sonar Reading: %f \n",firstSonar.distance);
         if (!controller.safetyCheck(piIMU.roll, piIMU.pitch)) {
             return 0;
         }
