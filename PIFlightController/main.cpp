@@ -70,12 +70,12 @@ int main(void)
         cout << "MX = " << piIMU.mX << endl;
         cout << "MY = " << piIMU.mY << endl;
         
-        xVelDrift += (piIMU.mX * (t2-mXTime).count())/1000;
-        xPosDrift += (xVelDrift * (t2-mXTime).count())/1000;
+        xVelDrift += piIMU.mX; //(t2-mXTime).count())/1000;
+        xPosDrift += xVelDrift; //* (t2-mXTime).count())/1000;
         mXTime = t2;
         
-        yVelDrift += (piIMU.mY * (t2-mYTime).count())/1000;
-        yPosDrift += (yVelDrift * (t2-mYTime).count())/1000;
+        yVelDrift += piIMU.mY; //(t2-mYTime).count())/1000;
+        yPosDrift += yVelDrift; //(t2-mYTime).count())/1000;
         mYTime = t2;
         
         cout << "Total mX drift (meters) = " << xPosDrift << endl;
