@@ -82,6 +82,7 @@ int Control::safetyCheck(double roll,double pitch){
         adjustYNMotor(0);
         adjustXNMotor(0);
         delay(2000);
+        printf("safetyExit roll: %f pitch: %f \n", roll, pitch);
         return 0;
     }
     return 1;
