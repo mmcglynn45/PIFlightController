@@ -35,8 +35,8 @@ int IMU::updateIMU(){
             imuData = imu->getIMUData();
         }
         sampleCount++;
-        roll = to_degrees(imuData.fusionPose.x());
-        pitch = to_degrees(imuData.fusionPose.y());
+        roll = to_degrees(imuData.fusionPose.x()) + rollComp;
+        pitch = to_degrees(imuData.fusionPose.y()) + pitchComp;
         yaw = to_degrees(imuData.fusionPose.z());
         
         mX = imuData.accel.x();
