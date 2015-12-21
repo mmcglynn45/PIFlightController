@@ -82,8 +82,8 @@ int main(void)
         yPosDrift += yVelDrift; //(t2-mYTime).count())/1000;
         mYTime = t2;
         
-        //cout << "Total mX drift (meters) = " << xPosDrift << endl;
-        //cout << "Total mY drift (meters) = " << yPosDrift << endl;
+        cout << "Total mX drift (meters) = " << xPosDrift << endl;
+        cout << "Total mY drift (meters) = " << yPosDrift << endl;
         //cout << "Total Distance (meters) = " << sqrt(xPosDrift*xPosDrift + yPosDrift*yPosDrift) << endl;
     
         
