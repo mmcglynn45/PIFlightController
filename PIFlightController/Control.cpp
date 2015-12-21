@@ -179,8 +179,8 @@ double Control::mYPIDComputation(double current, double desired){
     return output;
 }
 double Control::AltitudePIDComputation(double current, double desired){
-    printf("current: %f \n", current);
-    printf("desired: %f \n", desired);
+    //printf("current: %f \n", current);
+    //printf("desired: %f \n", desired);
     double Kp = 0.07;
     double Ki = 0.03;
     double Kd = 0.002;
