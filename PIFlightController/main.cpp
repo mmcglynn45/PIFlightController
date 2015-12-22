@@ -96,7 +96,7 @@ int main(void)
         
         //printf("Sonar Reading: %f \n",firstSonar.distance);
         if (!controller.safetyCheck(piIMU.roll, piIMU.pitch)) {
-            printf("Total amount of iterations in 10 seconds is %i", iterations);
+            printf("Total amount of iterations in 10 seconds is %i\n", iterations);
             cout << "TotalPitchRate = " << totalPitch/index << endl;
             cout << "TotalRollRate = " << totalRoll/index << endl;
             cout << "Total mX drift (meters) = " << xPosDrift << endl;
