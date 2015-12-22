@@ -73,13 +73,13 @@ int main(void)
         //printf("Sonar Active: %i \n",firstSonar.active);
         while(!piIMU.updateIMU()){}
         index++;
-        cout << "Pitch = " << piIMU.pitch << endl;
-        cout << "Roll = " << piIMU.roll << endl;
-        cout << "PitchRate = " << piIMU.pitchRate << endl;
-        cout << "RollRate = " << piIMU.rollRate << endl;
-        cout << "Yaw = " << piIMU.yaw << endl;
-        cout << "MX = " << piIMU.mX << endl;
-        cout << "MY = " << piIMU.mY << endl;
+        //cout << "Pitch = " << piIMU.pitch << endl;
+        //cout << "Roll = " << piIMU.roll << endl;
+        //cout << "PitchRate = " << piIMU.pitchRate << endl;
+        //cout << "RollRate = " << piIMU.rollRate << endl;
+        //cout << "Yaw = " << piIMU.yaw << endl;
+        //cout << "MX = " << piIMU.mX << endl;
+        //cout << "MY = " << piIMU.mY << endl;
         
         xVelDrift += piIMU.mX; //(t2-mXTime).count())/1000;
         xPosDrift += xVelDrift; //* (t2-mXTime).count())/1000;
@@ -89,12 +89,12 @@ int main(void)
         yPosDrift += yVelDrift; //(t2-mYTime).count())/1000;
         mYTime = t2;
         
-        cout << "Total mX drift (meters) = " << xPosDrift << endl;
-        cout << "Total mY drift (meters) = " << yPosDrift << endl;
+        //cout << "Total mX drift (meters) = " << xPosDrift << endl;
+        //cout << "Total mY drift (meters) = " << yPosDrift << endl;
         //cout << "Total Distance (meters) = " << sqrt(xPosDrift*xPosDrift + yPosDrift*yPosDrift) << endl;
     
         
-        printf("Sonar Reading: %f \n",firstSonar.distance);
+        //printf("Sonar Reading: %f \n",firstSonar.distance);
         if (!controller.safetyCheck(piIMU.roll, piIMU.pitch)) {
             return 0;
         }
