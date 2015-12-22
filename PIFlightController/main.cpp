@@ -99,8 +99,8 @@ int main(void)
             printf("Total amount of iterations in 10 seconds is %i\n", iterations);
             cout << "TotalPitchRate = " << totalPitch/index << endl;
             cout << "TotalRollRate = " << totalRoll/index << endl;
-            cout << "Total mX drift (meters) = " << xPosDrift << endl;
-            cout << "Total mY drift (meters) = " << yPosDrift << endl;
+            cout << "Total mX drift (meters) = " << xVelDrift << endl;
+            cout << "Total mY drift (meters) = " << yVelDrift << endl;
             return 0;
         }
         totalPitch += fabs(piIMU.pitchRate);
