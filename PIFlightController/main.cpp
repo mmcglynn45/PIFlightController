@@ -75,6 +75,8 @@ int main(void)
         index++;
         cout << "Pitch = " << piIMU.pitch << endl;
         cout << "Roll = " << piIMU.roll << endl;
+        cout << "PitchRate = " << piIMU.pitchRate << endl;
+        cout << "RollRate = " << piIMU.rollRate << endl;
         cout << "Yaw = " << piIMU.yaw << endl;
         cout << "MX = " << piIMU.mX << endl;
         cout << "MY = " << piIMU.mY << endl;
@@ -100,7 +102,7 @@ int main(void)
         totalRoll += fabs(piIMU.roll);
         //cout << "TotalPitch = " << totalPitch/index << endl;
         //cout << "TotalRoll = " << totalRoll/index << endl;
-        controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw,firstSonar.distance,piIMU.mX,piIMU.mY);
+        controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw,firstSonar.distance,piIMU.mX,piIMU.mY,piIMU.rollRate,piIMU.pitchRate);
         
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
         iterations++;

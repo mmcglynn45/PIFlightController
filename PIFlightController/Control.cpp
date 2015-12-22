@@ -39,6 +39,10 @@ Control::Control(){
     pitchIntegration = 0;
     rollError =  0;
     rollIntegration = 0;
+    pitchRateError =  0;
+    pitchRateIntegration = 0;
+    rollRateError =  0;
+    rollRateIntegration = 0;
     yawError =  0;
     yawIntegration = 0;
     altitudeError = 0;
@@ -53,6 +57,8 @@ Control::Control(){
     altitudeTime = std::chrono::high_resolution_clock::now();
     mxTime = std::chrono::high_resolution_clock::now();
     myTime = std::chrono::high_resolution_clock::now();
+    pitchRateTime = std::chrono::high_resolution_clock::now();
+    rollRateTime = std::chrono::high_resolution_clock::now();
 
 }
     
@@ -125,16 +131,18 @@ void Control::adjustMotorSpeed(int motor, double speed){
     pwmWrite(PIN_BASE + motor, tick);
 }
 
-void Control::ManageOrientation(double roll, double pitch, double yaw, double altitude, double mX, double mY){
+void Control::ManageOrientation(double roll, double pitch, double yaw, double altitude, double mX, double mY, double rollRate, double pitchRate){
     double desiredPitch = mXPIDComputation(mX, 0);
     double desiredRoll = mYPIDComputation(mY, 0);
     desiredPitch = inputNormalizer(-desiredPitch, -1, 1);
     desiredRoll = inputNormalizer(-desiredRoll, -1, 1);
     //printf("desiredRoll: %f \n", desiredRoll);
     //printf("desiredPitch: %f \n", desiredPitch);
-    double pitchControl = PitchPIDComputation(pitch, desiredPitch);
+    //double pitchControl = PitchPIDComputation(pitch, desiredPitch);
+    double pitchControl = pitchRatePIDComputation(pitchRate, 0);
     //std::cout<<"Pitch Control: "<<pitchControl<<std::endl;
-    double rollControl = RollPIDComputation(roll, desiredRoll);
+    //double rollControl = RollPIDComputation(roll, desiredRoll);
+    double rollControl = rollRatePIDComputation(rollRate, 0);
     //std::cout<<"Roll Control: "<<rollControl<<std::endl;
     double yawControl = YawPIDComputation(yaw, 60);
     //std::cout<<"Yaw Control: "<<yawControl<<std::endl;
@@ -196,6 +204,43 @@ double Control::AltitudePIDComputation(double current, double desired){
     altitudeError = error;
     return output;
 }
+
+
+double Control::pitchRatePIDComputation(double current, double desired){
+    double Kp = 0.1;
+    double Ki = 0.080;
+    double Kd = 0.0200;
+    std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-pitchRateTime);
+    double deltaT = time_span.count();
+    pitchRateTime = now;
+    double error = desired - current;
+    pitchRateIntegration = pitchRateIntegration + error*deltaT;
+    double deriviative = (error - pitchRateError)/deltaT;
+    double output = Kp * error + Ki *pitchRateIntegration + Kd * deriviative;
+    pitchRateError = error;
+    return output;
+}
+
+double Control::rollRatePIDComputation(double current, double desired){
+    double Kp = 0.1;
+    double Ki = 0.080;
+    double Kd = 0.0200;
+    std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-rollRateTime);
+    double deltaT = time_span.count();
+    rollRateTime = now;
+    double error = desired - current;
+    rollRateIntegration = rollRateIntegration + error*deltaT;
+    double deriviative = (error - rollRateError)/deltaT;
+    double output = Kp * error + Ki * rollRateIntegration + Kd * deriviative;
+    rollRateError = error;
+    return output;
+}
+
+
+
+
 
 double Control::PitchPIDComputation(double current, double desired){
     double Kp = 0.1;

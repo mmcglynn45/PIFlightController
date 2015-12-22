@@ -28,6 +28,8 @@ public:
     double yaw;
     double mX;
     double mY;
+    double rollRate;
+    double pitchRate;
     double mXComp;
     double mYComp;
     double pitchComp;

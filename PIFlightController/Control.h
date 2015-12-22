@@ -25,6 +25,11 @@ class Control{
     double mXError,mXIntegration,mXOutput;
      double mYError,mYIntegration,mYOutput;
     double altitudeError,altitudeIntegration,altitudeOutput;
+    double rollRateError,rollRateIntegration,rollRateOutput;
+    double pitchRateError,pitchRateIntegration,pitchRateOutput;
+    
+    std::chrono::high_resolution_clock::time_point pitchRateTime;
+    std::chrono::high_resolution_clock::time_point rollRateTime;
     std::chrono::high_resolution_clock::time_point pitchTime;
     std::chrono::high_resolution_clock::time_point rollTime;
     std::chrono::high_resolution_clock::time_point yawTime;
@@ -44,6 +49,8 @@ public:
     void adjustXPMotor(double speed);
     void adjustXNMotor(double speed);
     double getThrottleBaseline();
+    double rollRatePIDComputation(double current, double desired);
+    double pitchRatePIDComputation(double current, double desired);
     double RollPIDComputation(double current, double desired);
     double AltitudePIDComputation(double current, double desired);
     double PitchPIDComputation(double current, double desired);
@@ -52,7 +59,7 @@ public:
     double mYPIDComputation(double current, double desired);
     double inputNormalizer(double input, double min, double max);
     void MapMotorOutput(double pitchControl,double rollControl, double yawControl, double throttleBaseline);
-    void ManageOrientation(double roll, double pitch, double yaw,double altitude, double mX, double mY);
+    void ManageOrientation(double roll, double pitch, double yaw,double altitude, double mX, double mY, double rollRate, double pitchRate);
     double shiftNormalized(double input);
     int safetyCheck(double roll,double pitch);
     void shutdown();
