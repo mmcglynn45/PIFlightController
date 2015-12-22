@@ -98,8 +98,8 @@ int main(void)
         if (!controller.safetyCheck(piIMU.roll, piIMU.pitch)) {
             return 0;
         }
-        totalPitch += fabs(piIMU.pitch);
-        totalRoll += fabs(piIMU.roll);
+        totalPitch += fabs(piIMU.pitchRate);
+        totalRoll += fabs(piIMU.rollRate);
         //cout << "TotalPitch = " << totalPitch/index << endl;
         //cout << "TotalRoll = " << totalRoll/index << endl;
         controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw,firstSonar.distance,piIMU.mX,piIMU.mY,piIMU.rollRate,piIMU.pitchRate);
@@ -113,10 +113,14 @@ int main(void)
             created = 0;
             pthread_join( thread1, NULL);
         }
-        if (count>3000) {
+        if (count>2000) {
             controller.shutdown();
             long end = millis();
             printf("Total amount of iterations in 10 seconds is %i", iterations);
+            cout << "TotalPitchRate = " << totalPitch/index << endl;
+            cout << "TotalRollRate = " << totalRoll/index << endl;
+            cout << "Total mX drift (meters) = " << xPosDrift << endl;
+            cout << "Total mY drift (meters) = " << yPosDrift << endl;
             return 0;
         }
     }
