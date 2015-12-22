@@ -134,7 +134,7 @@ void Control::adjustMotorSpeed(int motor, double speed){
 void Control::ManageOrientation(double roll, double pitch, double yaw, double altitude, double mX, double mY, double rollRate, double pitchRate){
     double desiredPitch = mXPIDComputation(mX, 0);
     double desiredRoll = mYPIDComputation(mY, 0);
-    desiredPitch = inputNormalizer(-desiredPitch, -0.1 0.1);
+    desiredPitch = inputNormalizer(-desiredPitch, -0.1, 0.1);
     desiredRoll = inputNormalizer(-desiredRoll, -0.1, 0.1);
     //printf("desiredRoll: %f \n", desiredRoll);
     //printf("desiredPitch: %f \n", desiredPitch);
