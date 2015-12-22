@@ -46,7 +46,7 @@ Control::Control(){
     yawError =  0;
     yawIntegration = 0;
     altitudeError = 0;
-    altitudeIntegration = 15;
+    altitudeIntegration = 10;
     mXError = 0;
     mXIntegration = 0;
     mYError = 0;
