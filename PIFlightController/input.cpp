@@ -25,7 +25,7 @@ double radioInput::getThrottle() {
     //Send trig pulse
     
     //Wait for echo start
-    while(digitalRead(ECHO) == HIGH){
+    while(digitalRead(ECHO) == LOW){
         if ((micros()-startTime)>100000) { //maximum of 160cm
             active = 0;
             return throttle;
@@ -34,7 +34,7 @@ double radioInput::getThrottle() {
     
     //Wait for echo end
     startTime = micros();
-    while(digitalRead(ECHO) == LOW){
+    while(digitalRead(ECHO) == HIGH){
         if ((micros()-startTime)>100000) { //maximum of 160cm
             active = 0;
             return throttle;
