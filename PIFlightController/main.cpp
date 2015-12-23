@@ -73,7 +73,7 @@ int main(void)
             created = 1;
         }
         if (!inputThreadCreated) {
-            pthread_create(&thread2, NULL, getInputs, &radio);
+            //pthread_create(&thread2, NULL, getInputs, &radio);
             inputThreadCreated = 1;
         }
         //printf("Sonar Active: %i \n",firstSonar.active);
