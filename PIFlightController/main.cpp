@@ -73,6 +73,7 @@ int main(void)
             pthread_create(&thread1, NULL, sonar, &firstSonar);
             created = 1;
         }
+        cout << "hi" <<endl;
         if (!inputThreadCreated) {
             pthread_create(&thread2, NULL, getInputs, &radio);
             inputThreadCreated = 1;
