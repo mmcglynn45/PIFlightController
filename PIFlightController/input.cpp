@@ -16,6 +16,7 @@ void radioInput::setup() {
     wiringPiSetupGpio();
     pinMode(ECHO, INPUT);
     delay(30);
+    throttle = 0;
 }
 
 double radioInput::getThrottle() {
@@ -25,7 +26,7 @@ double radioInput::getThrottle() {
     
     //Wait for echo start
     while(digitalRead(ECHO) == LOW){
-        if ((micros()-startTime)>10000) { //maximum of 160cm
+        if ((micros()-startTime)>100000) { //maximum of 160cm
             active = 0;
             return throttle;
         }
@@ -34,7 +35,7 @@ double radioInput::getThrottle() {
     //Wait for echo end
     startTime = micros();
     while(digitalRead(ECHO) == HIGH){
-        if ((micros()-startTime)>10000) { //maximum of 160cm
+        if ((micros()-startTime)>100000) { //maximum of 160cm
             active = 0;
             return throttle;
         }
