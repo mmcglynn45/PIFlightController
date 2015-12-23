@@ -59,7 +59,7 @@ int main(void)
     piIMU.mYComp = -piIMU.mY;
     Sonar firstSonar;
     firstSonar.setup();
-    
+    printf("hi");
     long beginning = millis();
     int iterations = 0;
     pthread_t thread1,thread2;
@@ -73,7 +73,7 @@ int main(void)
             created = 1;
         }
         if (!inputThreadCreated) {
-            //pthread_create(&thread2, NULL, getInputs, &radio);
+            pthread_create(&thread2, NULL, getInputs, &radio);
             inputThreadCreated = 1;
         }
         //printf("Sonar Active: %i \n",firstSonar.active);
