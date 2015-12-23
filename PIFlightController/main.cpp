@@ -79,6 +79,7 @@ int main(void)
             pthread_create(&thread2, NULL, getInputs, &radio);
             inputThreadCreated = 1;
         }
+        
         //printf("Sonar Active: %i \n",firstSonar.active);
         while(!piIMU.updateIMU()){}
         index++;
@@ -193,7 +194,7 @@ void* sonar(void * sonar){
 
 void* getInputs(void * radio){
     radioInput * radio2;
-    radio2 = (radioInput *)sonar;
+    radio2 = (radioInput *)radio;
     radio2->getThrottle();
     return NULL;
 }
