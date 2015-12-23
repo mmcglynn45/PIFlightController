@@ -130,7 +130,7 @@ int main(void)
             pthread_join(thread2, NULL);
         }
         
-        if (count>2000) {
+        if (count>3000) {
             controller.shutdown();
             long end = millis();
             printf("Total amount of iterations in 10 seconds is %i", iterations);
