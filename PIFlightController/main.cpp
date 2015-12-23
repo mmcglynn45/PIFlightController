@@ -57,24 +57,20 @@ int main(void)
     piIMU.rollComp = -piIMU.roll;
     piIMU.mXComp = -piIMU.mX;
     piIMU.mYComp = -piIMU.mY;
-    cout << "hi" <<endl;
     Sonar firstSonar;
     firstSonar.setup();
-    cout << "hi" <<endl;
     long beginning = millis();
     int iterations = 0;
     pthread_t thread1,thread2;
     auto t1 = std::chrono::high_resolution_clock::now();
     int created = 0;
     int inputThreadCreated = 0;
-    cout << "hi" <<endl;
     while (1) {
         auto t2 = std::chrono::high_resolution_clock::now();
         if (!created) {
             pthread_create(&thread1, NULL, sonar, &firstSonar);
             created = 1;
         }
-        cout << "hi" <<endl;
         if (!inputThreadCreated) {
             pthread_create(&thread2, NULL, getInputs, &radio);
             inputThreadCreated = 1;
@@ -126,12 +122,12 @@ int main(void)
         //firstSonar.getDistance();
         if (!firstSonar.active){
             created = 0;
-            pthread_join( thread1, NULL);
+            pthread_join(thread1, NULL);
         }
         
         if (!radio.active){
             inputThreadCreated = 0;
-            pthread_join( thread2, NULL);
+            pthread_join(thread2, NULL);
         }
         
         if (count>2000) {
