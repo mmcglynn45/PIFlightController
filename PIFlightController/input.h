@@ -12,12 +12,15 @@
 #include <stdio.h>
 
 class radioInput {
-    double throttle;
-    bool active;
+   
+    
     
 public:
+    bool active;
     double getThrottle();
     void setup();
+    double throttle;
+    
 };
 
 #endif /* defined(__PIFlightController__input__) */

@@ -61,7 +61,7 @@ int main(void)
     
     long beginning = millis();
     int iterations = 0;
-    pthread_t thread1;
+    pthread_t thread1,thread2;
     auto t1 = std::chrono::high_resolution_clock::now();
     int created = 0;
     while (1) {
@@ -118,6 +118,12 @@ int main(void)
             created = 0;
             pthread_join( thread1, NULL);
         }
+        
+        if (!radio.active){
+            created = 0;
+            pthread_join( thread2, NULL);
+        }
+        
         if (count>2000) {
             controller.shutdown();
             long end = millis();
@@ -173,6 +179,13 @@ void* sonar(void * sonar){
     Sonar * sonar2;
     sonar2 = (Sonar *)sonar;
     sonar2->getDistance();
+    return NULL;
+}
+
+void* getInputs(void * radio){
+    radioInput * radio2;
+    radio2 = (radioInput *)sonar;
+    radio2->getThrottle();
     return NULL;
 }
 
