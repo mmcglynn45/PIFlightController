@@ -59,7 +59,7 @@ int main(void)
     piIMU.mYComp = -piIMU.mY;
     Sonar firstSonar;
     firstSonar.setup();
-    printf("hi");
+    cout << "hi" <<endl;
     long beginning = millis();
     int iterations = 0;
     pthread_t thread1,thread2;
