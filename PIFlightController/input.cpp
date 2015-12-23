@@ -27,7 +27,7 @@ double radioInput::getThrottle() {
     
     //Wait for echo start
     while(digitalRead(ECHO) == LOW){
-        delayMicroseconds(1000);
+        delayMicroseconds(5);
         if ((micros()-startTime)>100000) { //maximum of 160cm
             active = 0;
             return throttle;
