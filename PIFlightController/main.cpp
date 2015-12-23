@@ -67,6 +67,7 @@ int main(void)
     auto t1 = std::chrono::high_resolution_clock::now();
     int created = 0;
     int inputThreadCreated = 0;
+    cout << "hi" <<endl;
     while (1) {
         auto t2 = std::chrono::high_resolution_clock::now();
         if (!created) {
