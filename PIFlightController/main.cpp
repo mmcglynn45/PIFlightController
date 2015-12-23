@@ -27,6 +27,7 @@ using namespace std;
 void* threaded(void * controller);
 void* threaded2(void * controller);
 void* sonar(void * sonar);
+void* getInputs(void * radio);
 
 int main(void)
 {
@@ -64,11 +65,16 @@ int main(void)
     pthread_t thread1,thread2;
     auto t1 = std::chrono::high_resolution_clock::now();
     int created = 0;
+    int inputThreadCreated = 0;
     while (1) {
         auto t2 = std::chrono::high_resolution_clock::now();
         if (!created) {
             pthread_create(&thread1, NULL, sonar, &firstSonar);
             created = 1;
+        }
+        if (!inputThreadCreated) {
+            pthread_create(&thread2, NULL, getInputs, &radio);
+            inputThreadCreated = 1;
         }
         //printf("Sonar Active: %i \n",firstSonar.active);
         while(!piIMU.updateIMU()){}
@@ -92,7 +98,7 @@ int main(void)
         //cout << "Total mX drift (meters) = " << xPosDrift << endl;
         //cout << "Total mY drift (meters) = " << yPosDrift << endl;
         //cout << "Total Distance (meters) = " << sqrt(xPosDrift*xPosDrift + yPosDrift*yPosDrift) << endl;
-        //cout<< "Throttle equals " << radio.getThrottle() << endl;
+        cout<< "Throttle equals " << radio.throttle << endl;
         
         //printf("Sonar Reading: %f \n",firstSonar.distance);
         if (!controller.safetyCheck(piIMU.roll, piIMU.pitch)) {
@@ -120,7 +126,7 @@ int main(void)
         }
         
         if (!radio.active){
-            created = 0;
+            inputThreadCreated = 0;
             pthread_join( thread2, NULL);
         }
         
