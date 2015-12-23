@@ -1,28 +1,47 @@
-//
-//  input.cpp
-//  PIFlightController
-//
-//  Created by Matthew McGlynn on 10/11/15.
-//  Copyright (c) 2015 Matthew McGlynn. All rights reserved.
-//
-
-#include "input.h"
-#include "wiringPi.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <wiringPi.h>
+#include "Sonar.h"
+#include <math.h>
 #include <iostream>
+#include "input.h"
 
-float input::getThrottle(){
-    wiringPiSetup();
-    //waitForInterrupt(4, 5000);
-    
-    //std::cout << digitalRead(4)<< std::endl;
-    //delay(3000);
-    while (!digitalRead(4)) {
-    }
-    int start = millis();
-    while (digitalRead(4)) {
-    }
-    int now = millis();
-    printf("Time returned was %i\r",(now-start));
-    fflush(stdout);
-    return (float)(now-start);
+#define TRUE 1
+
+
+#define ECHO 6
+
+void radioInput::setup() {
+    printf("Made it to setup");
+    wiringPiSetupGpio();
+    pinMode(ECHO, INPUT);
+    delay(30);
 }
+
+double radioInput::getThrottle() {
+    active = 1;
+    long startTime = micros();
+    //Send trig pulse
+    
+    //Wait for echo start
+    while(digitalRead(ECHO) == LOW){
+        if ((micros()-startTime)>10000) { //maximum of 160cm
+            active = 0;
+            return throttle;
+        }
+    }
+    
+    //Wait for echo end
+    startTime = micros();
+    while(digitalRead(ECHO) == HIGH){
+        if ((micros()-startTime)>10000) { //maximum of 160cm
+            active = 0;
+            return throttle;
+        }
+    }
+    long travelTime = micros() - startTime;
+    throttle = travelTime;
+    active = 0;
+    return throttle;
+}
+

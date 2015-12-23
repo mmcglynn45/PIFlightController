@@ -11,11 +11,13 @@
 
 #include <stdio.h>
 
-class input {
-    float throttle;
+class radioInput {
+    double throttle;
+    bool active;
     
 public:
-    float getThrottle();
+    double getThrottle();
+    void setup();
 };
 
 #endif /* defined(__PIFlightController__input__) */
