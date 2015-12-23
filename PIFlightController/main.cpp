@@ -57,6 +57,7 @@ int main(void)
     piIMU.rollComp = -piIMU.roll;
     piIMU.mXComp = -piIMU.mX;
     piIMU.mYComp = -piIMU.mY;
+    cout << "hi" <<endl;
     Sonar firstSonar;
     firstSonar.setup();
     cout << "hi" <<endl;
