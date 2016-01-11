@@ -194,7 +194,7 @@ void* sonar(void * sonar){
 void* getInputs(void * radio){
     radioInput * radio2;
     radio2 = (radioInput *)radio;
-    //radio2->updateInputs();
+    radio2->updateInputs();
     return NULL;
 }
 
