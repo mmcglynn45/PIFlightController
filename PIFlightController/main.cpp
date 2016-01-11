@@ -28,15 +28,21 @@ void* threaded(void * controller);
 void* threaded2(void * controller);
 void* sonar(void * sonar);
 void* getInputs(void * radio);
+void throttleInterrupt();
 
+#define THROTTLE 6
+#define PITCH 13
+#define ROLL 19
+
+radioInput radio;
 int main(void)
 {
     printf("Welcome to Flight Controller\n");
      
     Control controller;
     controller.setup();
-    radioInput radio;
     radio.setup();
+    wiringPiISR(6, INT_EDGE_RISING, &throttleInterrupt);
     double totalRoll = 0;
     double totalPitch = 0;
     double xPosDrift = 0;
@@ -213,4 +219,19 @@ void* threaded2(void * realIMU){
     while(!IMUpoint->updateIMU()){}
     return NULL;
 }
+
+
+void throttleInterrupt(){
+    radio.getThrottle();
+}
+
+void pitchInterrupt(){
+    radio.getPitch();
+}
+
+
+void rollInterrupt(){
+    radio.getRoll();
+}
+
 

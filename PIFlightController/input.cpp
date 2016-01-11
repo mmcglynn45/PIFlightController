@@ -20,10 +20,7 @@ void radioInput::setup() {
     pinMode(THROTTLE, INPUT);
     pinMode(PITCH, INPUT);
     pinMode(ROLL, INPUT);
-    wiringPiISR(THROTTLE, INT_EDGE_RISING, &radioInput::throttleInterrupt);
-    
     delay(30);
-    
     throttle = 0;
 }
 
@@ -56,17 +53,6 @@ double radioInput::getThrottle() {
     return throttle;
 }
  */
-void radioInput::throttleInterrupt(void){
-    getThrottle();
-}
-
-void radioInput::pitchInterrupt(void * data){
-    getPitch();
-}
-
-void radioInput::rollInterrupt(void * data){
-    getRoll();
-}
 
 
 double radioInput::getPitch(){
