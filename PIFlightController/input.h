@@ -26,6 +26,10 @@ public:
     double pitch;
     double getTime(int input);
     void updateInputs();
+    double quickTime(int pin);
+    void throttleInterrupt(void);
+    void pitchInterrupt(void * data);
+    void rollInterrupt(void * data);
     
     
 };

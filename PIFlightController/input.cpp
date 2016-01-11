@@ -17,7 +17,11 @@
 void radioInput::setup() {
     printf("Made it to setup");
     wiringPiSetupGpio();
-    pinMode(ECHO, INPUT);
+    pinMode(THROTTLE, INPUT);
+    pinMode(PITCH, INPUT);
+    pinMode(ROLL, INPUT);
+    wiringPiISR(THROTTLE, INT_EDGE_RISING, &throttleInterrupt);
+    
     delay(30);
     
     throttle = 0;
@@ -52,7 +56,17 @@ double radioInput::getThrottle() {
     return throttle;
 }
  */
+void radioInput::throttleInterrupt(void){
+    getThrottle();
+}
 
+void radioInput::pitchInterrupt(void * data){
+    getPitch();
+}
+
+void radioInput::rollInterrupt(void * data){
+    getRoll();
+}
 
 
 double radioInput::getPitch(){
@@ -87,9 +101,9 @@ double radioInput::getThrottle(){
 
 void radioInput::updateInputs(){
     active = 1;
-    getRoll();
-    getPitch();
-    getThrottle();
+    //getRoll();
+    //getPitch();
+    //getThrottle();
     active = 0;
 }
 
@@ -118,4 +132,19 @@ double radioInput::getTime(int pin){
     return time;
 
 }
+
+double radioInput::quickTime(int pin){
+    double time = 0;
+    long startTime = micros();
+    while(digitalRead(pin) == HIGH){
+        if ((micros()-startTime)>100000) { //maximum of 160cm
+            return time;
+        }
+    }
+    long travelTime = micros() - startTime;
+    time = travelTime;
+    return time;
+    
+}
+
 
