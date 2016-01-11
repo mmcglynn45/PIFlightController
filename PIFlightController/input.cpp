@@ -20,7 +20,7 @@ void radioInput::setup() {
     pinMode(THROTTLE, INPUT);
     pinMode(PITCH, INPUT);
     pinMode(ROLL, INPUT);
-    wiringPiISR(THROTTLE, INT_EDGE_RISING, &throttleInterrupt);
+    wiringPiISR(THROTTLE, INT_EDGE_RISING, &radioInput::throttleInterrupt);
     
     delay(30);
     
