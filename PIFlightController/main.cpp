@@ -131,7 +131,7 @@ int main(void)
             inputThreadCreated = 0;
             pthread_join(thread2, NULL);
         }
-        double threshold = 15000;
+        double threshold = 5000;
         if (count>threshold) {
             controller.shutdown();
             long end = millis();
