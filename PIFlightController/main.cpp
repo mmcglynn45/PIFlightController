@@ -131,11 +131,12 @@ int main(void)
             inputThreadCreated = 0;
             pthread_join(thread2, NULL);
         }
-        
-        if (count>3000) {
+        double threshold = 3000;
+        if (count>threshold) {
             controller.shutdown();
             long end = millis();
-            printf("Total amount of iterations in 10 seconds is %i", iterations);
+            printf("Total amount of iterations in %f seconds is %i\n",threshold/1000, iterations);
+            printf("Flight controller cycle rate was %f per second\n",iterations/(threshold/1000));
             cout << "TotalPitchRate = " << totalPitch/index << endl;
             cout << "TotalRollRate = " << totalRoll/index << endl;
             cout << "Total mX drift (meters) = " << xPosDrift << endl;
