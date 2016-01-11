@@ -29,6 +29,8 @@ void* threaded2(void * controller);
 void* sonar(void * sonar);
 void* getInputs(void * radio);
 void throttleInterrupt();
+void pitchInterrupt();
+void rollInterrupt();
 
 #define THROTTLE 6
 #define PITCH 13
@@ -42,7 +44,9 @@ int main(void)
     Control controller;
     controller.setup();
     radio.setup();
-    wiringPiISR(6, INT_EDGE_RISING, &throttleInterrupt);
+    wiringPiISR(THROTTLE, INT_EDGE_RISING, &throttleInterrupt);
+    wiringPiISR(PITCH, INT_EDGE_RISING, &pitchInterrupt);
+    wiringPiISR(ROLL, INT_EDGE_RISING, &rollInterrupt);
     double totalRoll = 0;
     double totalPitch = 0;
     double xPosDrift = 0;
@@ -77,10 +81,15 @@ int main(void)
             pthread_create(&thread1, NULL, sonar, &firstSonar);
             created = 1;
         }
+        
+        //Radio threading
+        //Temp comment out
+        /*
         if (!inputThreadCreated) {
             pthread_create(&thread2, NULL, getInputs, &radio);
             inputThreadCreated = 1;
         }
+         */
         
         //printf("Sonar Active: %i \n",firstSonar.active);
         while(!piIMU.updateIMU()){}
@@ -133,10 +142,15 @@ int main(void)
             pthread_join(thread1, NULL);
         }
         
+        //Radio threading
+        /*
         if (!radio.active){
             inputThreadCreated = 0;
             pthread_join(thread2, NULL);
         }
+         */
+        
+        
         double threshold = 5000;
         if (count>threshold) {
             controller.shutdown();
