@@ -18,8 +18,15 @@ class radioInput {
 public:
     bool active;
     double getThrottle();
+    double getRoll();
+    double getPitch();
     void setup();
     double throttle;
+    double roll;
+    double pitch;
+    double getTime(int input);
+    void updateInputs();
+    
     
 };
 

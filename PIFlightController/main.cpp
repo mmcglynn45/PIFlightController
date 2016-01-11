@@ -98,7 +98,9 @@ int main(void)
         //cout << "Total mX drift (meters) = " << xPosDrift << endl;
         //cout << "Total mY drift (meters) = " << yPosDrift << endl;
         //cout << "Total Distance (meters) = " << sqrt(xPosDrift*xPosDrift + yPosDrift*yPosDrift) << endl;
-        //cout<< "Throttle equals " << radio.throttle << endl;
+        cout<< "Throttle equals " << radio.throttle << endl;
+        cout<< "Pitch equals " << radio.throttle << endl;
+        cout<< "Roll equals " << radio.throttle << endl;
         
         //printf("Sonar Reading: %f \n",firstSonar.distance);
         if (!controller.safetyCheck(piIMU.roll, piIMU.pitch)) {
@@ -191,7 +193,7 @@ void* sonar(void * sonar){
 void* getInputs(void * radio){
     radioInput * radio2;
     radio2 = (radioInput *)radio;
-    radio2->getThrottle();
+    radio2->updateInputs();
     return NULL;
 }
 

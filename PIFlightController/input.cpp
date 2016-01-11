@@ -10,6 +10,9 @@
 
 
 #define ECHO 6
+#define THROTTLE 6
+#define PITCH 13
+#define ROLL 19
 
 void radioInput::setup() {
     printf("Made it to setup");
@@ -20,6 +23,7 @@ void radioInput::setup() {
     throttle = 0;
 }
 
+/*
 double radioInput::getThrottle() {
     active = 1;
     long startTime = micros();
@@ -46,5 +50,72 @@ double radioInput::getThrottle() {
     throttle = travelTime;
     active = 0;
     return throttle;
+}
+ */
+
+
+
+double radioInput::getPitch(){
+    double timeCandidate = getTime(PITCH);
+    if (timeCandidate!=0) {
+        pitch = timeCandidate;
+        return pitch;
+    }else{
+        return pitch;
+    }
+}
+
+double radioInput::getRoll(){
+    double timeCandidate = getTime(ROLL);
+    if (timeCandidate!=0) {
+        roll = timeCandidate;
+        return roll;
+    }else{
+        return roll;
+    }
+}
+
+double radioInput::getThrottle(){
+    double timeCandidate = getTime(THROTTLE);
+    if (timeCandidate!=0) {
+        throttle = timeCandidate;
+        return throttle;
+    }else{
+        return throttle;
+    }
+}
+
+void radioInput::updateInputs(){
+    active = 1;
+    getRoll();
+    getPitch();
+    getThrottle();
+    active = 0;
+}
+
+double radioInput::getTime(int pin){
+    double time = 0;
+    long startTime = micros();
+    //Send trig pulse
+    
+    //Wait for echo start
+    while(digitalRead(pin) == LOW){
+        delayMicroseconds(5);
+        if ((micros()-startTime)>100000) { //maximum of 160cm
+            return time;
+        }
+    }
+    
+    //Wait for echo end
+    startTime = micros();
+    while(digitalRead(pin) == HIGH){
+        if ((micros()-startTime)>100000) { //maximum of 160cm
+            return time;
+        }
+    }
+    long travelTime = micros() - startTime;
+    time = travelTime;
+    return time;
+
 }
 
