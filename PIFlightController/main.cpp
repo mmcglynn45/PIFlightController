@@ -68,6 +68,7 @@ int main(void)
     piIMU.mXComp = -piIMU.mX;
     piIMU.mYComp = -piIMU.mY;
     Sonar firstSonar;
+    printf("Sonar Setup starting...\n");
     firstSonar.setup();
     printf("Sonar Setup Complete\n");
     long beginning = millis();
