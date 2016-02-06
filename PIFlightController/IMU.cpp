@@ -54,6 +54,9 @@ int IMU::updateIMU(){
 
 }
 
+void IMU::resetIMUFusion(){
+    imu->resetFusion();
+}
 
 
 /*

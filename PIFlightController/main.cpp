@@ -154,7 +154,9 @@ int main(void)
             pthread_join(thread2, NULL);
         }
          */
-        
+        if((int)count%200==0){
+            piIMU.resetIMUFusion();
+        }
         
         double threshold = 5000;
         if (count>threshold) {
