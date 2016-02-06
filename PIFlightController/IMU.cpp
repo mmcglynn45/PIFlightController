@@ -32,6 +32,7 @@ int IMU::updateIMU(){
     if (imu->IMURead()) {
         RTIMU_DATA imuData = imu->getIMUData();
         while (imu->IMURead()) {
+            printf("Stuck in loop\n");
             imuData = imu->getIMUData();
         }
         sampleCount++;
