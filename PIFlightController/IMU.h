@@ -34,7 +34,7 @@ public:
     double mYComp;
     double pitchComp;
     double rollComp;
-    void IMU::resetIMUFusion();
+    void resetIMUFusion();
     //void rotation(double yawShift, double rollInRad, double pitchInRad, double yawInRad);
 };
 
