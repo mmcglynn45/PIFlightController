@@ -43,6 +43,7 @@ int main(void)
      
     Control controller;
     controller.setup();
+    printf("Controller initialized.\n");
     radio.setup();
     wiringPiISR(THROTTLE, INT_EDGE_RISING, &throttleInterrupt);
     wiringPiISR(PITCH, INT_EDGE_RISING, &pitchInterrupt);

@@ -15,7 +15,6 @@
 #define ROLL 19
 
 void radioInput::setup() {
-    printf("Made it to setup");
     wiringPiSetupGpio();
     pinMode(THROTTLE, INPUT);
     pinMode(PITCH, INPUT);
