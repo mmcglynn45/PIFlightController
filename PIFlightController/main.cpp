@@ -39,7 +39,7 @@ void rollInterrupt();
 radioInput radio;
 int main(void)
 {
-    printf("Welcome to Flight Controller\n");
+    printf("Welcome to Flight Controller...initializing\n");
      
     Control controller;
     controller.setup();
@@ -69,6 +69,7 @@ int main(void)
     piIMU.mYComp = -piIMU.mY;
     Sonar firstSonar;
     firstSonar.setup();
+    printf("Sonar Setup Complete\n");
     long beginning = millis();
     int iterations = 0;
     pthread_t thread1,thread2;
