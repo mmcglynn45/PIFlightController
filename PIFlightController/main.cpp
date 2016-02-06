@@ -99,11 +99,11 @@ int main(void)
         //printf("Sonar Active: %i \n",firstSonar.active);
         while(!piIMU.updateIMU()){}
         index++;
-        //cout << "Pitch = " << piIMU.pitch << endl;
-        //cout << "Roll = " << piIMU.roll << endl;
+        cout << "Pitch = " << piIMU.pitch << endl;
+        cout << "Roll = " << piIMU.roll << endl;
         //cout << "PitchRate = " << piIMU.pitchRate << endl;
         //cout << "RollRate = " << piIMU.rollRate << endl;
-        //cout << "Yaw = " << piIMU.yaw << endl;
+        cout << "Yaw = " << piIMU.yaw << endl;
         //cout << "MX = " << piIMU.mX << endl;
         //cout << "MY = " << piIMU.mY << endl;
         
