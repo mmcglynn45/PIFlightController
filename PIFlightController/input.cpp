@@ -23,6 +23,11 @@ void radioInput::setup() {
     throttleAdjustment = 1000;
     pitchAdjustment = 1000;
     rollAdjustment = 1000;
+    for (int i = 0; i < 10; i++) {
+        getThrottle();
+        getRoll();
+        getPitch();
+    }
     getThrottle();
     getRoll();
     getPitch();
