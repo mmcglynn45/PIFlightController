@@ -137,7 +137,7 @@ int main(void)
         
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
         iterations++;
-        if((int)count%200==0){
+        if((int)count%500==0){
             cout<< "Throttle equals " << radio.throttle << endl;
             cout<< "Pitch equals " << radio.pitch << endl;
             cout<< "Roll equals " << radio.roll << endl;
