@@ -147,6 +147,7 @@ void Control::ManageOrientation(double roll, double pitch, double yaw, double al
     double yawControl = YawPIDComputation(yaw, 60);
     //std::cout<<"Yaw Control: "<<yawControl<<std::endl;
     double altitudeControl = AltitudePIDComputation(altitude, 6.5);
+    double mixedThrottle = 0.5*altitudeControl
     //printf("altitudeControl: %f \n", altitudeControl);
     MapMotorOutput(pitchControl, rollControl, yawControl, altitudeControl);
 }
@@ -294,7 +295,7 @@ double Control::YawPIDComputation(double current, double desired){
 void Control::MapMotorOutput(double pitchControl,double rollControl, double yawControl, double throttleBaseline){
     //Basic algo is establish baseline then use roll, pitch, and yaw to modify
     throttleBaseline = throttleBaseline * 2; //Scale up for scale down of .5 across 3 inputs
-    throttleBaseline = inputNormalizer(throttleBaseline, 0, 8);
+    throttleBaseline = inputNormalizer(throttleBaseline, 0, 1.5);
     pitchControl = inputNormalizer(pitchControl,-.25,.25);
     rollControl = inputNormalizer(rollControl,-.25,.25);
     yawControl = inputNormalizer(yawControl,-.0,.0);//Roll and Pitch are weighted at 100%, yaw is less important weight at 10%

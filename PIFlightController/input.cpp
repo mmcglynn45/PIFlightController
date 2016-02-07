@@ -58,6 +58,7 @@ double radioInput::getPitch(){
     double timeCandidate = getTime(PITCH);
     if (timeCandidate!=0) {
         pitch = timeCandidate;
+        pitch = (pitch - 1000)/1000; //Normalize transmitter values
         return pitch;
     }else{
         return pitch;
@@ -68,6 +69,7 @@ double radioInput::getRoll(){
     double timeCandidate = getTime(ROLL);
     if (timeCandidate!=0) {
         roll = timeCandidate;
+        roll = (roll - 1000)/1000; //Normalize transmitter values
         return roll;
     }else{
         return roll;
@@ -78,6 +80,7 @@ double radioInput::getThrottle(){
     double timeCandidate = getTime(THROTTLE);
     if (timeCandidate!=0) {
         throttle = timeCandidate;
+        throttle = (throttle - 1000)/1000; //Normalize transmitter values
         return throttle;
     }else{
         return throttle;
