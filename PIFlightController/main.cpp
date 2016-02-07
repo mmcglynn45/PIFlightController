@@ -138,17 +138,17 @@ int main(void)
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
         iterations++;
         if((int)count%500==0){
-            cout<< "Throttle equals " << radio.throttle << endl;
-            cout<< "Pitch equals " << radio.pitch << endl;
-            cout<< "Roll equals " << radio.roll << endl;
-            cout << "Pitch = " << piIMU.pitch << endl;
-            cout << "Roll = " << piIMU.roll << endl;
+            //cout<< "Throttle equals " << radio.throttle << endl;
+            //cout<< "Pitch equals " << radio.pitch << endl;
+            //cout<< "Roll equals " << radio.roll << endl;
+            //cout << "Pitch = " << piIMU.pitch << endl;
+            //cout << "Roll = " << piIMU.roll << endl;
             //cout << "PitchRate = " << piIMU.pitchRate << endl;
             //cout << "RollRate = " << piIMU.rollRate << endl;
-            cout << "Yaw = " << piIMU.yaw << endl;
+            //cout << "Yaw = " << piIMU.yaw << endl;
             //cout << "MX = " << piIMU.mX << endl;
             //cout << "MY = " << piIMU.mY << endl;
-            printf("Sonar Reading: %f \n",firstSonar.distance);
+            //printf("Sonar Reading: %f \n",firstSonar.distance);
         }
         
         //cout<< count <<endl;
