@@ -165,7 +165,7 @@ int main(void)
             pthread_join(thread2, NULL);
         }
          */
-        if((int)count%200==0){
+        if((int)count%5000==0){
             piIMU.resetIMUFusion();
         }
         
