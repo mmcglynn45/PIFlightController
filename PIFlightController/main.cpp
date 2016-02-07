@@ -135,7 +135,7 @@ int main(void)
         totalRoll += fabs(piIMU.rollRate);
         //cout << "TotalPitch = " << totalPitch/index << endl;
         //cout << "TotalRoll = " << totalRoll/index << endl;
-        controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw,firstSonar.distance,piIMU.mX,piIMU.mY,piIMU.rollRate,piIMU.pitchRate, radio.throttle);
+        controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw,firstSonar.distance,piIMU.mX,piIMU.mY,piIMU.rollRate,piIMU.pitchRate, radio.throttle, radio.roll, radio.pitch);
         
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
         iterations++;
