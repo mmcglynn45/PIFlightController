@@ -149,7 +149,7 @@ void Control::ManageOrientation(double roll, double pitch, double yaw, double al
     double altitudeControl = AltitudePIDComputation(altitude, 6.5);
     double mixedThrottle = 0.5*altitudeControl + 0.5*throttleInput;
     //printf("altitudeControl: %f \n", altitudeControl);
-    MapMotorOutput(pitchControl, rollControl, yawControl, altitudeControl);
+    MapMotorOutput(pitchControl, rollControl, yawControl, mixedThrottle);
 }
 
 double Control::mXPIDComputation(double current, double desired){
