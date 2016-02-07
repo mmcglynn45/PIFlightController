@@ -26,15 +26,18 @@ void radioInput::setup() {
     getThrottle();
     getRoll();
     getPitch();
+    std::cout<< "Throttle started at " << throttle << std::endl;
+    std::cout<< "Pitch started at " << pitch << std::endl;
+    std::cout<< "Roll started at" << roll << std::endl;
     throttleAdjustment = 1000 - (throttle * 1000);
     pitchAdjustment = 1000 - ((pitch-0.5)* 1000);
     rollAdjustment = 1000 - ((roll-0.5)* 1000);
     getThrottle();
     getRoll();
     getPitch();
-    std::cout<< "Throttle equals " << throttle << std::endl;
-    std::cout<< "Pitch equals " << pitch << std::endl;
-    std::cout<< "Roll equals " << roll << std::endl;
+    std::cout<< "Throttle now equals " << throttle << std::endl;
+    std::cout<< "Pitch now equals " << pitch << std::endl;
+    std::cout<< "Roll now equals " << roll << std::endl;
     throttle = 0;
 }
 
