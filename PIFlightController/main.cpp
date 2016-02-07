@@ -118,9 +118,7 @@ int main(void)
         //cout << "Total mX drift (meters) = " << xPosDrift << endl;
         //cout << "Total mY drift (meters) = " << yPosDrift << endl;
         //cout << "Total Distance (meters) = " << sqrt(xPosDrift*xPosDrift + yPosDrift*yPosDrift) << endl;
-        cout<< "Throttle equals " << radio.throttle << endl;
-        cout<< "Pitch equals " << radio.pitch << endl;
-        cout<< "Roll equals " << radio.roll << endl;
+        
         
         //printf("Sonar Reading: %f \n",firstSonar.distance);
         if (!controller.safetyCheck(piIMU.roll, piIMU.pitch)) {
@@ -139,6 +137,18 @@ int main(void)
         
         double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
         iterations++;
+        if((int)count%200==0){
+            cout<< "Throttle equals " << radio.throttle << endl;
+            cout<< "Pitch equals " << radio.pitch << endl;
+            cout<< "Roll equals " << radio.roll << endl;
+            cout << "Pitch = " << piIMU.pitch << endl;
+            cout << "Roll = " << piIMU.roll << endl;
+            //cout << "PitchRate = " << piIMU.pitchRate << endl;
+            //cout << "RollRate = " << piIMU.rollRate << endl;
+            cout << "Yaw = " << piIMU.yaw << endl;
+            //cout << "MX = " << piIMU.mX << endl;
+            //cout << "MY = " << piIMU.mY << endl;
+        }
         
         //cout<< count <<endl;
         //firstSonar.getDistance();
