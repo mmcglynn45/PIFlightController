@@ -28,6 +28,10 @@ public:
     void updateInputs();
     double quickTime(int pin);
     
+    double pitchAdjustment;
+    double rollAdjustment;
+    double throttleAdjustment;
+    
     
 };
 

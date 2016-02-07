@@ -20,6 +20,21 @@ void radioInput::setup() {
     pinMode(PITCH, INPUT);
     pinMode(ROLL, INPUT);
     delay(30);
+    throttleAdjustment = 1000;
+    pitchAdjustment = 1000;
+    rollAdjustment = 1000;
+    getThrottle();
+    getRoll();
+    getPitch();
+    throttleAdjustment = 1000 - (throttle * 1000);
+    pitchAdjustment = 1000 - ((pitch-0.5)* 1000);
+    rollAdjustment = 1000 - ((roll-0.5)* 1000);
+    getThrottle();
+    getRoll();
+    getPitch();
+    std::cout<< "Throttle equals " << throttle << std::endl;
+    std::cout<< "Pitch equals " << pitch << std::endl;
+    std::cout<< "Roll equals " << roll << std::endl;
     throttle = 0;
 }
 
@@ -58,7 +73,7 @@ double radioInput::getPitch(){
     double timeCandidate = getTime(PITCH);
     if (timeCandidate!=0) {
         pitch = timeCandidate;
-        pitch = (pitch - 800)/1000; //Normalize transmitter values
+        pitch = (pitch - pitchAdjustment)/1000; //Normalize transmitter values
         return pitch;
     }else{
         return pitch;
@@ -69,7 +84,7 @@ double radioInput::getRoll(){
     double timeCandidate = getTime(ROLL);
     if (timeCandidate!=0) {
         roll = timeCandidate;
-        roll = (roll - 800)/1000; //Normalize transmitter values
+        roll = (roll - rollAdjustment)/1000; //Normalize transmitter values
         return roll;
     }else{
         return roll;
@@ -80,7 +95,7 @@ double radioInput::getThrottle(){
     double timeCandidate = getTime(THROTTLE);
     if (timeCandidate!=0) {
         throttle = timeCandidate;
-        throttle = (throttle - 1000)/1000; //Normalize transmitter values
+        throttle = (throttle - throttleAdjustment)/1000; //Normalize transmitter values
         return throttle;
     }else{
         return throttle;
