@@ -46,8 +46,8 @@ int main(void)
     printf("Controller initialized.\n");
     radio.setup();
     wiringPiISR(THROTTLE, INT_EDGE_RISING, &throttleInterrupt);
-    wiringPiISR(PITCH, INT_EDGE_RISING, &pitchInterrupt);
-    wiringPiISR(ROLL, INT_EDGE_RISING, &rollInterrupt);
+    //wiringPiISR(PITCH, INT_EDGE_RISING, &pitchInterrupt);
+    //wiringPiISR(ROLL, INT_EDGE_RISING, &rollInterrupt);
     double totalRoll = 0;
     double totalPitch = 0;
     double xPosDrift = 0;
