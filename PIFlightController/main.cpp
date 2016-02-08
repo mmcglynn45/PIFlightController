@@ -153,7 +153,7 @@ int main(void)
             //cout << "Yaw = " << piIMU.yaw << endl;
             //cout << "MX = " << piIMU.mX << endl;
             //cout << "MY = " << piIMU.mY << endl;
-            //printf("Sonar Reading: %f \n",firstSonar.distance);
+            printf("Sonar Reading: %f \n",firstSonar.distance);
         }
         
         //cout<< count <<endl;
