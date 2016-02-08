@@ -138,11 +138,11 @@ void Control::ManageOrientation(double roll, double pitch, double yaw, double al
     desiredRoll = inputNormalizer(-desiredRoll, 0, 0);
     //printf("desiredRoll: %f \n", desiredRoll);
     //printf("desiredPitch: %f \n", desiredPitch);
-    double desiredPitchRate = PitchPIDComputation(pitch, 0);
-    double pitchControl = pitchRatePIDComputation(pitchRate, desiredPitchRate);
+    //double desiredPitchRate = PitchPIDComputation(pitch, 0);
+    double pitchControl = pitchRatePIDComputation(pitchRate, 0);
     //std::cout<<"Pitch Control: "<<pitchControl<<std::endl;
-    double desiredRollRate = RollPIDComputation(roll, 0);
-    double rollControl = rollRatePIDComputation(rollRate, desiredRollRate);
+    //double desiredRollRate = RollPIDComputation(roll, 0);
+    double rollControl = rollRatePIDComputation(rollRate, 0);
     //std::cout<<"Roll Control: "<<rollControl<<std::endl;
     double yawControl = YawPIDComputation(yaw, 60);
     //std::cout<<"Yaw Control: "<<yawControl<<std::endl;
