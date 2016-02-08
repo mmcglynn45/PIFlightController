@@ -174,7 +174,7 @@ int main(void)
             piIMU.resetIMUFusion();
         }
         
-        double threshold = 8000;
+        double threshold = 12000;
         if (count>threshold) {
             controller.shutdown();
             long end = millis();
