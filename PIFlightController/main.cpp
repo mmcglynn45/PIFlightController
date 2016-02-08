@@ -144,8 +144,8 @@ int main(void)
         iterations++;
         if((int)count%500==0){
             //cout<< "Throttle equals " << radio.throttle << endl;
-            //cout<< "Pitch equals " << radio.pitch << endl;
-            //cout<< "Roll equals " << radio.roll << endl;
+            cout<< "Pitch equals " << radio.pitch << endl;
+            cout<< "Roll equals " << radio.roll << endl;
             //cout << "Pitch = " << piIMU.pitch << endl;
             //cout << "Roll = " << piIMU.roll << endl;
             //cout << "PitchRate = " << piIMU.pitchRate << endl;
