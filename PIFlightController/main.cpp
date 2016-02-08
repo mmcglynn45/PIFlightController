@@ -136,7 +136,7 @@ int main(void)
         //cout << "TotalRoll = " << totalRoll/index << endl;
         double takeoffSetting = 0;
         if (count<3000) {
-            takeoffSetting = 1
+            takeoffSetting = 1;
         }
         controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw,firstSonar.distance,piIMU.mX,piIMU.mY,piIMU.rollRate,piIMU.pitchRate, radio.throttle, radio.roll, radio.pitch, takeoffSetting);
         
