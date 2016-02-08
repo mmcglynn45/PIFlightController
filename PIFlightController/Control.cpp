@@ -131,7 +131,7 @@ void Control::adjustMotorSpeed(int motor, double speed){
     pwmWrite(PIN_BASE + motor, tick);
 }
 
-void Control::ManageOrientation(double roll, double pitch, double yaw, double altitude, double mX, double mY, double rollRate, double pitchRate, double throttleInput, double rollInput, double pitchInput){
+void Control::ManageOrientation(double roll, double pitch, double yaw, double altitude, double mX, double mY, double rollRate, double pitchRate, double throttleInput, double rollInput, double pitchInput, double takeoffsetting){
     double desiredPitch = (pitchInput - 0.5)*2;
     double desiredRoll = (rollInput - 0.5)*2;
     desiredPitch = inputNormalizer(-desiredPitch, 0, 0);
@@ -146,9 +146,13 @@ void Control::ManageOrientation(double roll, double pitch, double yaw, double al
     //std::cout<<"Roll Control: "<<rollControl<<std::endl;
     double yawControl = YawPIDComputation(yaw, 60);
     //std::cout<<"Yaw Control: "<<yawControl<<std::endl;
-    double altitudeControl = AltitudePIDComputation(altitude, 6.5);
-    double mixedThrottle = 0.4*altitudeControl + 0.6*throttleInput;
+    double altitudeControl = AltitudePIDComputation(altitude, 10.5);
+    double mixedThrottle = 0*altitudeControl + 1*throttleInput;
     //printf("altitudeControl: %f \n", altitudeControl);
+    if (takeoffsetting) {
+        pitchControl = 0.5;
+        rollControl = 0.5;
+    }
     MapMotorOutput(pitchControl, rollControl, yawControl, mixedThrottle);
 }
 

@@ -82,6 +82,7 @@ int main(void)
     int inputThreadCreated = 0;
     while (1) {
         auto t2 = std::chrono::high_resolution_clock::now();
+        double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
         if (!created) {
             pthread_create(&thread1, NULL, sonar, &firstSonar);
             created = 1;
@@ -133,9 +134,13 @@ int main(void)
         totalRoll += fabs(piIMU.rollRate);
         //cout << "TotalPitch = " << totalPitch/index << endl;
         //cout << "TotalRoll = " << totalRoll/index << endl;
-        controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw,firstSonar.distance,piIMU.mX,piIMU.mY,piIMU.rollRate,piIMU.pitchRate, radio.throttle, radio.roll, radio.pitch);
+        double takeoffSetting = 0;
+        if (count<3000) {
+            takeoffSetting = 1
+        }
+        controller.ManageOrientation(piIMU.roll, piIMU.pitch, piIMU.yaw,firstSonar.distance,piIMU.mX,piIMU.mY,piIMU.rollRate,piIMU.pitchRate, radio.throttle, radio.roll, radio.pitch, takeoffSetting);
         
-        double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
+        
         iterations++;
         if((int)count%500==0){
             //cout<< "Throttle equals " << radio.throttle << endl;
@@ -169,7 +174,7 @@ int main(void)
             piIMU.resetIMUFusion();
         }
         
-        double threshold = 5000;
+        double threshold = 8000;
         if (count>threshold) {
             controller.shutdown();
             long end = millis();
