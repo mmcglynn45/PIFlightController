@@ -41,5 +41,6 @@ double MovingAverage::getAverage(){
 
 double MovingAverage::insert(double value){
     array[counter%windowSize] = value;
+    counter++;
     return value;
 }
