@@ -19,11 +19,10 @@
 
 class IMU{
     
-    
 public:
-    IMU();
+
     RTIMU *imu;
-    int windowSize = 10;
+    int windowSize;
     int updateIMU();
     int readIMU();
     void setup();
