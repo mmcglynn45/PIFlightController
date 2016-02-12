@@ -10,7 +10,7 @@
 #define __PIFlightController__MovingAverage__
 
 #include <stdio.h>
-#include <Math.h>
+#include <math.h>
 
 #include "MovingAverage.h"
 class MovingAverage {
