@@ -27,13 +27,13 @@ double MovingAverage::getAverage(){
     double total = 0;
     double limit = windowSize;
     if (counter<windowSize) {
-        limit = counter;
+        limit = counter%windowSize;
     }
     for (int i = 0; i<limit; i++) {
         try {
             total += array[i];
         } catch (int e){
-            return total/i;
+            return 0;
         }
     }
     return total/limit;
