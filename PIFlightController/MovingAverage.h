@@ -21,7 +21,8 @@ class MovingAverage {
 public:
     MovingAverage(int newWindowSize){
         windowSize = newWindowSize;
-        array = double[windowSize];
+        double newArray[windowSize];
+        array = newArray;
         counter = 0;
     }
     double getAverage(){
@@ -30,7 +31,7 @@ public:
         if (counter<windowSize) {
             limit = counter;
         }
-        for (i = 0; i<limit; i++) {
+        for (int i = 0; i<limit; i++) {
             try {
                 total += array[i];
             } catch () {
