@@ -24,6 +24,7 @@ MovingAverage::MovingAverage(){
     array[8] = 0;
     array[9] = 0;
     std::cout << array[5];
+    std::cout << "array= " << array << "end";
     counter = 0;
 }
 
@@ -35,6 +36,7 @@ MovingAverage::MovingAverage(int newWindowSize){
 }
 
 double MovingAverage::getAverage(){
+    std::cout << "array= " << array << "end";
     double total = 0;
     double limit = windowSize;
     if (counter == 0) {
