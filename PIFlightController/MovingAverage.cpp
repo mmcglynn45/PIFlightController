@@ -26,7 +26,7 @@ MovingAverage::MovingAverage(int newWindowSize){
 double MovingAverage::getAverage(){
     double total = 0;
     double limit = windowSize;
-    if (counter = 0) {
+    if (counter == 0) {
         return 0;
     }
     if (counter<windowSize) {
