@@ -23,6 +23,7 @@ MovingAverage::MovingAverage(){
     array[7] = 0;
     array[8] = 0;
     array[9] = 0;
+    std::cout << array[5];
     counter = 0;
 }
 
