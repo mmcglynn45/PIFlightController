@@ -20,7 +20,7 @@
 class IMU{
     
 public:
-
+    IMU();
     RTIMU *imu;
     int windowSize;
     int updateIMU();

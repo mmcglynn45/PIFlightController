@@ -59,6 +59,8 @@ int main(void)
     auto mYTime = std::chrono::high_resolution_clock::now();
     int index = 0;
     IMU piIMU;
+    IMU piIMU2;
+    
     printf("PIIMU Setup starting...\n");
     piIMU.setup();
     printf("PIIMU Setup completed...\n");

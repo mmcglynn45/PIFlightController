@@ -5,6 +5,16 @@ inline double to_degrees(double radians) {
     return radians * (180.0 / M_PI);
 }
 
+IMU::IMU(){
+    roll = MovingAverage(10);
+    pitch = MovingAverage(10);
+    yaw = MovingAverage(10);
+    mX = MovingAverage(10);
+    mY = MovingAverage(10);
+    rollRate = MovingAverage(10);
+    pitchRate= MovingAverage(10);
+}
+
 void IMU::setup(){
     RTIMUSettings *settings = new RTIMUSettings("RTIMULib");
     
