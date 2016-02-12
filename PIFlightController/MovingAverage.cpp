@@ -52,6 +52,8 @@ double MovingAverage::getAverage(){
             return 0;
         }
     }
+    std::cout << "total" << total << "\n";
+    std::cout << "limit" << limit << "\n";
     return total/limit;
 }
 
