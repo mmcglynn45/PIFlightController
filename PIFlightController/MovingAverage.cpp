@@ -13,6 +13,7 @@
 MovingAverage::MovingAverage(){
     windowSize = 10;
     double newArray[windowSize];
+    array = new double[10];
     array = newArray;
     array[0] = 0;
     array[1] = 0;
