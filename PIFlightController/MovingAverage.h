@@ -34,7 +34,7 @@ public:
         for (int i = 0; i<limit; i++) {
             try {
                 total += array[i];
-            } catch () {
+            } catch {
                 return total/i;
             }
         }
