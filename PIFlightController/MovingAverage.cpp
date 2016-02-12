@@ -14,6 +14,7 @@ MovingAverage::MovingAverage(){
     windowSize = 10;
     double newArray[windowSize];
     array = newArray;
+    array[0] = 0;
     counter = 0;
 }
 
