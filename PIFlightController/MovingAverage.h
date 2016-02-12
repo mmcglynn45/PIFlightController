@@ -17,7 +17,9 @@ class MovingAverage {
     double * array;
     int windowSize;
     int counter;
+    
 public:
+    MovingAverage();
     MovingAverage(int newWindowSize);
     double getAverage();
     double insert(double value);

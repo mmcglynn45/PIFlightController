@@ -9,6 +9,12 @@
 #include <stdio.h>
 #include "MovingAverage.h"
 
+MovingAverage::MovingAverage(){
+    windowSize = 10;
+    double newArray[windowSize];
+    array = newArray;
+    counter = 0;
+}
 
 MovingAverage::MovingAverage(int newWindowSize){
     windowSize = newWindowSize;
