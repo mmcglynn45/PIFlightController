@@ -13,12 +13,13 @@
 #include <math.h>
 
 class MovingAverage {
+
     
+public:
     double * array;
     int windowSize;
     int counter;
     
-public:
     MovingAverage();
     MovingAverage(int newWindowSize);
     double getAverage();
