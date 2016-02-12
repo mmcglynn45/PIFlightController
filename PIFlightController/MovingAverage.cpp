@@ -7,6 +7,7 @@
 //
 
 #include <stdio.h>
+#include <iostream>
 #include "MovingAverage.h"
 
 MovingAverage::MovingAverage(){
@@ -33,6 +34,7 @@ double MovingAverage::getAverage(){
         limit = counter%windowSize;
     }
     for (int i = 0; i<limit; i++) {
+        std::cout << limit;
         try {
             total += array[i];
         } catch (int e){
