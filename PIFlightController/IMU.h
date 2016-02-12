@@ -18,9 +18,11 @@
 #define	RAD_TO_DEGREE		(180.0 / RTMATH_PI)
 
 class IMU{
-    RTIMU *imu;
+    
     
 public:
+    IMU();
+    RTIMU *imu;
     int windowSize = 10;
     int updateIMU();
     int readIMU();
