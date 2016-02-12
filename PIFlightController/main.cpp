@@ -21,6 +21,7 @@
 #include "Sonar.h"
 #include "wiringPi.h"
 #include "math.h"
+#include "MovingAverage.h"
 
 using namespace std;
 
