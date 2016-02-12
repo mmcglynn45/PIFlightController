@@ -47,6 +47,7 @@
 		2D45A5811BCB15600000511F /* input.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = input.h; sourceTree = "<group>"; };
 		2D468A0C1C23F4B200ECE847 /* Sonar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sonar.cpp; sourceTree = "<group>"; };
 		2D468A0D1C23F4B200ECE847 /* Sonar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sonar.h; sourceTree = "<group>"; };
+		2D468A101C6DCCDB00ECE847 /* MovingAverage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovingAverage.h; sourceTree = "<group>"; };
 		2D475EEC1BC08ADF001813D0 /* PIFlightController */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PIFlightController; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D475EEF1BC08ADF001813D0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2D475EF61BC0BDC3001813D0 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
@@ -95,6 +96,7 @@
 				2D45A5811BCB15600000511F /* input.h */,
 				2D475F151BC0FE86001813D0 /* Control.cpp */,
 				2D475F161BC0FE86001813D0 /* Control.h */,
+				2D468A101C6DCCDB00ECE847 /* MovingAverage.h */,
 				2D45A5781BC62C6C0000511F /* IMU.cpp */,
 				2D468A0C1C23F4B200ECE847 /* Sonar.cpp */,
 				2D468A0D1C23F4B200ECE847 /* Sonar.h */,
