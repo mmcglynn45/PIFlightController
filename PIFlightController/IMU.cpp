@@ -24,6 +24,13 @@ void IMU::setup(){
     imu->setGyroEnable(true);
     imu->setAccelEnable(true);
     imu->setCompassEnable(true);
+    roll = MovingAverage(10);
+    pitch = MovingAverage(10);
+    yaw = MovingAverage(10);
+    mX = MovingAverage(10);
+    mY = MovingAverage(10);
+    rollRate = MovingAverage(10);
+    pitchRate= MovingAverage(10);
 }
 
 int IMU::updateIMU(){
