@@ -26,18 +26,21 @@ public:
     }
     double getAverage(){
         double total = 0;
-
-        for (i = 0; i<windowSize; i++) {
+        double limit = windowSize;
+        if (counter<windowSize) {
+            limit = counter;
+        }
+        for (i = 0; i<limit; i++) {
             try {
                 total += array[i];
             } catch () {
                 return total/i;
             }
         }
-        return total/windowSize;
+        return total/limit;
     }
     double insert(double value){
-        array[counter]
+        array[counter%windowSize] = value;
     }
     
 };

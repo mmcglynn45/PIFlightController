@@ -11,6 +11,7 @@
 
 #include "RTIMULib/RTIMULib.h"
 #include <stdio.h>
+#include "MovingAverage.h"
 
 #define	PI					3.1415926535
 #define	DEGREE_TO_RAD		(RTMATH_PI / 180.0)
@@ -20,16 +21,17 @@ class IMU{
     RTIMU *imu;
     
 public:
+    int windowSize = 10;
     int updateIMU();
     int readIMU();
     void setup();
-    double pitch;
-    double roll;
-    double yaw;
-    double mX;
-    double mY;
-    double rollRate;
-    double pitchRate;
+    MovingAverage pitch(windowSize);
+    MovingAverage roll(windowSize);
+    MovingAverage yaw(windowSize);
+    MovingAverage mX(windowSize);
+    MovingAverage mY(windowSize);
+    MovingAverage rollRate(windowSize);
+    MovingAverage pitchRate(windowSize);
     double mXComp;
     double mYComp;
     double pitchComp;
