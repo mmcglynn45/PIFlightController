@@ -28,10 +28,8 @@ double MovingAverage::getAverage(){
         limit = counter%windowSize;
     }
     for (int i = 0; i<limit; i++) {
-        std::cout << array[i];
         try {
             total += array[i];
-            std::cout << array[i];
         } catch (int e){
             return 0;
         }
