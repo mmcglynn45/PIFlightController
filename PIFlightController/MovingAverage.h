@@ -20,9 +20,10 @@ public:
     int windowSize;
     int counter;
     
-    MovingAverage(int newWindowSize);
+
     double getAverage();
     double insert(double value);
+    void setup(int size);
     
 };
 
