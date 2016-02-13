@@ -20,7 +20,6 @@ public:
     int windowSize;
     int counter;
     
-    MovingAverage();
     MovingAverage(int newWindowSize);
     double getAverage();
     double insert(double value);
