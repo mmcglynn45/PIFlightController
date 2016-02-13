@@ -40,6 +40,21 @@ void rollInterrupt();
 radioInput radio;
 int main(void)
 {
+    //------------
+    MovingAverage matt;
+    printf("Created\n");
+    matt.insert(1.0);
+    matt.insert(2.0);
+    printf("Matt's moving average: %f", matt.getAverage());
+    
+    
+    
+    //------
+    
+    
+    
+    
+    
     printf("Welcome to Flight Controller...initializing\n");
      
     Control controller;
