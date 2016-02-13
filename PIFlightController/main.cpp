@@ -184,7 +184,7 @@ int main(void)
              }
              */
             
-            double threshold = 15000;
+            double threshold = 30000;
             if (count>threshold) {
                 controller.shutdown();
                 long end = millis();
