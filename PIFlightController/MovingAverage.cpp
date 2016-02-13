@@ -19,7 +19,6 @@ void MovingAverage::setup(int size){
 }
 
 double MovingAverage::getAverage(){
-    std::cout << "array= " << array << "end";
     double total = 0;
     double limit = windowSize;
     if (counter == 0) {
@@ -37,15 +36,10 @@ double MovingAverage::getAverage(){
             return 0;
         }
     }
-    std::cout << "total" << total << "\n";
-    std::cout << "limit" << limit << "\n";
     return total/limit;
 }
 
 double MovingAverage::insert(double value){
-    printf("Window Size!");
-    printf("Lookup ref %i", counter%windowSize);
-    fflush(stdout);
     array[(counter%windowSize)] = value;
     counter++;
     return value;
