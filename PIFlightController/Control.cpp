@@ -139,7 +139,7 @@ void Control::ManageOrientation(double roll, double pitch, double yaw, double al
     
     desiredPitch = inputNormalizer(-desiredPitch, -2, 2);
     desiredRoll = inputNormalizer(-desiredRoll, -2, 2);
-    if (!rand()%5000) {
+    if (random()%50) {
         printf("desiredRoll: %f \n", desiredRoll);
         printf("desiredPitch: %f \n", desiredPitch);
     }
