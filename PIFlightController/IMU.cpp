@@ -28,8 +28,8 @@ void IMU::setup(){
     roll.setup(20);
     pitch.setup(20);
     yaw.setup(10);
-    mX.setup(30);
-    mY.setup(30);
+    mX.setup(70);
+    mY.setup(70);
     rollRate.setup(10);
     pitchRate.setup(10);
 }
