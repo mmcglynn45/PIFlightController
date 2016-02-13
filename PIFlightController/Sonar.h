@@ -10,14 +10,14 @@
 #define __PIFlightController__Sonar__
 
 #include <stdio.h>
-
+#include "MovingAverage.h"
 
 class Sonar {
    
     double getCM();
 
 public:
-    double distance;
+    MovingAverage distance;
     int active;
     void setup();
     double getDistance();

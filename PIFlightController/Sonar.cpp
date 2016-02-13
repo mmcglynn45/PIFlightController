@@ -12,6 +12,7 @@
 
 void Sonar::setup() {
     //printf("Made it to setup");
+    distance.setup(4);
     wiringPiSetupGpio();
     
     pinMode(TRIG, OUTPUT);
@@ -20,11 +21,11 @@ void Sonar::setup() {
     //TRIG pin must start LOW
     digitalWrite(TRIG, LOW);
     delay(30);
-    distance = 4;
+    distance.insert(4);
 }
 
 double Sonar::getCM() {
-    double lastReading = distance;
+    double lastReading = distance.getAverage();
     active = 1;
     long startTime = micros();
     //Send trig pulse
@@ -36,7 +37,7 @@ double Sonar::getCM() {
     while(digitalRead(ECHO) == LOW){
         if ((micros()-startTime)>10000) { //maximum of 160cm
             active = 0;
-            return distance;
+            return distance.getAverage();
         }
     }
     
@@ -45,7 +46,7 @@ double Sonar::getCM() {
     while(digitalRead(ECHO) == HIGH){
         if ((micros()-startTime)>10000) { //maximum of 160cm
             active = 0;
-            return distance;
+            return distance.getAverage();
         }
     }
     long travelTime = micros() - startTime;
@@ -54,12 +55,12 @@ double Sonar::getCM() {
     double newDistance = travelTime / 58.0;
     double delta = fabs(newDistance-lastReading);
     if (delta<.3) {
-        distance = newDistance;
+        distance.insert(newDistance);
     }else{
-        distance = distance*.99 + newDistance*.01; //Otherwise, weight between the old and new readings
+        distance.insert(distance.getAverage()*.99 + newDistance*.01); //Otherwise, weight between the old and new readings
     }
     active = 0;
-    return distance;
+    return distance.getAverage();
 }
 
 double Sonar::getDistance(){
