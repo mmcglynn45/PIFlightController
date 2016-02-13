@@ -69,10 +69,10 @@ int main(void)
     piIMU.mYComp = 0;
     while(!piIMU.updateIMU()){}
     printf("Addes\n");
-    piIMU.pitchComp = -piIMU.pitch->getAverage();
-    piIMU.rollComp = -piIMU.roll->getAverage();
-    piIMU.mXComp = -piIMU.mX->getAverage();
-    piIMU.mYComp = -piIMU.mY->getAverage();
+    piIMU.pitchComp = -piIMU.pitch.getAverage();
+    piIMU.rollComp = -piIMU.roll.getAverage();
+    piIMU.mXComp = -piIMU.mX.getAverage();
+    piIMU.mYComp = -piIMU.mY.getAverage();
     Sonar firstSonar;
     printf("Sonar Setup starting...\n");
     firstSonar.setup();
@@ -111,11 +111,11 @@ int main(void)
         //cout << "MX = " << piIMU.mX << endl;
         //cout << "MY = " << piIMU.mY << endl;
         
-        xVelDrift += piIMU.mX->getAverage(); //(t2-mXTime).count())/1000;
+        xVelDrift += piIMU.mX.getAverage(); //(t2-mXTime).count())/1000;
         xPosDrift += xVelDrift; //* (t2-mXTime).count())/1000;
         mXTime = t2;
         
-        yVelDrift += piIMU.mY->getAverage(); //(t2-mYTime).count())/1000;
+        yVelDrift += piIMU.mY.getAverage(); //(t2-mYTime).count())/1000;
         yPosDrift += yVelDrift; //(t2-mYTime).count())/1000;
         mYTime = t2;
         
@@ -125,7 +125,7 @@ int main(void)
         
         
         //printf("Sonar Reading: %f \n",firstSonar.distance);
-        if (!controller.safetyCheck(piIMU.roll->getAverage(), piIMU.pitch->getAverage())) {
+        if (!controller.safetyCheck(piIMU.roll.getAverage(), piIMU.pitch.getAverage())) {
             printf("Total amount of iterations in 10 seconds is %i\n", iterations);
             cout << "TotalPitchRate = " << totalPitch/index << endl;
             cout << "TotalRollRate = " << totalRoll/index << endl;
@@ -133,15 +133,15 @@ int main(void)
             cout << "Total mY drift (meters) = " << yVelDrift << endl;
             return 0;
         }
-        totalPitch += fabs(piIMU.pitchRate->getAverage());
-        totalRoll += fabs(piIMU.rollRate->getAverage());
+        totalPitch += fabs(piIMU.pitchRate.getAverage());
+        totalRoll += fabs(piIMU.rollRate.getAverage());
         //cout << "TotalPitch = " << totalPitch/index << endl;
         //cout << "TotalRoll = " << totalRoll/index << endl;
         double takeoffSetting = 0;
         if (count<100) {
             takeoffSetting = 1;
         }
-        controller.ManageOrientation(piIMU.roll->getAverage(), piIMU.pitch->getAverage(), piIMU.yaw->getAverage(),firstSonar.distance,piIMU.mX->getAverage(),piIMU.mY->getAverage(),piIMU.rollRate->getAverage(),piIMU.pitchRate->getAverage(), radio.throttle, radio.roll, radio.pitch, takeoffSetting);
+        controller.ManageOrientation(piIMU.roll.getAverage(), piIMU.pitch.getAverage(), piIMU.yaw.getAverage(),firstSonar.distance,piIMU.mX.getAverage(),piIMU.mY.getAverage(),piIMU.rollRate.getAverage(),piIMU.pitchRate.getAverage(), radio.throttle, radio.roll, radio.pitch, takeoffSetting);
         
         
         iterations++;
@@ -149,10 +149,10 @@ int main(void)
             //cout<< "Throttle equals " << radio.throttle << endl;
             //cout<< "Pitch equals " << radio.pitch << endl;
             //cout<< "Roll equals " << radio.roll << endl;
-            cout << "Pitch = " << piIMU.pitch->getAverage() << endl;
-            cout << "Roll = " << piIMU.roll->getAverage() << endl;
-            cout << "PitchRate = " << piIMU.pitchRate->getAverage() << endl;
-            cout << "RollRate = " << piIMU.rollRate->getAverage() << endl;
+            cout << "Pitch = " << piIMU.pitch.getAverage() << endl;
+            cout << "Roll = " << piIMU.roll.getAverage() << endl;
+            cout << "PitchRate = " << piIMU.pitchRate.getAverage() << endl;
+            cout << "RollRate = " << piIMU.rollRate.getAverage() << endl;
             //cout << "Yaw = " << piIMU.yaw << endl;
             //cout << "MX = " << piIMU.mX << endl;
             //cout << "MY = " << piIMU.mY << endl;

@@ -25,13 +25,13 @@ void IMU::setup(){
     imu->setGyroEnable(true);
     imu->setAccelEnable(true);
     imu->setCompassEnable(true);
-    roll = new MovingAverage(10);
-    pitch = new MovingAverage(10);
-    yaw = new MovingAverage(10);
-    mX = new MovingAverage(10);
-    mY = new MovingAverage(10);
-    rollRate = new MovingAverage(10);
-    pitchRate= new MovingAverage(10);
+    roll.setup(10);
+    pitch.setup(10);
+    yaw.setup(10);
+    mX.setup(10);
+    mY.setup(10);
+    rollRate.setup(10);
+    pitchRate.setup(10);
 }
 
 int IMU::updateIMU(){
@@ -43,15 +43,15 @@ int IMU::updateIMU(){
             imuData = imu->getIMUData();
         }
         sampleCount++;
-        roll->insert(to_degrees(imuData.fusionPose.x()) + rollComp);
-        pitch->insert(to_degrees(imuData.fusionPose.y()) + pitchComp);
-        yaw->insert(to_degrees(imuData.fusionPose.z()));
+        roll.insert(to_degrees(imuData.fusionPose.x()) + rollComp);
+        pitch.insert(to_degrees(imuData.fusionPose.y()) + pitchComp);
+        yaw.insert(to_degrees(imuData.fusionPose.z()));
         
-        mX->insert(imuData.accel.x()+  mXComp);
-        mY->insert(imuData.accel.y() + mYComp);
+        mX.insert(imuData.accel.x()+  mXComp);
+        mY.insert(imuData.accel.y() + mYComp);
         
-        rollRate->insert(imuData.gyro.x());
-        pitchRate->insert(imuData.gyro.y());
+        rollRate.insert(imuData.gyro.x());
+        pitchRate.insert(imuData.gyro.y());
         //rotation(1,imuData.fusionPose.x(),imuData.fusionPose.y(),imuData.fusionPose.z());
         //printf("Test one piece: Roll = %f\n",to_degrees(imuData.fusionPose.data(0)));
         //printf("Sample rate %d: %s\r", sampleRate, RTMath::displayDegrees("", imuData.fusionPose));
