@@ -10,23 +10,7 @@
 #include <iostream>
 #include "MovingAverage.h"
 
-MovingAverage::MovingAverage(){
-    windowSize = 10;
-    array = new double[10];
-    array[0] = 0;
-    array[1] = 0;
-    array[2] = 0;
-    array[3] = 0;
-    array[4] = 0;
-    array[5] = 0;
-    array[6] = 0;
-    array[7] = 0;
-    array[8] = 0;
-    array[9] = 0;
-    std::cout << array[5];
-    std::cout << "array= " << array << "end";
-    counter = 0;
-}
+
 
 MovingAverage::MovingAverage(int newWindowSize){
     windowSize = newWindowSize;
