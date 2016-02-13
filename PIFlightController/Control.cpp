@@ -137,8 +137,8 @@ void Control::ManageOrientation(double roll, double pitch, double yaw, double al
     double desiredPitch = mXPIDComputation(mX, 0);
     double desiredRoll = mYPIDComputation(mY, 0);
     
-    desiredPitch = inputNormalizer(desiredPitch, -2, 2);
-    desiredRoll = inputNormalizer(desiredRoll, -2, 2);
+    desiredPitch = inputNormalizer(-desiredPitch, -2, 2);
+    desiredRoll = inputNormalizer(-desiredRoll, -2, 2);
     double desiredPitchRate = PitchPIDComputation(pitch, 0);
     double pitchControl = pitchRatePIDComputation(pitchRate, desiredPitchRate);
     //std::cout<<"Pitch Control: "<<pitchControl<<std::endl;
@@ -160,8 +160,8 @@ void Control::ManageOrientation(double roll, double pitch, double yaw, double al
 double Control::mXPIDComputation(double current, double desired){
     //printf("current: %f \n", current);
     //printf("desired: %f \n", desired);
-    double Kp = 2.0;
-    double Ki = 10.0;
+    double Kp = 4.0;
+    double Ki = 1.0;
     double Kd = 0.02;
     std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-mxTime);
@@ -179,8 +179,8 @@ double Control::mXPIDComputation(double current, double desired){
 double Control::mYPIDComputation(double current, double desired){
     //printf("current: %f \n", current);
     //printf("desired: %f \n", desired);
-    double Kp = 2.0;
-    double Ki = 10.0;
+    double Kp = 4.0;
+    double Ki = 1.0;
     double Kd = 0.02;
     std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-myTime);
