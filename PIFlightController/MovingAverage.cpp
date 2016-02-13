@@ -44,6 +44,7 @@ double MovingAverage::getAverage(){
 }
 
 double MovingAverage::insert(double value){
+    printf("Window Size!");
     array[(counter%windowSize)] = value;
     counter++;
     return value;
