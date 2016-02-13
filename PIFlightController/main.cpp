@@ -70,7 +70,7 @@ int main(void)
     piIMU.rollComp = 0;
     piIMU.mXComp = 0;
     piIMU.mYComp = 0;
-    for (int i = 0; i<50; i++) {
+    for (int i = 0; i<5; i++) {
         while(!piIMU.updateIMU()){}
     }
     printf("First PIIMU Update\n");
