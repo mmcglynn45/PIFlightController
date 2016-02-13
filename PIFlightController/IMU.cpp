@@ -25,8 +25,8 @@ void IMU::setup(){
     imu->setGyroEnable(true);
     imu->setAccelEnable(true);
     imu->setCompassEnable(true);
-    roll.setup(10);
-    pitch.setup(10);
+    roll.setup(20);
+    pitch.setup(20);
     yaw.setup(10);
     mX.setup(30);
     mY.setup(30);
