@@ -12,7 +12,7 @@
 
 
 
-void MovingAverage::setup(int newWindowSize){
+void MovingAverage::setup(int size){
     windowSize = newWindowSize;
     double newArray[windowSize];
     array = newArray;
