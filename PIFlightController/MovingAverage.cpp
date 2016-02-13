@@ -13,7 +13,7 @@
 
 
 void MovingAverage::setup(int size){
-    windowSize = newWindowSize;
+    windowSize = size;
     double newArray[windowSize];
     array = newArray;
     counter = 0;
