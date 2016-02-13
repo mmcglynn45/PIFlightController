@@ -67,8 +67,9 @@ int main(void)
     piIMU.rollComp = 0;
     piIMU.mXComp = 0;
     piIMU.mYComp = 0;
+    printf("Addes1\n");
     while(!piIMU.updateIMU()){}
-    printf("Addes\n");
+    printf("Addes2\n");
     piIMU.pitchComp = -piIMU.pitch.getAverage();
     piIMU.rollComp = -piIMU.roll.getAverage();
     piIMU.mXComp = -piIMU.mX.getAverage();
