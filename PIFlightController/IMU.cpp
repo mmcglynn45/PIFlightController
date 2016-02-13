@@ -49,7 +49,6 @@ int IMU::updateIMU(){
         
         mX.insert(imuData.accel.x()+  mXComp);
         mY.insert(imuData.accel.y() + mYComp);
-        
         rollRate.insert(imuData.gyro.x());
         pitchRate.insert(imuData.gyro.y());
         //rotation(1,imuData.fusionPose.x(),imuData.fusionPose.y(),imuData.fusionPose.z());

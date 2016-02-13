@@ -70,7 +70,9 @@ int main(void)
     piIMU.rollComp = 0;
     piIMU.mXComp = 0;
     piIMU.mYComp = 0;
-    while(!piIMU.updateIMU()){}
+    for (int i = 0; i<20; i++) {
+        while(!piIMU.updateIMU()){}
+    }
     printf("First PIIMU Update\n");
     piIMU.pitchComp = -piIMU.pitch.getAverage();
     piIMU.rollComp = -piIMU.roll.getAverage();
@@ -181,7 +183,7 @@ int main(void)
              pthread_join(thread2, NULL);
              }
              */
-            if((int)count%5000==0){
+            if((int)count%50==0){
                 piIMU.resetIMUFusion();
             }
             
