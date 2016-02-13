@@ -33,6 +33,8 @@ void throttleInterrupt();
 void pitchInterrupt();
 void rollInterrupt();
 
+
+
 #define THROTTLE 6
 #define PITCH 13
 #define ROLL 19
@@ -42,7 +44,7 @@ int main(void)
 {
     
     printf("Welcome to Flight Controller...initializing\n");
-     
+    
     Control controller;
     controller.setup();
     printf("Controller initialized.\n");
@@ -84,148 +86,156 @@ int main(void)
     auto t1 = std::chrono::high_resolution_clock::now();
     int created = 0;
     int inputThreadCreated = 0;
-    while (1) {
-        auto t2 = std::chrono::high_resolution_clock::now();
-        double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
-        if (!created) {
-            pthread_create(&thread1, NULL, sonar, &firstSonar);
-            created = 1;
-        }
-        
-        //Radio threading
-        //Temp comment out
-        /*
-        if (!inputThreadCreated) {
-            pthread_create(&thread2, NULL, getInputs, &radio);
-            inputThreadCreated = 1;
-        }
-         */
-        
-        //printf("Sonar Active: %i \n",firstSonar.active);
-        while(!piIMU.updateIMU()){}
-        index++;
-        //cout << "Pitch = " << piIMU.pitch << endl;
-        //cout << "Roll = " << piIMU.roll << endl;
-        //cout << "PitchRate = " << piIMU.pitchRate << endl;
-        //cout << "RollRate = " << piIMU.rollRate << endl;
-        //cout << "Yaw = " << piIMU.yaw << endl;
-        //cout << "MX = " << piIMU.mX << endl;
-        //cout << "MY = " << piIMU.mY << endl;
-        
-        xVelDrift += piIMU.mX.getAverage(); //(t2-mXTime).count())/1000;
-        xPosDrift += xVelDrift; //* (t2-mXTime).count())/1000;
-        mXTime = t2;
-        
-        yVelDrift += piIMU.mY.getAverage(); //(t2-mYTime).count())/1000;
-        yPosDrift += yVelDrift; //(t2-mYTime).count())/1000;
-        mYTime = t2;
-        
-        //cout << "Total mX drift (meters) = " << xPosDrift << endl;
-        //cout << "Total mY drift (meters) = " << yPosDrift << endl;
-        //cout << "Total Distance (meters) = " << sqrt(xPosDrift*xPosDrift + yPosDrift*yPosDrift) << endl;
-        
-        
-        //printf("Sonar Reading: %f \n",firstSonar.distance);
-        if (!controller.safetyCheck(piIMU.roll.getAverage(), piIMU.pitch.getAverage())) {
-            printf("Total amount of iterations in 10 seconds is %i\n", iterations);
-            cout << "TotalPitchRate = " << totalPitch/index << endl;
-            cout << "TotalRollRate = " << totalRoll/index << endl;
-            cout << "Total mX drift (meters) = " << xVelDrift << endl;
-            cout << "Total mY drift (meters) = " << yVelDrift << endl;
-            return 0;
-        }
-        totalPitch += fabs(piIMU.pitchRate.getAverage());
-        totalRoll += fabs(piIMU.rollRate.getAverage());
-        //cout << "TotalPitch = " << totalPitch/index << endl;
-        //cout << "TotalRoll = " << totalRoll/index << endl;
-        double takeoffSetting = 0;
-        if (count<100) {
-            takeoffSetting = 1;
-        }
-        controller.ManageOrientation(piIMU.roll.getAverage(), piIMU.pitch.getAverage(), piIMU.yaw.getAverage(),firstSonar.distance.getAverage(),piIMU.mX.getAverage(),piIMU.mY.getAverage(),piIMU.rollRate.getAverage(),piIMU.pitchRate.getAverage(), radio.throttle, radio.roll, radio.pitch, takeoffSetting);
-        
-        
-        iterations++;
-        if((int)count%500==0){
-            //cout<< "Throttle equals " << radio.throttle << endl;
-            //cout<< "Pitch equals " << radio.pitch << endl;
-            //cout<< "Roll equals " << radio.roll << endl;
-            cout << "Pitch = " << piIMU.pitch.getAverage() << endl;
-            cout << "Roll = " << piIMU.roll.getAverage() << endl;
-            cout << "PitchRate = " << piIMU.pitchRate.getAverage() << endl;
-            cout << "RollRate = " << piIMU.rollRate.getAverage() << endl;
+    
+    
+    
+    
+    try{
+        while (1) {
+            auto t2 = std::chrono::high_resolution_clock::now();
+            double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
+            if (!created) {
+                pthread_create(&thread1, NULL, sonar, &firstSonar);
+                created = 1;
+            }
+            
+            //Radio threading
+            //Temp comment out
+            /*
+             if (!inputThreadCreated) {
+             pthread_create(&thread2, NULL, getInputs, &radio);
+             inputThreadCreated = 1;
+             }
+             */
+            
+            //printf("Sonar Active: %i \n",firstSonar.active);
+            while(!piIMU.updateIMU()){}
+            index++;
+            //cout << "Pitch = " << piIMU.pitch << endl;
+            //cout << "Roll = " << piIMU.roll << endl;
+            //cout << "PitchRate = " << piIMU.pitchRate << endl;
+            //cout << "RollRate = " << piIMU.rollRate << endl;
             //cout << "Yaw = " << piIMU.yaw << endl;
             //cout << "MX = " << piIMU.mX << endl;
             //cout << "MY = " << piIMU.mY << endl;
-            printf("Sonar Reading: %f \n",firstSonar.distance);
+            
+            xVelDrift += piIMU.mX.getAverage(); //(t2-mXTime).count())/1000;
+            xPosDrift += xVelDrift; //* (t2-mXTime).count())/1000;
+            mXTime = t2;
+            
+            yVelDrift += piIMU.mY.getAverage(); //(t2-mYTime).count())/1000;
+            yPosDrift += yVelDrift; //(t2-mYTime).count())/1000;
+            mYTime = t2;
+            
+            //cout << "Total mX drift (meters) = " << xPosDrift << endl;
+            //cout << "Total mY drift (meters) = " << yPosDrift << endl;
+            //cout << "Total Distance (meters) = " << sqrt(xPosDrift*xPosDrift + yPosDrift*yPosDrift) << endl;
+            
+            
+            //printf("Sonar Reading: %f \n",firstSonar.distance);
+            if (!controller.safetyCheck(piIMU.roll.getAverage(), piIMU.pitch.getAverage())) {
+                printf("Total amount of iterations in 10 seconds is %i\n", iterations);
+                cout << "TotalPitchRate = " << totalPitch/index << endl;
+                cout << "TotalRollRate = " << totalRoll/index << endl;
+                cout << "Total mX drift (meters) = " << xVelDrift << endl;
+                cout << "Total mY drift (meters) = " << yVelDrift << endl;
+                return 0;
+            }
+            totalPitch += fabs(piIMU.pitchRate.getAverage());
+            totalRoll += fabs(piIMU.rollRate.getAverage());
+            //cout << "TotalPitch = " << totalPitch/index << endl;
+            //cout << "TotalRoll = " << totalRoll/index << endl;
+            double takeoffSetting = 0;
+            if (count<100) {
+                takeoffSetting = 1;
+            }
+            controller.ManageOrientation(piIMU.roll.getAverage(), piIMU.pitch.getAverage(), piIMU.yaw.getAverage(),firstSonar.distance.getAverage(),piIMU.mX.getAverage(),piIMU.mY.getAverage(),piIMU.rollRate.getAverage(),piIMU.pitchRate.getAverage(), radio.throttle, radio.roll, radio.pitch, takeoffSetting);
+            
+            
+            iterations++;
+            if((int)count%500==0){
+                //cout<< "Throttle equals " << radio.throttle << endl;
+                //cout<< "Pitch equals " << radio.pitch << endl;
+                //cout<< "Roll equals " << radio.roll << endl;
+                cout << "Pitch = " << piIMU.pitch.getAverage() << endl;
+                cout << "Roll = " << piIMU.roll.getAverage() << endl;
+                cout << "PitchRate = " << piIMU.pitchRate.getAverage() << endl;
+                cout << "RollRate = " << piIMU.rollRate.getAverage() << endl;
+                //cout << "Yaw = " << piIMU.yaw << endl;
+                //cout << "MX = " << piIMU.mX << endl;
+                //cout << "MY = " << piIMU.mY << endl;
+                printf("Sonar Reading: %f \n",firstSonar.distance);
+            }
+            
+            //cout<< count <<endl;
+            //firstSonar.getDistance();
+            if (!firstSonar.active){
+                created = 0;
+                pthread_join(thread1, NULL);
+            }
+            
+            //Radio threading
+            /*
+             if (!radio.active){
+             inputThreadCreated = 0;
+             pthread_join(thread2, NULL);
+             }
+             */
+            if((int)count%5000==0){
+                piIMU.resetIMUFusion();
+            }
+            
+            double threshold = 15000;
+            if (count>threshold) {
+                controller.shutdown();
+                long end = millis();
+                printf("Total amount of iterations in %f seconds is %i\n",threshold/1000, iterations);
+                printf("Flight controller cycle rate was %f per second\n",iterations/(threshold/1000));
+                cout << "TotalPitchRate = " << totalPitch/index << endl;
+                cout << "TotalRollRate = " << totalRoll/index << endl;
+                cout << "Total mX drift (meters) = " << xPosDrift << endl;
+                cout << "Total mY drift (meters) = " << yPosDrift << endl;
+                return 0;
+            }
         }
+    }catch (int e){
+        printf("\n\nShutdown executed\n\n");
+        controller.shutdown();
         
-        //cout<< count <<endl;
-        //firstSonar.getDistance();
-        if (!firstSonar.active){
-            created = 0;
-            pthread_join(thread1, NULL);
-        }
         
-        //Radio threading
-        /*
-        if (!radio.active){
-            inputThreadCreated = 0;
-            pthread_join(thread2, NULL);
-        }
-         */
-        if((int)count%5000==0){
-            piIMU.resetIMUFusion();
-        }
-        
-        double threshold = 15000;
-        if (count>threshold) {
-            controller.shutdown();
-            long end = millis();
-            printf("Total amount of iterations in %f seconds is %i\n",threshold/1000, iterations);
-            printf("Flight controller cycle rate was %f per second\n",iterations/(threshold/1000));
-            cout << "TotalPitchRate = " << totalPitch/index << endl;
-            cout << "TotalRollRate = " << totalRoll/index << endl;
-            cout << "Total mX drift (meters) = " << xPosDrift << endl;
-            cout << "Total mY drift (meters) = " << yPosDrift << endl;
-            return 0;
-        }
     }
     
     
     //pthread_t thread1,thread2,thread3,thread4,thread5,thread6,thread7,thread8;
     //auto t1 = std::chrono::high_resolution_clock::now();
     //for (int i = 0; i<400; i++) {
-        //pthread_create(&thread1, NULL, threaded, &controller);
-        //pthread_create(&thread2, NULL, threaded, &controller);
-        //pthread_create(&thread3, NULL, threaded, &controller);
-        //pthread_create(&thread4, NULL, threaded, &controller);
-        //pthread_create(&thread5, NULL, threaded, &controller);
-        //pthread_create(&thread6, NULL, threaded, &controller);
-        //pthread_create(&thread7, NULL, threaded, &controller);
-        //pthread_create(&thread8, NULL, threaded, &controller);
-        //pthread_create(&thread1, NULL, threaded2, &piIMU);
-        //while(!piIMU.updateIMU()){
-            //i--;
-        //}
-        //pthread_join( thread1, NULL);
-        //pthread_join( thread2, NULL);
-        //pthread_join( thread3, NULL);
-        //pthread_join( thread4, NULL);
-        //pthread_join( thread5, NULL);
-        //pthread_join( thread6, NULL);
-        //pthread_join( thread7, NULL);
-        //pthread_join( thread8, NULL);
-        //controller.
-        //printf("hi");
+    //pthread_create(&thread1, NULL, threaded, &controller);
+    //pthread_create(&thread2, NULL, threaded, &controller);
+    //pthread_create(&thread3, NULL, threaded, &controller);
+    //pthread_create(&thread4, NULL, threaded, &controller);
+    //pthread_create(&thread5, NULL, threaded, &controller);
+    //pthread_create(&thread6, NULL, threaded, &controller);
+    //pthread_create(&thread7, NULL, threaded, &controller);
+    //pthread_create(&thread8, NULL, threaded, &controller);
+    //pthread_create(&thread1, NULL, threaded2, &piIMU);
+    //while(!piIMU.updateIMU()){
+    //i--;
+    //}
+    //pthread_join( thread1, NULL);
+    //pthread_join( thread2, NULL);
+    //pthread_join( thread3, NULL);
+    //pthread_join( thread4, NULL);
+    //pthread_join( thread5, NULL);
+    //pthread_join( thread6, NULL);
+    //pthread_join( thread7, NULL);
+    //pthread_join( thread8, NULL);
+    //controller.
+    //printf("hi");
     //}
     //auto t2 = std::chrono::high_resolution_clock::now();
     //std::cout << "f() took "
     //<< std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count()
     //<< " milliseconds\n";
-   
-
-    
     
     return 0;
 }
