@@ -56,6 +56,8 @@ double Sonar::getCM() {
     double delta = fabs(newDistance-lastReading);
     if (fabs(newDistance-distance.getAverage())<1) {
             distance.insert(newDistance);
+    }else{
+            distance.insert(newDistance*.1+distance.getAverage()*.9);
     }
     active = 0;
     return distance.getAverage();
