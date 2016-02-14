@@ -54,11 +54,7 @@ double Sonar::getCM() {
     //Get distance in cm
     double newDistance = travelTime / 58.0;
     double delta = fabs(newDistance-lastReading);
-    if (delta<.3) {
-        distance.insert(newDistance);
-    }else{
-        distance.insert(distance.getAverage()*.99 + newDistance*.01); //Otherwise, weight between the old and new readings
-    }
+    distance.insert(newDistance);
     active = 0;
     return distance.getAverage();
 }
