@@ -149,7 +149,7 @@ void Control::ManageOrientation(double roll, double pitch, double yaw, double al
     //std::cout<<"Yaw Control: "<<yawControl<<std::endl;
     double altitudeControl = AltitudePIDComputation(altitude, 9);
 
-    double mixedThrottle = .3*altitudeControl + .7*throttleInput;
+    double mixedThrottle = .05*altitudeControl + .95*throttleInput;
     if (throttleInput<.15) {
         mixedThrottle = 0;
     }
