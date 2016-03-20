@@ -41,8 +41,8 @@ int main ( int argc,char **argv ) {
     for ( int i=0; i<nCount; i++ ) {
         Camera.grab();
         Camera.retrieve ( data,    raspicam::RASPICAM_FORMAT_GRAY );
-        if ( i%5==0 )  cout<<"\r captured "<<i<<" images"<<std::flush;
-        printf("Camera spot R at 50,50: %i",data[1]);
+        //if ( i%5==0 )  cout<<"\r captured "<<i<<" images"<<std::flush;
+        //printf("Camera spot R at 50,50: %i",data[1]);
 
     }
     time ( &timer_end );
