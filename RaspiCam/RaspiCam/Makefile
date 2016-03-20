@@ -1,6 +1,6 @@
 
 LDFLAGS = -L/usr/local/lib
-LDLIBS  = -I/usr/local/include -lraspicam -lmmal -lmmal_core -lmmal_util
+LDLIBS  = -I/usr/local/include -lraspicam 
 OTHER   = -std=c++0x -pg
 
 all:
