@@ -74,7 +74,7 @@ double getCM() {
     
     //Wait for echo start
     while(digitalRead(ECHO2) == LOW){
-        if ((micros()-startTime)>10000) { //maximum of 160cm
+        if ((micros()-startTime)>100000) { //maximum of 160cm
             active = 0;
             return distance.getAverage();
         }
@@ -83,7 +83,7 @@ double getCM() {
     //Wait for echo end
     startTime = micros();
     while(digitalRead(ECHO2) == HIGH){
-        if ((micros()-startTime)>10000) { //maximum of 160cm
+        if ((micros()-startTime)>100000) { //maximum of 160cm
             active = 0;
             return distance.getAverage();
         }
@@ -91,7 +91,7 @@ double getCM() {
     long travelTime = micros() - startTime;
     
     //Get distance in cm
-    double newDistance = travelTime / 58.0;
+    double newDistance = travelTime / 29.0;
     double delta = fabs(newDistance-lastReading);
     if (fabs(newDistance-distance.getAverage())<1) {
         distance.insert(newDistance);
