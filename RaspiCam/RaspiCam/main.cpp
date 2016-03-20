@@ -37,6 +37,8 @@ int main ( int argc,char **argv ) {
     time ( &timer_begin );
     size_t imageLength =  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_GRAY );
     printf("ImageSize is %zu",imageLength);
+    auto t1 = std::chrono::high_resolution_clock::now();
+
     unsigned char *data=new unsigned char[  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_GRAY )];
     for ( int i=0; i<nCount; i++ ) {
         Camera.grab();
@@ -45,8 +47,8 @@ int main ( int argc,char **argv ) {
         //printf("Camera spot R at 50,50: %i",data[1]);
 
     }
-    time ( &timer_end );
-    double secondsElapsed = (difftime ( timer_end,timer_begin ))/1000000.0;
+    auto t2 = std::chrono::high_resolution_clock::now();
+    double secondsElapsed = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count()/1000;
     cout<< secondsElapsed<<" seconds for "<< nCount<<"  frames : FPS = "<<  ( float ) ( ( float ) ( nCount ) /secondsElapsed ) <<endl;
     cout<<"Stop camera..."<<endl;
     Camera.release();
