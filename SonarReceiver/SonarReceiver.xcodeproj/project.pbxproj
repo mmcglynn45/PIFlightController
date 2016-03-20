@@ -128,7 +128,7 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
+			shellPath = /bin/bash;
 			shellScript = "cd /Users/mmcglynn/Desktop/PIFlightController\ngit commit -m \"Build Update\" -a\ngit push";
 		};
 /* End PBXShellScriptBuildPhase section */
