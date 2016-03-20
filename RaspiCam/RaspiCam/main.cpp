@@ -57,7 +57,7 @@ int main ( int argc,char **argv ) {
         //printf("Camera spot R at 50,50: %i",data[1]);
         double centerVert;
         double centerHorizontal;
-        for (int k=0; k<5; k++){
+        for (int k=0; k<0; k++){
             for (int j=0; j<imageLength; j++){
                 centerVert+=data[j];
             }
