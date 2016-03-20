@@ -44,7 +44,7 @@ int main ( int argc,char **argv ) {
     cout<<"Capturing "<<nCount<<" frames ...."<<endl;
     time ( &timer_begin );
     size_t imageLength =  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_GRAY );
-    printf("ImageSize is %zu",imageLength);
+    printf("ImageSize is %zu\n",imageLength);
     auto t1 = std::chrono::high_resolution_clock::now();
 
     unsigned char *data=new unsigned char[  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_GRAY )];
