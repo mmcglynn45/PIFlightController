@@ -19,8 +19,10 @@
 #endif
 
 
-std::ostream cnull(NULL);
-#define cerr cnull
+std::ofstream error("error.txt");
+std::streambuf *errbuf = std::cerr.rdbuf(error.rdbuf());
+
+
 
 
 
@@ -54,9 +56,13 @@ int main ( int argc,char **argv ) {
         //printf("Camera spot R at 50,50: %i",data[1]);
         double centerVert;
         double centerHorizontal;
-        for (int k=0; k<imageLength; k++){
-            centerVert+=data[k];
+        for (int k=0; k<5; k++){
+            for (int j=0; j<imageLength; j++){
+                centerVert+=data[j];
+            }
         }
+ 
+        
 
     }
     auto t2 = std::chrono::high_resolution_clock::now();
