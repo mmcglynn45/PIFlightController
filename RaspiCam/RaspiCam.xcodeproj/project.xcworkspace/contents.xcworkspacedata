@@ -2,12 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../RaspiCam/raspicam.h">
+   </FileRef>
+   <FileRef
       location = "group:../RaspiCam/Makefile">
    </FileRef>
    <FileRef
       location = "group:">
-   </FileRef>
-   <FileRef
-      location = "group:../../../../Downloads/raspicam-0.1.3/src/raspicam_cv.h">
    </FileRef>
 </Workspace>
