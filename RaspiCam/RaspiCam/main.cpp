@@ -10,6 +10,7 @@
 #include <fstream>
 #include <iostream>
 #include "raspicam.h"
+#include <unistd.h>
 using namespace std;
 
 int main ( int argc,char **argv ) {
@@ -20,6 +21,7 @@ int main ( int argc,char **argv ) {
     //wait a while until camera stabilizes
     cout<<"Sleeping for 3 secs"<<endl;
     //capture
+    sleep(3);
     Camera.grab();
     //allocate memory
     unsigned char *data=new unsigned char[  Camera.getImageTypeSize ( raspicam::RASPICAM_FORMAT_RGB )];
