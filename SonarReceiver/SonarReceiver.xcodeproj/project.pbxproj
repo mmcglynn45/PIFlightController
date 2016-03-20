@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D4CA6741C9E26120000F1D6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D4CA6731C9E26120000F1D6 /* main.cpp */; };
+		2D4CA6801C9E29900000F1D6 /* MovingAverage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D4CA67E1C9E29900000F1D6 /* MovingAverage.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +27,9 @@
 		2D4CA6701C9E26120000F1D6 /* SonarReceiver */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SonarReceiver; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D4CA6731C9E26120000F1D6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2D4CA67A1C9E26AC0000F1D6 /* Script.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = Script.sh; path = ../Script.sh; sourceTree = "<group>"; };
+		2D4CA67E1C9E29900000F1D6 /* MovingAverage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MovingAverage.cpp; sourceTree = "<group>"; };
+		2D4CA67F1C9E29900000F1D6 /* MovingAverage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovingAverage.h; sourceTree = "<group>"; };
+		2D4CA6811C9E29EC0000F1D6 /* wiringPi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = wiringPi.h; path = SonarReceiver.xcodeproj/../wiringPi/wiringPi/wiringPi.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +63,10 @@
 		2D4CA6721C9E26120000F1D6 /* SonarReceiver */ = {
 			isa = PBXGroup;
 			children = (
+				2D4CA6811C9E29EC0000F1D6 /* wiringPi.h */,
 				2D4CA6731C9E26120000F1D6 /* main.cpp */,
+				2D4CA67E1C9E29900000F1D6 /* MovingAverage.cpp */,
+				2D4CA67F1C9E29900000F1D6 /* MovingAverage.h */,
 			);
 			path = SonarReceiver;
 			sourceTree = "<group>";
@@ -139,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D4CA6741C9E26120000F1D6 /* main.cpp in Sources */,
+				2D4CA6801C9E29900000F1D6 /* MovingAverage.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
