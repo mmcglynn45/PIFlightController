@@ -15,6 +15,7 @@
 		2D4CA68D1C9F40160000F1D6 /* RaspiCam */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RaspiCam; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D4CA6901C9F40160000F1D6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2D4CA6981C9F41520000F1D6 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		2D4CA69A1C9F41F90000F1D6 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; path = src; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -39,6 +40,7 @@
 			isa = PBXGroup;
 			children = (
 				2D4CA6901C9F40160000F1D6 /* main.cpp */,
+				2D4CA69A1C9F41F90000F1D6 /* src */,
 			);
 			path = RaspiCam;
 			sourceTree = "<group>";
