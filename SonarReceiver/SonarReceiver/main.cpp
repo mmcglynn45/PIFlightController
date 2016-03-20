@@ -32,7 +32,7 @@ int main(){
     int i = 0;
     while (1) {
         i++;
-        delay(10);
+        delay(1);
         double dist = getDistance();
         if (i%1000==0) {
             printf("Sonar Distance = %f\n", dist);
