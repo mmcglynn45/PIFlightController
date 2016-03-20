@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../../../../Downloads/raspicam-0.1.3/src/raspicam_cv.h">
+   </FileRef>
+   <FileRef
       location = "self:RaspiCam.xcodeproj">
    </FileRef>
 </Workspace>

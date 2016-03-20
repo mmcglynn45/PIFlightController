@@ -8,6 +8,7 @@
 
 include <ctime>
 #include <iostream>
+#include "raspicam_cv.h"
 #include <raspicam/raspicam_cv.h>
 using namespace std;
 
