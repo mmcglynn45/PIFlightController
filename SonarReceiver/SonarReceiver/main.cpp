@@ -28,6 +28,13 @@ int demo();
 
 int main(){
     printf("HELLO SONAR\n");
+    setup();
+    while (1) {
+        delay(1000);
+        double dist = getDistance();
+        printf("Sonar Distance = %f\n", dist);
+    }
+
 }
 
 
