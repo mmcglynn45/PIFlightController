@@ -46,6 +46,11 @@ int main ( int argc,char **argv ) {
         Camera.retrieve ( data,    raspicam::RASPICAM_FORMAT_GRAY );
         //if ( i%5==0 )  cout<<"\r captured "<<i<<" images"<<std::flush;
         //printf("Camera spot R at 50,50: %i",data[1]);
+        double centerVert;
+        double centerHorizontal;
+        for (int k=0; k<imageLength; k++){
+            centerVert+=data[k];
+        }
 
     }
     auto t2 = std::chrono::high_resolution_clock::now();
