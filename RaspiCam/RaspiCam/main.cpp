@@ -45,6 +45,8 @@ int main ( int argc,char **argv ) {
         printf("Camera spot R at 50,50: %i",data[1]);
 
     }
+    time ( &timer_end );
+    cout<< secondsElapsed<<" seconds for "<< nCount<<"  frames : FPS = "<<  ( float ) ( ( float ) ( nCount ) /secondsElapsed ) <<endl;
     cout<<"Stop camera..."<<endl;
     Camera.release();
     //allocate memory
