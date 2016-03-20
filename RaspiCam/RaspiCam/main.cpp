@@ -20,6 +20,7 @@
 
 
 #include <unistd.h>
+#define cerr //cerr
 using namespace std;
 
 int main ( int argc,char **argv ) {
