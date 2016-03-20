@@ -91,7 +91,7 @@ double getCM() {
     long travelTime = micros() - startTime;
     
     //Get distance in cm
-    double newDistance = travelTime / 29.0;
+    double newDistance = travelTime / 58.0;
     double delta = fabs(newDistance-lastReading);
     if (fabs(newDistance-distance.getAverage())<1) {
         distance.insert(newDistance);
