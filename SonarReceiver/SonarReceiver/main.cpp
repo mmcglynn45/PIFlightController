@@ -73,7 +73,7 @@ double getCM() {
     digitalWrite(TRIG2, LOW);
     
     //Wait for echo start
-    while(digitalRead(ECHO0) == LOW){
+    while(digitalRead(ECHO2) == LOW){
         if ((micros()-startTime)>10000) { //maximum of 160cm
             active = 0;
             return distance.getAverage();
@@ -82,7 +82,7 @@ double getCM() {
     
     //Wait for echo end
     startTime = micros();
-    while(digitalRead(ECHO) == HIGH){
+    while(digitalRead(ECHO2) == HIGH){
         if ((micros()-startTime)>10000) { //maximum of 160cm
             active = 0;
             return distance.getAverage();
