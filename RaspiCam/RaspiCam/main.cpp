@@ -35,7 +35,7 @@ int main ( int argc,char **argv ) {
     int nCount=100;
     raspicam::RaspiCam Camera; //Cmaera object
     Camera.setCaptureSize(1200, 900);
-    Camera.setFormat(raspicam::RASPICAM_FORMAT_GRAY);
+    Camera.setFormat(raspicam::RASPICAM_FORMAT_RGB);
     //Open camera
     cout<<"Opening Camera..."<<endl;
     if ( !Camera.open()) {cerr<<"Error opening camera"<<endl;return -1;}
@@ -45,11 +45,11 @@ int main ( int argc,char **argv ) {
     sleep(3);
     cout<<"Capturing "<<nCount<<" frames ...."<<endl;
     time ( &timer_begin );
-    size_t imageLength =  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_GRAY );
+    size_t imageLength =  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_RGB );
     printf("ImageSize is %zu\n",imageLength);
     auto t1 = std::chrono::high_resolution_clock::now();
 
-    unsigned char *data=new unsigned char[  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_GRAY )];
+    unsigned char *data=new unsigned char[  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_RGB )];
     for ( int i=0; i<nCount; i++ ) {
         Camera.grab();
         Camera.retrieve (data);
@@ -75,7 +75,7 @@ int main ( int argc,char **argv ) {
     //save
     std::ofstream outFile ( "raspicam_image.ppm",std::ios::binary );
     outFile<<"P6\n"<<Camera.getWidth() <<" "<<Camera.getHeight() <<" 255\n";
-    outFile.write ( ( char* ) data, Camera.getImageTypeSize ( raspicam::RASPICAM_FORMAT_GRAY) );
+    outFile.write ( ( char* ) data, Camera.getImageTypeSize ( raspicam::RASPICAM_FORMAT_RGB) );
     cout<<"Image saved at raspicam_image.ppm"<<endl;
     //free resrources
     delete data;
