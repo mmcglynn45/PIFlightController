@@ -67,10 +67,9 @@ double getCM() {
     long startTime = micros();
     //Send trig pulse
     digitalWrite(TRIG, HIGH);
-    delayMicroseconds(20);
-    digitalWrite(TRIG, LOW);
     digitalWrite(TRIG2, HIGH);
     delayMicroseconds(20);
+    digitalWrite(TRIG, LOW);
     digitalWrite(TRIG2, LOW);
     
     //Wait for echo start
