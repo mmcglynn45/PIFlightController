@@ -9,7 +9,13 @@
 #include <ctime>
 #include <fstream>
 #include <iostream>
+#if __linux__
 #include <raspicam/raspicam.h>
+#elif __unix__
+#include <raspicam/raspicam.h>
+#elif __APPLE__
+#include "raspicam.h"
+#endif
 #include <unistd.h>
 using namespace std;
 
