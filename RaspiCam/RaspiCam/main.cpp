@@ -19,7 +19,8 @@
 #endif
 
 
-
+std::ostream cnull(NULL);
+#define cerr cnull
 
 
 
@@ -28,8 +29,6 @@
 using namespace std;
 
 int main ( int argc,char **argv ) {
-    std::ofstream error("error.txt");
-    std::streambuf *errbuf = std::cerr.rdbuf(error.rdbuf());
     time_t timer_begin,timer_end;
     int nCount=100;
     raspicam::RaspiCam Camera; //Cmaera object
