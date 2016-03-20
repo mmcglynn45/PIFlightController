@@ -49,7 +49,7 @@ int main ( int argc,char **argv ) {
 
     }
     auto t2 = std::chrono::high_resolution_clock::now();
-    double secondsElapsed = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
+    double secondsElapsed = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count()/1000.0;
     cout<< secondsElapsed<<" seconds for "<< nCount<<"  frames : FPS = "<<  nCount/secondsElapsed  <<endl;
     cout<<"Stop camera..."<<endl;
     Camera.release();
