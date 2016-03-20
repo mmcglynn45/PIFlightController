@@ -46,6 +46,7 @@ int main ( int argc,char **argv ) {
 
     }
     time ( &timer_end );
+    double secondsElapsed = difftime ( timer_end,timer_begin );
     cout<< secondsElapsed<<" seconds for "<< nCount<<"  frames : FPS = "<<  ( float ) ( ( float ) ( nCount ) /secondsElapsed ) <<endl;
     cout<<"Stop camera..."<<endl;
     Camera.release();
