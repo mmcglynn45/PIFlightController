@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		2D4CA6701C9E26120000F1D6 /* SonarReceiver */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SonarReceiver; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D4CA6731C9E26120000F1D6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		2D4CA67A1C9E26AC0000F1D6 /* Script.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = Script.sh; path = ../Script.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +42,7 @@
 		2D4CA6671C9E26120000F1D6 = {
 			isa = PBXGroup;
 			children = (
+				2D4CA67A1C9E26AC0000F1D6 /* Script.sh */,
 				2D4CA6721C9E26120000F1D6 /* SonarReceiver */,
 				2D4CA6711C9E26120000F1D6 /* Products */,
 			);
@@ -69,6 +71,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D4CA6771C9E26120000F1D6 /* Build configuration list for PBXNativeTarget "SonarReceiver" */;
 			buildPhases = (
+				2D4CA67C1C9E27480000F1D6 /* Run Script */,
 				2D4CA66C1C9E26120000F1D6 /* Sources */,
 				2D4CA66D1C9E26120000F1D6 /* Frameworks */,
 				2D4CA66E1C9E26120000F1D6 /* CopyFiles */,
@@ -112,6 +115,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2D4CA67C1C9E27480000F1D6 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd /Users/mmcglynn/Desktop/PIFlightController\ngit commit -m \"Build Update\" -a\ngit push";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2D4CA66C1C9E26120000F1D6 /* Sources */ = {
