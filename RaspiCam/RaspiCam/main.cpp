@@ -35,9 +35,9 @@ int main ( int argc,char **argv ) {
     sleep(3);
     cout<<"Capturing "<<nCount<<" frames ...."<<endl;
     time ( &timer_begin );
-    size_t imageLength =  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_GRAY );
+    size_t imageLength =  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_IGNORE );
     printf("ImageSize is %zu",imageLength);
-    unsigned char *data=new unsigned char[  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_GRAY )];
+    unsigned char *data=new unsigned char[  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_IGNORE )];
     for ( int i=0; i<nCount; i++ ) {
         Camera.grab();
         Camera.retrieve ( data,    raspicam::RASPICAM_FORMAT_IGNORE );
