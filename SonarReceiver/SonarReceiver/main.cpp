@@ -10,8 +10,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <wiringPi.h>
-#include "Sonar.h"
+#include "wiringPi.h"
 #include "MovingAverage.h"
 #include <math.h>
 #include <iostream>
