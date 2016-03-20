@@ -9,7 +9,7 @@
 #include <ctime>
 #include <fstream>
 #include <iostream>
-#include <src/raspicam.h>
+#include <raspicam.h>
 #include <unistd.h>
 using namespace std;
 
