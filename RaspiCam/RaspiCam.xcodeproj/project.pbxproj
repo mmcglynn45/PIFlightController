@@ -8,14 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		2D4CA6911C9F40160000F1D6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D4CA6901C9F40160000F1D6 /* main.cpp */; };
-		2D4CA6991C9F41520000F1D6 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 2D4CA6981C9F41520000F1D6 /* Makefile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2D4CA68D1C9F40160000F1D6 /* RaspiCam */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RaspiCam; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D4CA6901C9F40160000F1D6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		2D4CA6981C9F41520000F1D6 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; name = Makefile; path = ../Makefile; sourceTree = "<group>"; };
 		2D4CA69D1C9F47D50000F1D6 /* raspicam.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = raspicam.h; path = "../../../../Downloads/raspicam-0.1.3/src/raspicam.h"; sourceTree = "<group>"; };
+		2D4CA69E1C9F48E40000F1D6 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -38,7 +37,7 @@
 		2D4CA68F1C9F40160000F1D6 /* RaspiCam */ = {
 			isa = PBXGroup;
 			children = (
-				2D4CA6981C9F41520000F1D6 /* Makefile */,
+				2D4CA69E1C9F48E40000F1D6 /* Makefile */,
 				2D4CA69D1C9F47D50000F1D6 /* raspicam.h */,
 				2D4CA6901C9F40160000F1D6 /* main.cpp */,
 			);
@@ -116,7 +115,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D4CA6991C9F41520000F1D6 /* Makefile in Sources */,
 				2D4CA6911C9F40160000F1D6 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
