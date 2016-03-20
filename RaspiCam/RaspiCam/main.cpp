@@ -6,7 +6,7 @@
 //  Copyright (c) 2016 Matthew McGlynn. All rights reserved.
 //
 
-include <ctime>
+#include <ctime>
 #include <iostream>
 #include "raspicam_cv.h"
 #include <raspicam/raspicam_cv.h>
