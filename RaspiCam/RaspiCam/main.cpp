@@ -35,7 +35,7 @@ int main ( int argc,char **argv ) {
     int nCount=100;
     raspicam::RaspiCam Camera; //Cmaera object
     Camera.setCaptureSize(100, 100);
-    Camera.setFormat(raspicam::RASPICAM_FORMAT_GRAY)
+    Camera.setFormat(raspicam::RASPICAM_FORMAT_GRAY);
     //Open camera
     cout<<"Opening Camera..."<<endl;
     if ( !Camera.open()) {cerr<<"Error opening camera"<<endl;return -1;}
