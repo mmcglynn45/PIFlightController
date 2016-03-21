@@ -34,7 +34,7 @@ int main ( int argc,char **argv ) {
     time_t timer_begin,timer_end;
     int nCount=1;
     raspicam::RaspiCam Camera; //Cmaera object
-    Camera.setCaptureSize(500, 500);
+    Camera.setCaptureSize(640, 480);
     Camera.setFormat(raspicam::RASPICAM_FORMAT_RGB);
     //Open camera
     cout<<"Opening Camera..."<<endl;
