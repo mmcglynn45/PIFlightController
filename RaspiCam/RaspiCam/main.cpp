@@ -34,7 +34,7 @@ int main ( int argc,char **argv ) {
     time_t timer_begin,timer_end;
     int nCount=1;
     raspicam::RaspiCam Camera; //Cmaera object
-    Camera.setCaptureSize(100, 100);
+    Camera.setCaptureSize(50, 50);
     Camera.setFormat(raspicam::RASPICAM_FORMAT_GRAY);
     //Open camera
     cout<<"Opening Camera..."<<endl;
@@ -78,7 +78,7 @@ int main ( int argc,char **argv ) {
     //outFile.write ( ( char* ) data, Camera.getImageTypeSize ( raspicam::RASPICAM_FORMAT_RGB) );
     FILE * pFile;
     pFile = fopen ("newImage.ppm","w");
-    fprintf(pFile, "P6\n");
+    fprintf(pFile, "P2\n");
     fprintf(pFile, "%i %i 255\n",Camera.getWidth(),Camera.getHeight());
     for (int i = 0; i<Camera.getHeight(); i++) {
         for (int j =0 ; j<Camera.getWidth(); j++) {
