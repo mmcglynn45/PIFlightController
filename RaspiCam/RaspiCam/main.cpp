@@ -52,16 +52,16 @@ int main ( int argc,char **argv ) {
     unsigned char *data=new unsigned char[  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_RGB )];
     for ( int i=0; i<nCount; i++ ) {
         Camera.grab();
-        Camera.retrieve (data);
+        Camera.retrieve (data,raspicam::RASPICAM_FORMAT_RGB);
         //if ( i%5==0 )  cout<<"\r captured "<<i<<" images"<<std::flush;
         //printf("Camera spot R at 50,50: %i",data[1]);
         double centerVert;
-        double centerHorizontal;
-        for (int k=0; k<0; k++){
-            for (int j=0; j<imageLength; j++){
-                centerVert+=data[j];
-            }
-        }
+       // double centerHorizontal;
+        //for (int k=0; k<0; k++){
+          //  for (int j=0; j<imageLength; j++){
+         //       centerVert+=data[j];
+          //  }
+       // }
  
         
 
