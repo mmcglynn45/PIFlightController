@@ -84,7 +84,7 @@ int main ( int argc,char **argv ) {
         for (int j =0 ; j<Camera.getWidth(); j++) {
             fprintf(pFile, "%i ", data[i*Camera.getWidth()+j]);
         }
-        printf("\n");
+        fprintf("\n");
     }
     fclose (pFile);
     cout<<"Image saved at raspicam_image.ppm"<<endl;
