@@ -53,6 +53,7 @@ int main ( int argc,char **argv ) {
     for ( int i=0; i<nCount; i++ ) {
         Camera.grab();
         Camera.setHorizontalFlip(1);
+        Camera.setRotation(90);
         Camera.retrieve (data);
         //if ( i%5==0 )  cout<<"\r captured "<<i<<" images"<<std::flush;
         //printf("Camera spot R at 50,50: %i",data[1]);
