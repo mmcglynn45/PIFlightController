@@ -62,7 +62,7 @@ int main ( int argc,char **argv ) {
        // double centerHorizontal;
         for (int i = 0; i<Camera.getHeight(); i++) {
             for (int j = 0; j<Camera.getWidth()*3;j+=3 ) {
-                if ((data[i*Camera.getHeight()+j]) < 150){
+                if ((data[i*Camera.getHeight()+j]) > 150){
                     data[i*Camera.getHeight()+j] = 255;
                     data[i*Camera.getHeight()+j+1] = 0;
                     data[i*Camera.getHeight()+j+2] = 0;
