@@ -34,8 +34,8 @@ int main ( int argc,char **argv ) {
     time_t timer_begin,timer_end;
     int nCount=1;
     raspicam::RaspiCam Camera; //Cmaera object
-    Camera.setCaptureSize(500, 500);
-    Camera.setFormat(raspicam::RASPICAM_FORMAT_RGB);
+    Camera.setCaptureSize(100, 100);
+    Camera.setFormat(raspicam::RASPICAM_FORMAT_GRAY);
     //Open camera
     cout<<"Opening Camera..."<<endl;
     if ( !Camera.open()) {cerr<<"Error opening camera"<<endl;return -1;}
@@ -45,11 +45,11 @@ int main ( int argc,char **argv ) {
     sleep(3);
     cout<<"Capturing "<<nCount<<" frames ...."<<endl;
     time ( &timer_begin );
-    size_t imageLength =  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_RGB );
+    size_t imageLength =  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_GRAY );
     printf("ImageSize is %zu\n",imageLength);
     auto t1 = std::chrono::high_resolution_clock::now();
 
-    unsigned char *data=new unsigned char[  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_RGB )];
+    unsigned char *data=new unsigned char[  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_GRAY )];
     for ( int i=0; i<nCount; i++ ) {
         Camera.grab();
         Camera.retrieve (data,raspicam::RASPICAM_FORMAT_RGB);
@@ -80,6 +80,12 @@ int main ( int argc,char **argv ) {
     pFile = fopen ("newImage.ppm","w");
     fprintf(pFile, "P6\n");
     fprintf(pFile, "%i %i 255\n",Camera.getWidth(),Camera.getHeight());
+    for (int i = 0; i<Camera.getHeight(); i++) {
+        for (int j =0 ; j<Camera.getWidth(); j++) {
+            fprintf(pFile, "%i ", data[i*Camera.getWidth()+j]);
+        }
+        printf("\n");
+    }
     fclose (pFile);
     cout<<"Image saved at raspicam_image.ppm"<<endl;
     //free resrources
