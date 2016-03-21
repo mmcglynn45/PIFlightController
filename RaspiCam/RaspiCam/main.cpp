@@ -34,7 +34,7 @@ int main ( int argc,char **argv ) {
     time_t timer_begin,timer_end;
     int nCount=1;
     raspicam::RaspiCam Camera; //Cmaera object
-    Camera.setCaptureSize(2592, 1944);
+    Camera.setCaptureSize(640, 480);
     Camera.setFormat(raspicam::RASPICAM_FORMAT_RGB);
     //Open camera
     cout<<"Opening Camera..."<<endl;
@@ -58,12 +58,8 @@ int main ( int argc,char **argv ) {
         //if ( i%5==0 )  cout<<"\r captured "<<i<<" images"<<std::flush;
         //printf("Camera spot R at 50,50: %i",data[1]);
         double centerVert;
+    
        // double centerHorizontal;
-        //for (int k=0; k<0; k++){
-          //  for (int j=0; j<imageLength; j++){
-         //       centerVert+=data[j];
-          //  }
-       // }
  
         
 
