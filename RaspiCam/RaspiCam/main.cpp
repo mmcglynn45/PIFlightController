@@ -79,6 +79,7 @@ int main ( int argc,char **argv ) {
     FILE * pFile;
     pFile = fopen ("newImage.ppm","w");
     fprintf(pFile, "P6\n");
+    fprintf(pFile, "%i %i 255\n",Camera.getWidth(),Camera.getHeight());
     fclose (pFile);
     cout<<"Image saved at raspicam_image.ppm"<<endl;
     //free resrources
