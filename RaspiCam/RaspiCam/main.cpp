@@ -78,9 +78,11 @@ int main ( int argc,char **argv ) {
         */
         
         for (int i = 0; i<(Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_RGB )); i+=3) {
-            data[i] = 0;
-            data[i+1] = 255;
-            data[i+2] = 0;
+            if ((data[i]<100)&& (data[i+1]<100) && (data[i+2]>170)) {
+                data[i] = 0;
+                data[i+1] = 0;
+                data[i+2] = 255;
+            }
         }
         
         printf("Count: %f",count);
