@@ -83,9 +83,9 @@ int main ( int argc,char **argv ) {
                 data[i+1] = 0;
                 data[i+2] = 255;
             }else{
-                data[i] = 0;
-                data[i+1] = 0;
-                data[i+2] = 0;
+                data[i] = data[i]/4;
+                data[i+1] = data[i+1]/4;
+                data[i+2] = data[i+2]/4;
             }
         }
         
