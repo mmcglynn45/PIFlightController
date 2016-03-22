@@ -64,12 +64,12 @@ int main ( int argc,char **argv ) {
             for (int j = 0; j<Camera.getWidth()*3;j+=3 ) {
                 if ((data[i*Camera.getWidth()+j+2]) > 150 && ((data[i*Camera.getWidth()+j+1]) < 100) && ((data[i*Camera.getWidth()+j]) < 100)) {
                     data[i*Camera.getWidth()+j+2] = 255;
-                    data[i*Camera.getWidth()+j+1] = 255;
-                    data[i*Camera.getWidth()+j] = 255;
+                    data[i*Camera.getWidth()+j+1] = 0;
+                    data[i*Camera.getWidth()+j] = 0;
                 } else{
-                    //data[i*Camera.getWidth()+j+2] = 0;
-                    //data[i*Camera.getWidth()+j+1] = 255;
-                    //data[i*Camera.getWidth()+j] = 0;
+                    data[i*Camera.getWidth()+j+2] = 0;
+                    data[i*Camera.getWidth()+j+1] = 0;
+                    data[i*Camera.getWidth()+j] = 0;
                 }
             }
         }
