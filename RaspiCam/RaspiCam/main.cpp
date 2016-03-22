@@ -75,7 +75,7 @@ int main ( int argc,char **argv ) {
             }
         }
         
-        printf("Count: %i",count);
+        printf("Count: %f",count);
     }
     auto t2 = std::chrono::high_resolution_clock::now();
     double secondsElapsed = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count()/1000.0;
