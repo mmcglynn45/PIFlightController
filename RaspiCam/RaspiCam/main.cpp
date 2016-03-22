@@ -60,6 +60,7 @@ int main ( int argc,char **argv ) {
         double count;
     
        // double centerHorizontal;
+        /*
         for (int i = 0; i<Camera.getWidth(); i++) {
             for (int j = 0; j<Camera.getHeight()*3;j+=3 ) {
                 if ((data[i*Camera.getHeight()+j+2]) > 150 && ((data[i*Camera.getHeight()+j+1]) < 100) && ((data[i*Camera.getHeight()+j]) < 100)) {
@@ -73,6 +74,13 @@ int main ( int argc,char **argv ) {
                 }
                 count++;
             }
+        }
+        */
+        
+        for (int i = 0; i<(Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_RGB )); i+=3) {
+            data[i] = 0;
+            data[i+1] = 255;
+            data[i+2] = 0;
         }
         
         printf("Count: %f",count);
