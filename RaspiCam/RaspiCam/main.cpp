@@ -78,7 +78,7 @@ int main ( int argc,char **argv ) {
         */
         
         for (int i = 0; i<(Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_RGB )); i+=3) {
-            if (data[i+2]>100) {
+            if (data[i+2]>110) {
                 data[i] = 0;
                 data[i+1] = 0;
                 data[i+2] = 255;
