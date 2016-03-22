@@ -57,7 +57,7 @@ int main ( int argc,char **argv ) {
         Camera.retrieve (data);
         //if ( i%5==0 )  cout<<"\r captured "<<i<<" images"<<std::flush;
         //printf("Camera spot R at 50,50: %i",data[1]);
-        double centerVert;
+        double count;
     
        // double centerHorizontal;
         for (int i = 0; i<Camera.getHeight(); i++) {
@@ -71,10 +71,11 @@ int main ( int argc,char **argv ) {
                     data[i*Camera.getWidth()+j+1] = 0;
                     data[i*Camera.getWidth()+j] = 0;
                 }
+                count++;
             }
         }
         
-
+        printf("Count: %i",count);
     }
     auto t2 = std::chrono::high_resolution_clock::now();
     double secondsElapsed = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count()/1000.0;
