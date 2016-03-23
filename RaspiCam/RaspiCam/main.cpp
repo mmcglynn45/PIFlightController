@@ -83,10 +83,17 @@ int main ( int argc,char **argv ) {
                 data[i+1] = 0;
                 data[i+2] = 255;
             }else{
-                data[i] = data[i]/4;
-                data[i+1] = data[i+1]/4;
-                data[i+2] = data[i+2]/4;
+                data[i] = data[i]/6;
+                data[i+1] = data[i+1]/6;
+                data[i+2] = data[i+2]/6;
             }
+        }
+        
+        
+        for (int i = 0; i<Camera.getWidth()*3; i+=3) {
+            data[i] = 0;
+            data[i+1] = 0;
+            data[i+2] = 0;
         }
         
         printf("Count: %f",count);
