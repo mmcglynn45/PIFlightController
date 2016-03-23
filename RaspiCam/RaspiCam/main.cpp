@@ -92,6 +92,8 @@ int main ( int argc,char **argv ) {
         for (int height = 0; height<Camera.getHeight(); height++) {
             for (int i = 0; i<Camera.getWidth()*3; i+=3) {
                 int base = height*Camera.getWidth()*3 + i;
+                double x = i/3;
+                double y = height;
                 data[base] = 255;
                 data[base+1] = 255;
                 data[base+2] = 255;
