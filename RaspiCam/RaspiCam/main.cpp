@@ -89,12 +89,15 @@ int main ( int argc,char **argv ) {
             }
         }
         
-        
-        for (int i = 0; i<Camera.getWidth()*3; i+=3) {
-            data[i] = 0;
-            data[i+1] = 0;
-            data[i+2] = 0;
+        for (int height = 0; height<Camera.getHeight(); height++) {
+            for (int i = 0; i<Camera.getWidth()*3; i+=3) {
+                int base = height*Camera.getWidth()*3;
+                data[base] = 0;
+                data[base+1] = 0;
+                data[base+2] = 0;
+            }
         }
+
         
         printf("Count: %f",count);
     }
