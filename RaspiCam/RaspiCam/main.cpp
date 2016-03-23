@@ -83,23 +83,41 @@ int main ( int argc,char **argv ) {
                 data[i+1] = 0;
                 data[i+2] = 255;
             }else{
-                data[i] = data[i]/6;
-                data[i+1] = data[i+1]/6;
-                data[i+2] = data[i+2]/6;
+                data[i] = 0;
+                data[i+1] = 0;
+                data[i+2] = 0;
             }
         }
-        
+        double COGx = 0;
+        double COGy = 0;
+        double sumX = 0;
+        double sumY = 0;
+        double totalX = 0;
+        double totalY = 0;
         for (int height = 0; height<Camera.getHeight(); height++) {
             for (int i = 0; i<Camera.getWidth()*3; i+=3) {
-                int base = height*Camera.getWidth()*3 + i;
+                int red = height*Camera.getWidth()*3 + i;
+                int green= height*Camera.getWidth()*3 + i+1;
+                int blue = height*Camera.getWidth()*3 + i+2;
                 double x = i/3;
                 double y = height;
-                data[base] = 255;
-                data[base+1] = 255;
-                data[base+2] = 255;
+                sumX = sumX + x*data[blue];
+                totalX = totalX + data[blue];
+                sumY = sumY + y*data[blue];
+                totalY = totalY + data[blue];
             }
         }
-
+        COGx = sumX/totalX;
+        COGy = sumY/totalY;
+        
+        printf("COGX = %f, COGY = %f\n", COGx, COGy);
+        
+        int base = (COGy*Camera.getWidth()*3) + COGx*3;
+        data[base] = 255;
+        data[base-3] = 255;
+        data[base+3] = 255;
+        data[base-(Camera.getWidth()*3)] = 255;
+        data[base+(Camera.getWidth()*3)] = 255;
         
         printf("Count: %f",count);
     }
