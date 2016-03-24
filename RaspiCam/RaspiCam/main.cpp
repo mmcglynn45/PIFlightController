@@ -92,8 +92,8 @@ int main ( int argc,char **argv ) {
         double COGy = 0;
         double sumX = 0;
         double sumY = 0;
-        double totalX = 0;
-        double totalY = 0;
+        double totalX = 0.000001;
+        double totalY = 0.000001;
         for (int height = 0; height<Camera.getHeight(); height++) {
             for (int i = 0; i<Camera.getWidth()*3; i+=3) {
                 int red = height*Camera.getWidth()*3 + i;
