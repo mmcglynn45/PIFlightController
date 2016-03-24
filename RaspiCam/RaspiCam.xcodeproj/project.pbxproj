@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D4758881CA3C581007D7C22 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D4758861CA3C581007D7C22 /* image.cpp */; };
 		2D4CA6911C9F40160000F1D6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D4CA6901C9F40160000F1D6 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D4758861CA3C581007D7C22 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = image.cpp; sourceTree = "<group>"; };
+		2D4758871CA3C581007D7C22 /* image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = image.h; sourceTree = "<group>"; };
 		2D4CA68D1C9F40160000F1D6 /* RaspiCam */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RaspiCam; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D4CA6901C9F40160000F1D6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2D4CA69E1C9F48E40000F1D6 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
@@ -41,6 +44,8 @@
 				2D4CA6A11C9F49F20000F1D6 /* raspicam */,
 				2D4CA69E1C9F48E40000F1D6 /* Makefile */,
 				2D4CA6901C9F40160000F1D6 /* main.cpp */,
+				2D4758861CA3C581007D7C22 /* image.cpp */,
+				2D4758871CA3C581007D7C22 /* image.h */,
 				2D4CA69F1C9F499A0000F1D6 /* src */,
 			);
 			path = RaspiCam;
@@ -126,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D4CA6911C9F40160000F1D6 /* main.cpp in Sources */,
+				2D4758881CA3C581007D7C22 /* image.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +258,7 @@
 				2D4CA6961C9F40160000F1D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
