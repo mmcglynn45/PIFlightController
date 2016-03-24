@@ -107,6 +107,11 @@ int main ( int argc,char **argv ) {
                 totalY = totalY + data[blue];
             }
         }
+        if (totalX == 0 || totalY == 0) {
+            printf("COG not found\n");
+            continue;
+        }
+        
         COGx = sumX/totalX;
         COGy = sumY/totalY;
         
