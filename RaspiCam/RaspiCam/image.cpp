@@ -17,13 +17,13 @@ void Image::setDimensions(int h, int w){
 
 Point Image::getPoint(int x, int y){
     Point p;
-    //if ((x < width || x > 0) && (y < height || y > 0)){
+    if ((x < width || x > 0) && (y < height || y > 0)){
         p.x = x;
         p.y = y;
         p.red = data[y * width * 3 + x * 3];
         p.green = data[y * width * 3 + x * 3 + 1];
         p.blue = data[y * width * 3 + x * 3 + 2];
-    //}
+    }
     return p;
 }
 
@@ -31,7 +31,7 @@ int Image::threshold(int redLower, int redUpper, int blueLower, int blueUpper,in
     int count =0;
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
-            Point p = getPoint(i, j);
+            Point p = getPoint(j, i);
             if ((p.red < redLower)||(p.red > redUpper)||(p.green < greenLower)||(p.green > greenUpper)||(p.blue > blueUpper)||(p.blue < blueLower)) {
                 p.red = 0;
                 p.blue = 0;
