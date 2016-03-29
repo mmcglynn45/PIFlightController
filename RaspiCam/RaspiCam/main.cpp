@@ -49,8 +49,9 @@ int main ( int argc,char **argv ) {
     printf("ImageSize is %zu\n",imageLength);
     auto t1 = std::chrono::high_resolution_clock::now();
 
-    unsigned char *data=new unsigned char[  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_RGB )];
+
     for ( int i=0; i<nCount; i++ ) {
+        unsigned char *data=new unsigned char[  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_RGB )];
         Camera.grab();
         Camera.setHorizontalFlip(1);
         Camera.setRotation(90);
