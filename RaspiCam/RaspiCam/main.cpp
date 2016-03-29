@@ -61,6 +61,8 @@ int main ( int argc,char **argv ) {
         newImage.setDimensions(Camera.getHeight(), Camera.getWidth());
         newImage.setData(data);
         newImage.threshold(0, 100, 130, 255, 0, 255);
+        newImage.calcCenterOfGravity();
+        printf("COGX = %f, COGY = %f\n", newImage.cogX, newImage.cogY);
         newImage.saveImageToFile("testImageClass.ppm");
         
         
