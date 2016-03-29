@@ -53,7 +53,7 @@ void Image::setData(unsigned char *newData){
 }
 
 void Image::saveImageToFile(char *filename){
-    std::ofstream outFile ( "raspicam_image.ppm",std::ios::binary);
+    std::ofstream outFile ( filename,std::ios::binary);
     outFile<<"P6\n"<<width <<" "<<height <<" 255\n";
     outFile.write ( ( char* ) data, width*height*3);
     FILE * pFile;
