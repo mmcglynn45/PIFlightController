@@ -32,7 +32,7 @@ using namespace std;
 
 int main ( int argc,char **argv ) {
     time_t timer_begin,timer_end;
-    int nCount=100;
+    int nCount=1;
     raspicam::RaspiCam Camera; //Cmaera object
     Camera.setCaptureSize(1280, 960);
     Camera.setFormat(raspicam::RASPICAM_FORMAT_RGB);
