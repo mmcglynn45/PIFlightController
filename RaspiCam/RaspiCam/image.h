@@ -24,14 +24,15 @@ public:
 class Image {
     int height = 0;
     int width = 0;
-    char * data;
+    unsigned char * data;
     
     
 public:
     void setDimensions(int h, int w);
-    void setData(char * newData);
+    void setData(unsigned char * newData);
     int threshold(int redLower, int redUpper, int blueLower, int blueUpper,int greenLower, int greenUpper); //returns count of remaining pixels
     Point getPoint(int x, int y);
+    void saveImageToFile(char * filename);
     
     
 };

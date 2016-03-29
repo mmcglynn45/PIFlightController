@@ -17,7 +17,7 @@
 #elif __APPLE__
 #include "raspicam.h"
 #endif
-
+#include "image.h"
 
 std::ofstream error("error.txt");
 std::streambuf *errbuf = std::cerr.rdbuf(error.rdbuf());
@@ -55,6 +55,14 @@ int main ( int argc,char **argv ) {
         Camera.setHorizontalFlip(1);
         Camera.setRotation(90);
         Camera.retrieve (data);
+        
+        
+        Image newImage;
+        newImage.setDimensions(Camera.getHeight(), Camera.getWidth());
+        newImage.setData(data);
+        newImage.saveImageToFile("testImageClass.ppm");
+        
+        
         //if ( i%5==0 )  cout<<"\r captured "<<i<<" images"<<std::flush;
         //printf("Camera spot R at 50,50: %i",data[1]);
         double count;
@@ -76,7 +84,7 @@ int main ( int argc,char **argv ) {
             }
         }
         */
-        
+        /*
         for (int i = 0; i<(Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_RGB )); i+=3) {
             if (data[i+2]>130&&data[i]<100) {
                 data[i] = 0;
@@ -125,6 +133,8 @@ int main ( int argc,char **argv ) {
         data[base+(Camera.getWidth()*3)] = 255;
         
         printf("Count: %f",count);
+        */ 
+         
     }
     auto t2 = std::chrono::high_resolution_clock::now();
     double secondsElapsed = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count()/1000.0;
@@ -133,21 +143,7 @@ int main ( int argc,char **argv ) {
     Camera.release();
     //allocate memory
     //save
-    std::ofstream outFile ( "raspicam_image.ppm",std::ios::binary);
-    outFile<<"P6\n"<<Camera.getWidth() <<" "<<Camera.getHeight() <<" 255\n";
-    outFile.write ( ( char* ) data, Camera.getImageTypeSize ( raspicam::RASPICAM_FORMAT_RGB) );
-    FILE * pFile;
-    pFile = fopen ("newImage.ppm","w");
-    fprintf(pFile, "P4\n");
-    fprintf(pFile, "%i %i 255\n",Camera.getWidth(),Camera.getHeight());
-    for (int i = 0; i<Camera.getHeight(); i++) {
-        for (int j =0 ; j<Camera.getWidth()*3; j++) {
-            fprintf(pFile, "%i ", data[i*Camera.getWidth()+j]);
-        }
-        fprintf(pFile,"\n");
-    }
-    fclose (pFile);
-    cout<<"Image saved at raspicam_image.ppm"<<endl;
+
     //free resrources
     delete data;
     return 0;

@@ -7,6 +7,8 @@
 //
 
 #include "image.h"
+#include <fstream>
+#include <iostream>
 
 void Image::setDimensions(int h, int w){
     height = h;
@@ -44,4 +46,26 @@ int Image::threshold(int redLower, int redUpper, int blueLower, int blueUpper,in
         }
     }
     return count;
+}
+
+void Image::setData(unsigned char *newData){
+    data = newData;
+}
+
+void Image::saveImageToFile(char *filename){
+    std::ofstream outFile ( "raspicam_image.ppm",std::ios::binary);
+    outFile<<"P6\n"<<width <<" "<<height <<" 255\n";
+    outFile.write ( ( char* ) data, width*height*3);
+    FILE * pFile;
+    pFile = fopen (filename,"w");
+    fprintf(pFile, "P4\n");
+    fprintf(pFile, "%i %i 255\n",width,height);
+    for (int i = 0; i<height; i++) {
+        for (int j =0 ; j<width*3; j++) {
+            fprintf(pFile, "%i ", data[i*width+j]);
+        }
+        fprintf(pFile,"\n");
+    }
+    fclose (pFile);
+    std::cout<<"Image saved at "<<filename<<std::endl;
 }
