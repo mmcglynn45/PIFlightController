@@ -60,7 +60,7 @@ int main ( int argc,char **argv ) {
         Image newImage;
         newImage.setDimensions(Camera.getHeight(), Camera.getWidth());
         newImage.setData(data);
-        newImage.saveImageToFile("testImageClass.ppm");
+        //newImage.saveImageToFile("testImageClass.ppm");
         
         
         //if ( i%5==0 )  cout<<"\r captured "<<i<<" images"<<std::flush;
