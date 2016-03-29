@@ -20,9 +20,9 @@ Point Image::getPoint(int x, int y){
     if ((x < width || x > 0) && (y < height || y > 0)){
         p.x = x;
         p.y = y;
-        p.red = y * width * 3 + x * 3;
-        p.green = y * width * 3 + x * 3 + 1;
-        p.blue = y * width * 3 + x * 3 + 2;
+        p.red = data[y * width * 3 + x * 3];
+        p.green = data[y * width * 3 + x * 3 + 1];
+        p.blue = data[y * width * 3 + x * 3 + 2];
     }
     return p;
 }
@@ -43,9 +43,25 @@ int Image::threshold(int redLower, int redUpper, int blueLower, int blueUpper,in
                 p.red = 255;
                 count++;
             }
-        }
+            savePoint(p);
+            }
     }
     return count;
+}
+
+void Image::markTarget(int x, int y){
+    for (int i = x - 5; i< x + 6; i++) {
+        Point p = getPoint(i, y);
+        p.red = 255;
+        p.green = 0;
+        p.blue = 0;
+    }
+}
+
+void Image::savePoint(Point p){
+    data[p.y * width * 3 + p.x * 3] = p.red;
+    data[p.y * width * 3 + p.x * 3 + 1] = p.green;
+    data[p.y * width * 3 + p.x * 3 + 2] = p.blue;
 }
 
 void Image::setData(unsigned char *newData){

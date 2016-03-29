@@ -33,6 +33,8 @@ public:
     int threshold(int redLower, int redUpper, int blueLower, int blueUpper,int greenLower, int greenUpper); //returns count of remaining pixels
     Point getPoint(int x, int y);
     void saveImageToFile(char * filename);
+    void markTarget(int x, int y);
+    void savePoint(Point p);
     
     
 };
