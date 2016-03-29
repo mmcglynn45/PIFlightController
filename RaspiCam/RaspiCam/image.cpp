@@ -55,6 +55,14 @@ void Image::markTarget(int x, int y){
         p.red = 255;
         p.green = 0;
         p.blue = 0;
+        savePoint(p);
+    }
+    for (int i = y - 5; i< y + 6; i++) {
+        Point p = getPoint(x, i);
+        p.red = 255;
+        p.green = 0;
+        p.blue = 0;
+        savePoint(p);
     }
 }
 
