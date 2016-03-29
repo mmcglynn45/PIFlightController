@@ -17,13 +17,13 @@ void Image::setDimensions(int h, int w){
 
 Point Image::getPoint(int x, int y){
     Point p;
-    if ((x < width || x > 0) && (y < height || y > 0)){
+    //if ((x < width || x > 0) && (y < height || y > 0)){
         p.x = x;
         p.y = y;
         p.red = data[y * width * 3 + x * 3];
         p.green = data[y * width * 3 + x * 3 + 1];
         p.blue = data[y * width * 3 + x * 3 + 2];
-    }
+    //}
     return p;
 }
 
