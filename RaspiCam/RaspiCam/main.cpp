@@ -32,7 +32,7 @@ using namespace std;
 
 int main ( int argc,char **argv ) {
     time_t timer_begin,timer_end;
-    int nCount=1;
+    int nCount=20;
     raspicam::RaspiCam Camera; //Cmaera object
     Camera.setCaptureSize(1280, 960);
     Camera.setFormat(raspicam::RASPICAM_FORMAT_RGB);
@@ -64,7 +64,7 @@ int main ( int argc,char **argv ) {
         newImage.calcCenterOfGravity();
         newImage.markTarget(newImage.cogX, newImage.cogY);
         printf("COGX = %f, COGY = %f\n", newImage.cogX, newImage.cogY);
-        newImage.saveImageToFile("testImageClass.ppm");
+        //newImage.saveImageToFile("testImageClass.ppm");
         
         
         //if ( i%5==0 )  cout<<"\r captured "<<i<<" images"<<std::flush;
