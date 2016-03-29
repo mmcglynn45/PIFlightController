@@ -66,7 +66,7 @@ int main ( int argc,char **argv ) {
         newImage.markTarget(newImage.cogX, newImage.cogY);
         printf("COGX = %f, COGY = %f\n", newImage.cogX, newImage.cogY);
         newImage.saveImageToFile("testImageClass.ppm");
-        
+        delete data;
         
         //if ( i%5==0 )  cout<<"\r captured "<<i<<" images"<<std::flush;
         //printf("Camera spot R at 50,50: %i",data[1]);
@@ -139,7 +139,7 @@ int main ( int argc,char **argv ) {
         
         printf("Count: %f",count);
         */ 
-         
+        
     }
     auto t2 = std::chrono::high_resolution_clock::now();
     double secondsElapsed = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count()/1000.0;
@@ -150,6 +150,6 @@ int main ( int argc,char **argv ) {
     //save
 
     //free resrources
-    delete data;
+
     return 0;
 }
