@@ -65,6 +65,24 @@ void Image::markTarget(int x, int y){
         savePoint(p);
     }
 }
+void Image::calcCenterOfGravity(){
+    double sumX = 0;
+    double sumY = 0;
+    double totalX = 0;
+    double totalY = 0;
+    for (int x = 0; x<width; x++) {
+        for (int y = 0; y<height; y++) {
+            Point p = getPoint(x, y);
+            int intensity = p.blue + p.green + p.red;
+            sumX = sumX + intensity * x;
+            totalX = totalX + intensity;
+            sumY = sumY + intensity * y;
+            totalY = totalY + intensity;
+        }
+    }
+    cogY = sumY/totalY;
+    cogX = sumX/totalX;
+}
 
 void Image::savePoint(Point p){
     data[p.y * width * 3 + p.x * 3] = p.red;

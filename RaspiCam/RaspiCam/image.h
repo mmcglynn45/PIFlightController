@@ -24,6 +24,8 @@ public:
 class Image {
     int height = 0;
     int width = 0;
+    double cogX = 0;
+    double cogY = 0;
     unsigned char * data;
     
     
@@ -35,6 +37,7 @@ public:
     void saveImageToFile(char * filename);
     void markTarget(int x, int y);
     void savePoint(Point p);
+    void calcCenterOfGravity();
     
     
 };
