@@ -34,7 +34,7 @@ int main ( int argc,char **argv ) {
     time_t timer_begin,timer_end;
     int nCount=20;
     raspicam::RaspiCam Camera; //Cmaera object
-    Camera.setCaptureSize(640, 480);
+    Camera.setCaptureSize(1280, 960);
     Camera.setFormat(raspicam::RASPICAM_FORMAT_RGB);
     //Open camera
     cout<<"Opening Camera..."<<endl;
@@ -67,7 +67,7 @@ int main ( int argc,char **argv ) {
         newImage.fastThresholdCOG(0, 100, 130, 255, 0, 255);
         newImage.markTarget(newImage.cogX, newImage.cogY);
         printf("COGX = %f, COGY = %f\n", newImage.cogX, newImage.cogY);
-        newImage.saveImageToFile("testImageClass.ppm");
+        //newImage.saveImageToFile("testImageClass.ppm");
         delete data;
         
         //if ( i%5==0 )  cout<<"\r captured "<<i<<" images"<<std::flush;
