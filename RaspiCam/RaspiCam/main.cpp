@@ -50,6 +50,7 @@ int main ( int argc,char **argv ) {
     auto t1 = std::chrono::high_resolution_clock::now();
     Camera.setHorizontalFlip(1);
     Camera.setRotation(90);
+    Camera.grab();
     Image newImage;
     for ( int i=0; i<nCount; i++ ) {
         unsigned char *data=new unsigned char[  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_RGB )];
