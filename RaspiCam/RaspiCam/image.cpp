@@ -9,7 +9,7 @@
 #include "image.h"
 #include <fstream>
 #include <iostream>
-#include <algorithm>
+#include <math.h>
 
 void Image::setDimensions(int h, int w){
     height = h;
@@ -104,10 +104,18 @@ void Image::saveImageToFile(char *filename){
 
 void Image::fastThresholdCOG(int redLower, int redUpper, int blueLower, int blueUpper,int greenLower, int greenUpper){
     double boxSize = 200;
+    double xTop = fmax(cogX + boxSize,width);
+    double xBottom = fmax(cogX - boxSize,0);
+    double yTop = fmax(cogY + boxSize,height);
+    double yBottom = fmax(cogY - boxSize,0);
+    double sumX = 0;
+    double sumY = 0;
+    double totalX = 0;
+    double totalY = 0;
     int count =0;
-    for (int i = 0; i < height; i++) {
-        for (int j = 0; j < width; j++) {
-            Point p = getPoint(j, i);
+    for (int y = yBottom; y < yTop; y++) {
+        for (int x = xBottom; x < xTop; x++) {
+            Point p = getPoint(x, y);
             if ((p.red < redLower)||(p.red > redUpper)||(p.green < greenLower)||(p.green > greenUpper)||(p.blue > blueUpper)||(p.blue < blueLower)) {
                 p.red = 0;
                 p.blue = 0;
@@ -117,10 +125,23 @@ void Image::fastThresholdCOG(int redLower, int redUpper, int blueLower, int blue
                 p.green = 255;
                 p.blue  = 255;
                 p.red = 255;
+                int intensity = p.blue + p.green + p.red;
+                sumX = sumX + intensity * x;
+                totalX = totalX + intensity;
+                sumY = sumY + intensity * y;
+                totalY = totalY + intensity;
                 count++;
             }
             savePoint(p);
         }
     }
+    
+    if (count>20) {
+        cogY = sumY/totalY;
+        cogX = sumX/totalX;
+    }else{
+        printf("Failed to find in box\n");
+    }
+
 
 }

@@ -10,7 +10,7 @@
 #define __RaspiCam__image__
 
 #include <stdio.h>
-#include <algorithm>
+
 class Point {
     
 public:
