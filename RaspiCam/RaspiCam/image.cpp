@@ -108,6 +108,7 @@ void Image::fastThresholdCOG(int redLower, int redUpper, int blueLower, int blue
     double xBottom = fmax(cogX - boxSize,0);
     double yTop = fmin(cogY + boxSize,height);
     double yBottom = fmax(cogY - boxSize,0);
+    printf("xTOP : %f, xBottom: %f, yTop: %f, yBottom: %f",xTop,xBottom,yTop,yBottom);
     double sumX = 0;
     double sumY = 0;
     double totalX = 0;
