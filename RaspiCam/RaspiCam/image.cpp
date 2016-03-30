@@ -103,12 +103,12 @@ void Image::saveImageToFile(char *filename){
 }
 
 void Image::fastThresholdCOG(int redLower, int redUpper, int blueLower, int blueUpper,int greenLower, int greenUpper){
-    double boxSize = 100;
+    double boxSize = 50;
     double xTop = fmin(cogX + boxSize,width);
     double xBottom = fmax(cogX - boxSize,0);
     double yTop = fmin(cogY + boxSize,height);
     double yBottom = fmax(cogY - boxSize,0);
-    printf("xTOP : %f, xBottom: %f, yTop: %f, yBottom: %f\n",xTop,xBottom,yTop,yBottom);
+    //printf("xTOP : %f, xBottom: %f, yTop: %f, yBottom: %f\n",xTop,xBottom,yTop,yBottom);
     double sumX = 0;
     double sumY = 0;
     double totalX = 0;
