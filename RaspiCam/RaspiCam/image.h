@@ -38,7 +38,7 @@ public:
     void markTarget(int x, int y);
     void savePoint(Point p);
     void calcCenterOfGravity();
-    void fastThresholdCOG();
+    void Image::fastThresholdCOG(int redLower, int redUpper, int blueLower, int blueUpper,int greenLower, int greenUpper);
     
     
 };

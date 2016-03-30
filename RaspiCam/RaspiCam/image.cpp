@@ -9,6 +9,7 @@
 #include "image.h"
 #include <fstream>
 #include <iostream>
+#include <math>
 
 void Image::setDimensions(int h, int w){
     height = h;
@@ -99,4 +100,28 @@ void Image::saveImageToFile(char *filename){
     outFile<<"P6\n"<<width <<" "<<height <<" 255\n";
     outFile.write ( ( char* ) data, width*height*3);
     std::cout<<"Image saved at "<<filename<<std::endl;
+}
+
+void Image::fastThresholdCOG(int redLower, int redUpper, int blueLower, int blueUpper,int greenLower, int greenUpper){
+    boxSize = 200;
+    
+    int count =0;
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
+            Point p = getPoint(j, i);
+            if ((p.red < redLower)||(p.red > redUpper)||(p.green < greenLower)||(p.green > greenUpper)||(p.blue > blueUpper)||(p.blue < blueLower)) {
+                p.red = 0;
+                p.blue = 0;
+                p.green = 0;
+                
+            }else{
+                p.green = 255;
+                p.blue  = 255;
+                p.red = 255;
+                count++;
+            }
+            savePoint(p);
+        }
+    }
+
 }
