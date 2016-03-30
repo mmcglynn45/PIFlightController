@@ -141,6 +141,8 @@ void Image::fastThresholdCOG(int redLower, int redUpper, int blueLower, int blue
         cogX = sumX/totalX;
     }else{
         printf("Failed to find in box\n");
+        threshold(redLower, redUpper, blueLower, blueUpper, greenLower, greenUpper);
+        calcCenterOfGravity();
     }
 
 
