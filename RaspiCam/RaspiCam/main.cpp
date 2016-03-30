@@ -60,12 +60,12 @@ int main ( int argc,char **argv ) {
         
         
         Image newImage;
-        newImage.setDimensions(Camera.getHeight(), Camera.getWidth());
-        newImage.setData(data);
-        newImage.threshold(0, 100, 130, 255, 0, 255);
-        newImage.calcCenterOfGravity();
-        newImage.markTarget(newImage.cogX, newImage.cogY);
-        printf("COGX = %f, COGY = %f\n", newImage.cogX, newImage.cogY);
+        //newImage.setDimensions(Camera.getHeight(), Camera.getWidth());
+        //newImage.setData(data);
+        //newImage.threshold(0, 100, 130, 255, 0, 255);
+        //newImage.calcCenterOfGravity();
+        //newImage.markTarget(newImage.cogX, newImage.cogY);
+        //printf("COGX = %f, COGY = %f\n", newImage.cogX, newImage.cogY);
         //newImage.saveImageToFile("testImageClass.ppm");
         delete data;
         

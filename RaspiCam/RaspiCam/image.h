@@ -38,6 +38,7 @@ public:
     void markTarget(int x, int y);
     void savePoint(Point p);
     void calcCenterOfGravity();
+    void fastThresholdCOG();
     
     
 };
