@@ -10,7 +10,7 @@
 #define __RaspiCam__image__
 
 #include <stdio.h>
-
+#include <algorithm>
 class Point {
     
 public:
@@ -38,7 +38,7 @@ public:
     void markTarget(int x, int y);
     void savePoint(Point p);
     void calcCenterOfGravity();
-    void Image::fastThresholdCOG(int redLower, int redUpper, int blueLower, int blueUpper,int greenLower, int greenUpper);
+    void fastThresholdCOG(int redLower, int redUpper, int blueLower, int blueUpper,int greenLower, int greenUpper);
     
     
 };

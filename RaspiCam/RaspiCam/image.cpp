@@ -104,7 +104,6 @@ void Image::saveImageToFile(char *filename){
 
 void Image::fastThresholdCOG(int redLower, int redUpper, int blueLower, int blueUpper,int greenLower, int greenUpper){
     double boxSize = 200;
-
     int count =0;
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
