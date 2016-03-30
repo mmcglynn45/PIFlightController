@@ -9,7 +9,7 @@
 #include "image.h"
 #include <fstream>
 #include <iostream>
-#include <math>
+#include <algorithm>
 
 void Image::setDimensions(int h, int w){
     height = h;
@@ -103,8 +103,8 @@ void Image::saveImageToFile(char *filename){
 }
 
 void Image::fastThresholdCOG(int redLower, int redUpper, int blueLower, int blueUpper,int greenLower, int greenUpper){
-    boxSize = 200;
-    
+    double boxSize = 200;
+
     int count =0;
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
