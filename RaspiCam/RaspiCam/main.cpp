@@ -66,7 +66,7 @@ int main ( int argc,char **argv ) {
         //newImage.calcCenterOfGravity();
         newImage.fastThresholdCOG(0, 100, 130, 255, 0, 255);
         newImage.markTarget(newImage.cogX, newImage.cogY);
-        printf("COGX = %f, COGY = %f\n", newImage.cogX, newImage.cogY);
+        //printf("COGX = %f, COGY = %f\n", newImage.cogX, newImage.cogY);
         //newImage.saveImageToFile("testImageClass.ppm");
         delete data;
         
