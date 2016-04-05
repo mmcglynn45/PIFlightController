@@ -58,8 +58,6 @@ int main ( int argc,char **argv ) {
 
         Camera.grab();
         Camera.retrieve (data);
-        
-        
 
         newImage.setDimensions(Camera.getHeight(), Camera.getWidth());
         newImage.setData(data);

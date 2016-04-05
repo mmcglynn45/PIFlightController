@@ -51,6 +51,12 @@ int Image::threshold(int redLower, int redUpper, int blueLower, int blueUpper,in
 }
 
 void Image::markTarget(int x, int y){
+    if (x<5||x>height-7) {
+        return;
+    }
+    if (y<5||y>height-7) {
+        return;
+    }
     for (int i = x - 5; i< x + 6; i++) {
         Point p = getPoint(i, y);
         p.red = 255;
