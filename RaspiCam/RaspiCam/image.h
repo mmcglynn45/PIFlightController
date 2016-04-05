@@ -10,7 +10,13 @@
 #define __RaspiCam__image__
 
 #include <stdio.h>
-
+#if __linux__
+#include <raspicam/raspicam.h>
+#elif __unix__
+#include <raspicam/raspicam.h>
+#elif __APPLE__
+#include "raspicam.h"
+#endif
 class Point {
     
 public:
@@ -30,6 +36,7 @@ class Image {
 public:
     double cogX = 0;
     double cogY = 0;
+    raspicam::RaspiCam Camera; 
     void setDimensions(int h, int w);
     void setData(unsigned char * newData);
     int threshold(int redLower, int redUpper, int blueLower, int blueUpper,int greenLower, int greenUpper); //returns count of remaining pixels
@@ -39,7 +46,8 @@ public:
     void savePoint(Point p);
     void calcCenterOfGravity();
     void fastThresholdCOG(int redLower, int redUpper, int blueLower, int blueUpper,int greenLower, int greenUpper);
-    
+    int initialize();
+    void takePicture();
     
 };
 

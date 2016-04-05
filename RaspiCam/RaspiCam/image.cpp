@@ -6,10 +6,22 @@
 //  Copyright (c) 2016 Matthew McGlynn. All rights reserved.
 //
 
-#include "image.h"
 #include <fstream>
 #include <iostream>
 #include <math.h>
+#include <ctime>
+#include <chrono>
+#include <fstream>
+#include <iostream>
+#include <unistd.h>
+#if __linux__
+#include <raspicam/raspicam.h>
+#elif __unix__
+#include <raspicam/raspicam.h>
+#elif __APPLE__
+#include "raspicam.h"
+#endif
+#include "image.h"
 
 void Image::setDimensions(int h, int w){
     height = h;
@@ -153,4 +165,39 @@ void Image::fastThresholdCOG(int redLower, int redUpper, int blueLower, int blue
     }
 
 
+}
+
+
+int Image::initialize(){
+    using namespace std;
+    Camera.setCaptureSize(320, 240);
+    Camera.setFormat(raspicam::RASPICAM_FORMAT_RGB);
+    //Open camera
+    std::cout<<"Opening Camera..."<<endl;
+    if ( !Camera.open()) {cerr<<"Error opening camera"<<endl;return -1;}
+    //wait a while until camera stabilizes
+    std::cout<<"Sleeping for 3 secs"<<endl;
+    //capture
+    sleep(1);
+    Camera.setHorizontalFlip(1);
+    Camera.setRotation(90);
+    Camera.grab();
+    setDimensions(Camera.getHeight(), Camera.getWidth());
+    return 0;
+}
+
+void Image::takePicture(){
+    unsigned char *data=new unsigned char[  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_RGB )];
+    Camera.grab();
+    Camera.retrieve (data);
+    setData(data);
+    //newImage.threshold(0, 100, 130, 255, 0, 255);
+    //newImage.calcCenterOfGravity();
+    //saveImageToFile("testImageClass.ppm");
+    //newImage.fastThresholdCOG(0, 100, 130, 255, 0, 255);
+    fastThresholdCOG(150, 255, 0, 130, 0, 130);
+    markTarget(cogX, cogY);
+    printf("COGX = %f, COGY = %f\n", cogX, cogY);
+    saveImageToFile("testImageClass.ppm");
+    delete data;
 }

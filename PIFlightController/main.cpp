@@ -96,10 +96,10 @@ int main(void)
         while (1) {
             auto t2 = std::chrono::high_resolution_clock::now();
             double count = std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count();
-            if (!created) {
-                pthread_create(&thread1, NULL, sonar, &firstSonar);
-                created = 1;
-            }
+            //if (!created) {
+            //    pthread_create(&thread1, NULL, sonar, &firstSonar);
+            //    created = 1;
+            //}
             
             //Radio threading
             //Temp comment out
@@ -166,15 +166,15 @@ int main(void)
                 //cout << "Yaw = " << piIMU.yaw << endl;
                 //cout << "MX = " << piIMU.mX << endl;
                 //cout << "MY = " << piIMU.mY << endl;
-                printf("Sonar Reading: %f \n",firstSonar.distance.getAverage());
+                //printf("Sonar Reading: %f \n",firstSonar.distance.getAverage());
             }
             
             //cout<< count <<endl;
             //firstSonar.getDistance();
-            if (!firstSonar.active){
-                created = 0;
-                pthread_join(thread1, NULL);
-            }
+            //if (!firstSonar.active){
+            //    created = 0;
+            //    pthread_join(thread1, NULL);
+            //}
             
             //Radio threading
             /*
