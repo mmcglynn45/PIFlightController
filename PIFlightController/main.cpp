@@ -73,6 +73,10 @@ int main(void)
     for (int i = 0; i<5; i++) {
         while(!piIMU.updateIMU()){}
     }
+    cout << "Pitch = " << piIMU.pitch.getAverage() << endl;
+    cout << "Roll = " << piIMU.roll.getAverage() << endl;
+    cout << "PitchRate = " << piIMU.pitchRate.getAverage() << endl;
+    cout << "RollRate = " << piIMU.rollRate.getAverage() << endl;
     printf("First PIIMU Update\n");
     piIMU.pitchComp = -piIMU.pitch.getAverage();
     piIMU.rollComp = -piIMU.roll.getAverage();
