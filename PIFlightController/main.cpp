@@ -168,10 +168,10 @@ int main(void)
                 //cout<< "Throttle equals " << radio.throttle << endl;
                 //cout<< "Pitch equals " << radio.pitch << endl;
                 //cout<< "Roll equals " << radio.roll << endl;
-                cout << "Pitch = " << piIMU.pitch.getAverage() << endl;
-                cout << "Roll = " << piIMU.roll.getAverage() << endl;
-                cout << "PitchRate = " << piIMU.pitchRate.getAverage() << endl;
-                cout << "RollRate = " << piIMU.rollRate.getAverage() << endl;
+                //cout << "Pitch = " << piIMU.pitch.getAverage() << endl;
+                //cout << "Roll = " << piIMU.roll.getAverage() << endl;
+                //cout << "PitchRate = " << piIMU.pitchRate.getAverage() << endl;
+                //cout << "RollRate = " << piIMU.rollRate.getAverage() << endl;
                 //cout << "Yaw = " << piIMU.yaw << endl;
                 //cout << "MX = " << piIMU.mX << endl;
                 //cout << "MY = " << piIMU.mY << endl;
