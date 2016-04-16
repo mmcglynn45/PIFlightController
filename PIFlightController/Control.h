@@ -17,6 +17,7 @@
 #include <unistd.h>
 
 class Control{
+
     double MaxTime;
     double MinTime;
     double pitchError,pitchIntegration,pitchOutput;
@@ -38,6 +39,7 @@ class Control{
     std::chrono::high_resolution_clock::time_point myTime;
     
 public:
+    double extRollControl, extPitchControl;
     Control();
     int calcTicks(float impulseMs, int hertz);
     float map(float input, float min, float max);
