@@ -84,6 +84,8 @@ int main(void)
     piIMU.rollComp = -piIMU.roll.getAverage();
     piIMU.mXComp = -piIMU.mX.getAverage();
     piIMU.mYComp = -piIMU.mY.getAverage();
+    controller.pitchIntegration = 0;
+    controller.rollIntegration = 0;
     Sonar firstSonar;
     printf("Sonar Setup starting...\n");
     firstSonar.setup();
