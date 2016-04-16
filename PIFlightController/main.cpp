@@ -165,7 +165,7 @@ int main(void)
             if (count<100) {
                 takeoffSetting = 1;
             }
-            controller.ManageOrientation(piIMU.roll.getAverage(), piIMU.pitch.getAverage(), piIMU.yaw.getAverage(),firstSonar.distance.getAverage(),piIMU.mX.getAverage(),piIMU.mY.getAverage(),piIMU.rollRate.getAverage(),piIMU.pitchRate.getAverage(), radio.throttle, radio.roll, radio.pitch, takeoffSetting);
+            controller.ManageOrientation(piIMU.roll.getAverage(), piIMU.pitch.getAverage(), piIMU.yaw.getAverage(),firstSonar.distance.getAverage(),piIMU.mX.getAverage(),piIMU.mY.getAverage(),piIMU.rollRate.getAverage(),piIMU.pitchRate.getAverage(), radio.throttleMA.getAverage(), radio.roll, radio.pitch, takeoffSetting);
             
             
             iterations++;

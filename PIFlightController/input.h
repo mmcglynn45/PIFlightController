@@ -10,7 +10,7 @@
 #define __PIFlightController__input__
 
 #include <stdio.h>
-
+#include "MovingAverage.h"
 class radioInput {
    
     
@@ -31,6 +31,7 @@ public:
     double pitchAdjustment;
     double rollAdjustment;
     double throttleAdjustment;
+    MovingAverage throttleMA;
     
     
 };

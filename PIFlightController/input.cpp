@@ -44,6 +44,10 @@ void radioInput::setup() {
     std::cout<< "Pitch now equals " << pitch << std::endl;
     std::cout<< "Roll now equals " << roll << std::endl;
     throttle = 0;
+    throttleMA.setup(5);
+    throttleMA.insert(throttle);
+    throttleMA.insert(throttle);
+    throttleMA.insert(throttle);
 }
 
 /*
@@ -104,9 +108,10 @@ double radioInput::getThrottle(){
     if (timeCandidate!=0) {
         throttle = timeCandidate;
         throttle = (throttle - throttleAdjustment)/1000; //Normalize transmitter values
-        return throttle;
+        throttleMA.insert(throttle);
+        return throttleMA.getAverage();
     }else{
-        return throttle;
+        return throttleMA.getAverage();
     }
 }
 
