@@ -22,6 +22,8 @@
 #include "wiringPi.h"
 #include "math.h"
 #include "MovingAverage.h"
+#include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -93,6 +95,9 @@ int main(void)
     int created = 0;
     int inputThreadCreated = 0;
     
+    ofstream flightFile;
+    flightFile.open ("flightData.csv");
+    flightFile << "Time,Pitch,Roll,PitchRate,RollRate,Yaw,MX,MY";
     
     
     
@@ -171,6 +176,7 @@ int main(void)
                 //cout << "MX = " << piIMU.mX << endl;
                 //cout << "MY = " << piIMU.mY << endl;
                 //printf("Sonar Reading: %f \n",firstSonar.distance.getAverage());
+                flightFile << count << "," << piIMU.pitch.getAverage()<< "," << piIMU.roll.getAverage()<< "," << piIMU.pitchRate.getAverage()<< "," << piIMU.rollRate.getAverage()<< "," << piIMU.yaw.getAverage() << "," << piIMU.mX.getAverage() << "," << piIMU.mY.getAverage() << std::endl;
             }
             
             //cout<< count <<endl;
@@ -239,8 +245,9 @@ int main(void)
     //std::cout << "f() took "
     //<< std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count()
     //<< " milliseconds\n";
-    
+    flightFile.close();   
     return 0;
+
 }
 
 
