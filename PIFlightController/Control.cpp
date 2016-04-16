@@ -142,12 +142,12 @@ void Control::ManageOrientation(double roll, double pitch, double yaw, double al
     
     
     
-    double pitchControl = PitchPIDComputation(-pitch, 0);;
+    double pitchControl = PitchPIDComputation(pitch, 0);;
     //double desiredPitchRate = PitchPIDComputation(pitch, 0);
     //double pitchControl = pitchRatePIDComputation(pitchRate, desiredPitchRate);
     //std::cout<<"Pitch Control: "<<pitchControl<<std::endl;
     
-    double rollControl = RollPIDComputation(-roll, 0);
+    double rollControl = RollPIDComputation(roll, 0);
     //double desiredRollRate = RollPIDComputation(roll, 0);
     //double rollControl = rollRatePIDComputation(rollRate, desiredRollRate);
     
