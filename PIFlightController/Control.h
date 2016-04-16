@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "MovingAverage.h"
 
 class Control{
 
@@ -35,6 +36,7 @@ class Control{
     std::chrono::high_resolution_clock::time_point myTime;
     
 public:
+    MovingAverage rollC,pitchC;
     double extMotor3,extMotor7,extMotor8,extMotor12;
     double pitchError,pitchIntegration,pitchOutput;
     double rollError,rollIntegration,rollOutput;

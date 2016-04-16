@@ -59,6 +59,9 @@ Control::Control(){
     myTime = std::chrono::high_resolution_clock::now();
     pitchRateTime = std::chrono::high_resolution_clock::now();
     rollRateTime = std::chrono::high_resolution_clock::now();
+    
+    rollC.setup(5);
+    pitchC.setup(5);
 
 }
     
@@ -141,13 +144,14 @@ void Control::ManageOrientation(double roll, double pitch, double yaw, double al
     desiredRoll = inputNormalizer(-desiredRoll, -0, 0);
     
     
-    
-    double pitchControl = PitchPIDComputation(pitch, 0);;
+    pitchC.insert(PitchPIDComputation(pitch, 0));
+    double pitchControl = pitchC.getAverage();
     //double desiredPitchRate = PitchPIDComputation(pitch, 0);
     //double pitchControl = pitchRatePIDComputation(pitchRate, desiredPitchRate);
     //std::cout<<"Pitch Control: "<<pitchControl<<std::endl;
     
-    double rollControl = RollPIDComputation(roll, 0);
+    rollC.insert(RollPIDComputation(roll, 0));
+    double rollControl = rollC.getAverage();
     //double desiredRollRate = RollPIDComputation(roll, 0);
     //double rollControl = rollRatePIDComputation(rollRate, desiredRollRate);
     
