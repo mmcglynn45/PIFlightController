@@ -164,7 +164,7 @@ int main(void)
             
             
             iterations++;
-            if((int)count%1==0){
+            if((int)count%10==0){
                 //cout<< "Throttle equals " << radio.throttle << endl;
                 //cout<< "Pitch equals " << radio.pitch << endl;
                 //cout<< "Roll equals " << radio.roll << endl;
