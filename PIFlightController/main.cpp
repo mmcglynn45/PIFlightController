@@ -84,6 +84,9 @@ int main(void)
     piIMU.rollComp = -piIMU.roll.getAverage();
     piIMU.mXComp = -piIMU.mX.getAverage();
     piIMU.mYComp = -piIMU.mY.getAverage();
+    for (int i = 0; i<100; i++) {
+        while(!piIMU.updateIMU()){}
+    }
     controller.pitchIntegration = 0;
     controller.rollIntegration = 0;
     Sonar firstSonar;
