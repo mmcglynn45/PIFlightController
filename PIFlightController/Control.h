@@ -20,14 +20,10 @@ class Control{
 
     double MaxTime;
     double MinTime;
-    double pitchError,pitchIntegration,pitchOutput;
-    double rollError,rollIntegration,rollOutput;
     double yawError,yawIntegration,yawOutput;
     double mXError,mXIntegration,mXOutput;
      double mYError,mYIntegration,mYOutput;
     double altitudeError,altitudeIntegration,altitudeOutput;
-    double rollRateError,rollRateIntegration,rollRateOutput;
-    double pitchRateError,pitchRateIntegration,pitchRateOutput;
     
     std::chrono::high_resolution_clock::time_point pitchRateTime;
     std::chrono::high_resolution_clock::time_point rollRateTime;
@@ -39,6 +35,10 @@ class Control{
     std::chrono::high_resolution_clock::time_point myTime;
     
 public:
+    double pitchError,pitchIntegration,pitchOutput;
+    double rollError,rollIntegration,rollOutput;
+    double rollRateError,rollRateIntegration,rollRateOutput;
+    double pitchRateError,pitchRateIntegration,pitchRateOutput;
     double extRollControl, extPitchControl;
     Control();
     int calcTicks(float impulseMs, int hertz);
