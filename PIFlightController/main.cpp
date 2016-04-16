@@ -97,7 +97,7 @@ int main(void)
     
     ofstream flightFile;
     flightFile.open ("flightData.csv");
-    flightFile << "Time,Pitch,Roll,PitchRate,RollRate,Yaw,MX,MY";
+    flightFile << "Time,Pitch,Roll,PitchRate,RollRate,Yaw,MX,MY\n";
     
     
     
@@ -245,7 +245,7 @@ int main(void)
     //std::cout << "f() took "
     //<< std::chrono::duration_cast<std::chrono::milliseconds>(t2 - t1).count()
     //<< " milliseconds\n";
-    flightFile.close();   
+    flightFile.close();
     return 0;
 
 }
