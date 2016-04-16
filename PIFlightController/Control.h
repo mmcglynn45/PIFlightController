@@ -35,6 +35,7 @@ class Control{
     std::chrono::high_resolution_clock::time_point myTime;
     
 public:
+    double extMotor3,extMotor7,extMotor8,extMotor12;
     double pitchError,pitchIntegration,pitchOutput;
     double rollError,rollIntegration,rollOutput;
     double rollRateError,rollRateIntegration,rollRateOutput;

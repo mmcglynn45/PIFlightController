@@ -97,7 +97,7 @@ int main(void)
     
     ofstream flightFile;
     flightFile.open ("flightData.csv");
-    flightFile << "Time,Pitch,Roll,PitchRate,RollRate,Yaw,MX,MY,ThrottleInput,PitchControl,PitchError,PitchIntegration,RollControl,RollError,RollIntegration\n";
+    flightFile << "Time,Pitch,Roll,PitchRate,RollRate,Yaw,MX,MY,ThrottleInput,PitchControl,PitchError,PitchIntegration,RollControl,RollError,RollIntegration,Motor3,Motor12,Motor7,Motor8\n";
     
     
     
@@ -176,7 +176,7 @@ int main(void)
                 //cout << "MX = " << piIMU.mX << endl;
                 //cout << "MY = " << piIMU.mY << endl;
                 //printf("Sonar Reading: %f \n",firstSonar.distance.getAverage());
-                flightFile << count << "," << piIMU.pitch.getAverage()<< "," << piIMU.roll.getAverage()<< "," << piIMU.pitchRate.getAverage()<< "," << piIMU.rollRate.getAverage()<< "," << piIMU.yaw.getAverage() << "," << piIMU.mX.getAverage() << "," << piIMU.mY.getAverage() << "," << radio.throttle << "," << controller.extPitchControl << "," <<  controller.pitchError << "," << controller.pitchIntegration << "," <<  controller.extRollControl << "," << controller.rollError << "," << controller.rollIntegration << std::endl;
+                flightFile << count << "," << piIMU.pitch.getAverage()<< "," << piIMU.roll.getAverage()<< "," << piIMU.pitchRate.getAverage()<< "," << piIMU.rollRate.getAverage()<< "," << piIMU.yaw.getAverage() << "," << piIMU.mX.getAverage() << "," << piIMU.mY.getAverage() << "," << radio.throttle << "," << controller.extPitchControl << "," <<  controller.pitchError << "," << controller.pitchIntegration << "," <<  controller.extRollControl << "," << controller.rollError << "," << controller.rollIntegration << "," << controller.extMotor3 << "," << controller.extMotor12 << "," << controller.extMotor7 << "," << controller.extMotor8 <<std::endl;
             }
             
             //cout<< count <<endl;
