@@ -23,6 +23,7 @@ void radioInput::setup() {
     throttleAdjustment = 1000;
     pitchAdjustment = 1000;
     rollAdjustment = 1000;
+    std::cout<< "Hello" << throttle << std::endl;
     for (int i = 0; i < 10; i++) {
         getThrottle();
         getRoll();
