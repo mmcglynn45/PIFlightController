@@ -15,6 +15,7 @@
 #define ROLL 19
 
 void radioInput::setup() {
+    throttleMA.setup(5);
     wiringPiSetupGpio();
     pinMode(THROTTLE, INPUT);
     pinMode(PITCH, INPUT);
@@ -45,7 +46,7 @@ void radioInput::setup() {
     std::cout<< "Pitch now equals " << pitch << std::endl;
     std::cout<< "Roll now equals " << roll << std::endl;
     throttle = 0;
-    throttleMA.setup(5);
+
     throttleMA.insert(throttle);
     throttleMA.insert(throttle);
     throttleMA.insert(throttle);
