@@ -49,7 +49,7 @@ int main(void)
     
     Control controller;
     controller.setup();
-    printf("Controller initialized.\n");
+    printf("Controller initialized -- Now.\n");
     radio.setup();
     wiringPiISR(THROTTLE, INT_EDGE_RISING, &throttleInterrupt);
     //wiringPiISR(PITCH, INT_EDGE_RISING, &pitchInterrupt);
