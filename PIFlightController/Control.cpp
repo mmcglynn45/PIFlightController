@@ -362,8 +362,8 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
         //std::cout<<YNMOTOR << " : "<< YNSpeed <<std::endl;
         //std::cout.flush();
     }
-    adjustYPMotor(YPSpeed);
-    adjustYNMotor(YNSpeed);
+    //adjustYPMotor(YPSpeed);
+    //adjustYNMotor(YNSpeed);
     adjustXPMotor(XPSpeed);
     adjustXNMotor(XNSpeed);
 }
