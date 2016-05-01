@@ -363,9 +363,9 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
         //std::cout.flush();
     }
     //adjustYPMotor(YPSpeed);
-    //adjustYNMotor(YNSpeed);
+    adjustYNMotor(YNSpeed);
     adjustXPMotor(XPSpeed);
-    adjustXNMotor(XNSpeed);
+    //adjustXNMotor(XNSpeed);
 }
 
 double Control::inputNormalizer(double input, double min, double max){
