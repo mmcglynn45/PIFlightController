@@ -281,7 +281,7 @@ double Control::PitchPIDComputation(double current, double desired){
 }
 
 double Control::RollPIDComputation(double current, double desired){
-    double Kp = 0.005;
+    double Kp = 0.05;
     double Ki = 0.00;
     double Kd = 0.00;
     std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
