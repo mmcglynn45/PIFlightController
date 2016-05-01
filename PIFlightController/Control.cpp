@@ -85,7 +85,7 @@ void Control::setup(){
 
 
 int Control::safetyCheck(double roll,double pitch){
-    if ((fabs(roll)>85) || (fabs(pitch)>20)) {
+    if ((fabs(roll)>92) || (fabs(pitch)>20)) {
         adjustYPMotor(0);
         adjustXPMotor(0);
         adjustYNMotor(0);
