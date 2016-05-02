@@ -82,7 +82,7 @@ int main(void)
     printf("First PIIMU Update\n");
     //piIMU.pitchComp = -piIMU.pitch.getAverage();
     //piIMU.rollComp = -piIMU.roll.getAverage();
-    piIMU.rollComp = -3.1;
+    piIMU.rollComp = -3.7;
     piIMU.mXComp = -piIMU.mX.getAverage();
     piIMU.mYComp = -piIMU.mY.getAverage();
     for (int i = 0; i<100; i++) {
