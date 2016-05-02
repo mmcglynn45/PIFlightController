@@ -31,7 +31,7 @@ void IMU::setup(){
     mX.setup(70);
     mY.setup(70);
     rollRate.setup(20);
-    pitchRate.setup(20);
+    pitchRate.setup(50);
 }
 
 int IMU::updateIMU(){
