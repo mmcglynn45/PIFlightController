@@ -246,8 +246,8 @@ double Control::pitchRatePIDComputation(double current, double desired){
 
 double Control::rollRatePIDComputation(double current, double desired){
     double Kp = 0.5;
-    double Ki = 0.03;
-    double Kd = 0.25;
+    double Ki = 0.01;
+    double Kd = 0.5;
     std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-rollRateTime);
     double deltaT = time_span.count();
@@ -282,7 +282,7 @@ double Control::PitchPIDComputation(double current, double desired){
 
 double Control::RollPIDComputation(double current, double desired){
     double Kp = 0.15;
-    double Ki = 0.08;
+    double Ki = 0.05;
     double Kd = 0.1;
     std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-rollTime);
