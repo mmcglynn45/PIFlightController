@@ -30,7 +30,7 @@ void IMU::setup(){
     yaw.setup(10);
     mX.setup(70);
     mY.setup(70);
-    rollRate.setup(30);
+    rollRate.setup(20);
     pitchRate.setup(20);
 }
 
