@@ -320,7 +320,7 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
     pitchControl = pitchControl/2;
     rollControl = rollControl/5;
     pitchControl = inputNormalizer(pitchControl,-.50,.50);
-    rollControl = inputNormalizer(rollControl,-.30,.30);
+    rollControl = inputNormalizer(rollControl,-.90,.90);
     extRollControl = rollControl;
     extPitchControl = pitchControl;
     
