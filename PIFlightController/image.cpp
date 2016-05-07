@@ -196,7 +196,7 @@ void Image::takePicture(){
     //newImage.calcCenterOfGravity();
     //saveImageToFile("testImageClass.ppm");
     //newImage.fastThresholdCOG(0, 100, 130, 255, 0, 255);
-    fastThresholdCOG(150, 255, 0, 130, 0, 130);
+    fastThresholdCOG(0, 40, 0, 255, 0, 255);
     markTarget(cogX, cogY);
     printf("COGX = %f, COGY = %f\n", cogX, cogY);
     saveImageToFile("testImageClass.ppm");
