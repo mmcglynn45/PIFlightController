@@ -24,6 +24,8 @@
 #include "MovingAverage.h"
 #include <iostream>
 #include <fstream>
+#include "image.h"
+
 
 using namespace std;
 
@@ -49,6 +51,9 @@ int main(void)
     Control controller;
     controller.setup();
     printf("Controller initialized -- Now.\n");
+    Image myImage;
+    myImage.initialize();
+    printf("Camera initialized -- Now.\n");
     radio.setup();
     wiringPiISR(THROTTLE, INT_EDGE_RISING, &throttleInterrupt);
     //wiringPiISR(PITCH, INT_EDGE_RISING, &pitchInterrupt);
@@ -261,6 +266,7 @@ void* sonar(void * sonar){
     sonar2->getDistance();
     return NULL;
 }
+
 
 void* getInputs(void * radio){
     radioInput * radio2;

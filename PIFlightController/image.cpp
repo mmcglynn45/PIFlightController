@@ -176,7 +176,7 @@ int Image::initialize(){
     std::cout<<"Opening Camera..."<<endl;
     if ( !Camera.open()) {cerr<<"Error opening camera"<<endl;return -1;}
     //wait a while until camera stabilizes
-    std::cout<<"Sleeping for 3 secs"<<endl;
+    std::cout<<"Sleeping for 1 secs"<<endl;
     //capture
     sleep(1);
     Camera.setHorizontalFlip(1);
