@@ -25,6 +25,7 @@ int active;
 void setup();
 double getDistance();
 int demo();
+double timeouts = 0;
 
 int main(){
     printf("HELLO SONAR\n");
@@ -67,9 +68,9 @@ double getCM() {
     
     //Wait for echo start
     while(digitalRead(ECHO) == LOW){
-        if ((micros()-startTime)>10000) { //maximum of 160cm
+        if ((micros()-startTime)>400000) { //maximum of 160cm
             active = 0;
-            std::cout << "timeout\n";
+            timeouts++;
             return distance.getAverage();
 
         }
@@ -80,7 +81,7 @@ double getCM() {
     while(digitalRead(ECHO) == HIGH){
         if ((micros()-startTime)>10000) { //maximum of 160cm
             active = 0;
-            std::cout << "timeout\n";
+            timeouts++;
             return distance.getAverage();
 
         }
