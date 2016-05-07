@@ -14,6 +14,7 @@
 #include "MovingAverage.h"
 #include <math.h>
 #include <iostream>
+#include <chrono>
 
 #define TRUE 1
 
@@ -28,6 +29,7 @@ int demo();
 double timeouts = 0;
 
 int main(){
+    
     printf("HELLO SONAR\n");
     setup();
     int i = 0;
@@ -38,8 +40,12 @@ int main(){
         if (i%300==0) {
             printf("Sonar Distance = %f\n", dist/2.54);
             printf("Timeouts = %f\n", timeouts);
+            using namespace std::chrono;
+            milliseconds ms = duration_cast< milliseconds >(system_clock::now().time_since_epoch());
+            printf("Time in milliseconds %lld", ms.count());
         }
     }
+
 
 }
 
