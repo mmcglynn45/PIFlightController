@@ -145,8 +145,8 @@ int main(void)
             //cout << "MX = " << piIMU.mX << endl;
             //cout << "MY = " << piIMU.mY << endl;
             //myImage.takePicture();
-            cout << "COGX = " << myImage.cogX << endl;
-            cout << "COGY = " << myImage.cogY << endl;
+            //cout << "COGX = " << myImage.cogX << endl;
+            //cout << "COGY = " << myImage.cogY << endl;
             
             
             xVelDrift += piIMU.mX.getAverage(); //(t2-mXTime).count())/1000;
