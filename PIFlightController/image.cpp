@@ -199,7 +199,7 @@ void Image::takePicture(){
     fastThresholdCOG(0, 40, 0, 255, 0, 255);
     markTarget(cogX, cogY);
     printf("COGX = %f, COGY = %f\n", cogX, cogY);
-    saveImageToFile("testImageClass.ppm");
+    //saveImageToFile("testImageClass.ppm");
     delete data;
     active = 0;
 }
