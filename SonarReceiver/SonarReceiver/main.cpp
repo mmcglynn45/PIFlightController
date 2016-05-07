@@ -80,7 +80,7 @@ double getCM() {
     //Wait for echo end
     startTime = micros();
     while(digitalRead(ECHO) == HIGH){
-        if ((micros()-startTime)>10000) { //maximum of 160cm
+        if ((micros()-startTime)>40000) { //maximum of 160cm
             active = 0;
             timeouts++;
             return distance.getAverage();
