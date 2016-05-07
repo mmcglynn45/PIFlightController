@@ -120,6 +120,15 @@ void Control::demo(){
     }
 }
 
+void Control::mapCameraInputs(double * cogX, double * cogY){
+    double angle = 45;
+    double oldCogX = *cogX-120;
+    double oldCogY = *cogX-160;
+    *cogX = oldCogX * cos(3.1415926535/180 * angle) + oldCogY * sin(3.1415926535/180 * angle);
+    *cogY = oldCogX * -sin(3.1415926535/180 * angle) + oldCogY * cos(3.1415926535/180 * angle);
+}
+
+
 double Control::getThrottleBaseline(){
     double input = 4;
     input = inputNormalizer(input, 0, 4);
@@ -135,6 +144,8 @@ void Control::adjustMotorSpeed(int motor, double speed){
 }
 
 void Control::ManageOrientation(double roll, double pitch, double yaw, double altitude, double mX, double mY, double rollRate, double pitchRate, double throttleInput, double rollInput, double pitchInput, double takeoffsetting, double cogX, double cogY){
+    mapCameraInputs(&cogX, &cogY);
+    printf("COGX = %f, COGY = %f\n", cogX, cogY);
     //double desiredPitch = (pitchInput - 0.5)*2;
     //double desiredRoll = (rollInput - 0.5)*2;
     double desiredPitch = mXPIDComputation(mX, 0);

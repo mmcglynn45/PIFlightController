@@ -180,7 +180,7 @@ int Image::initialize(){
     //capture
     sleep(1);
     Camera.setHorizontalFlip(1);
-    Camera.setRotation(135);
+    Camera.setRotation(90);
     Camera.grab();
     setDimensions(Camera.getHeight(), Camera.getWidth());
     return 0;
