@@ -70,6 +70,7 @@ double getCM() {
         if ((micros()-startTime)>10000) { //maximum of 160cm
             active = 0;
             return distance.getAverage();
+            std::cout << "timeout\n";
         }
     }
     
