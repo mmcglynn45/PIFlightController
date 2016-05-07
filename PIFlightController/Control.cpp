@@ -122,8 +122,8 @@ void Control::demo(){
 
 void Control::mapCameraInputs(double * cogX, double * cogY){
     double angle = 45;
-    double oldCogX = *cogX-120;
-    double oldCogY = *cogY-160;
+    double oldCogX = *cogX-160;
+    double oldCogY = *cogY-120;
     *cogX = oldCogX * cos(3.1415926535/180 * angle) + oldCogY * sin(3.1415926535/180 * angle);
     *cogY = oldCogX * -sin(3.1415926535/180 * angle) + oldCogY * cos(3.1415926535/180 * angle);
 }
