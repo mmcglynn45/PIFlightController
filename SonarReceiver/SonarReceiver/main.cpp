@@ -17,10 +17,8 @@
 
 #define TRUE 1
 
-#define TRIG 12
-#define ECHO 5
-#define TRIG2 21
-#define ECHO2 20
+#define TRIG 20
+#define ECHO 21
 
 MovingAverage distance;
 int active;
@@ -51,12 +49,9 @@ void setup() {
     
     pinMode(TRIG, OUTPUT);
     pinMode(ECHO, INPUT);
-    pinMode(TRIG2, OUTPUT);
-    pinMode(ECHO2, INPUT);
     
     //TRIG pin must start LOW
     digitalWrite(TRIG, LOW);
-    digitalWrite(TRIG2, LOW);
     delay(30);
     distance.insert(4);
 }
@@ -67,13 +62,11 @@ double getCM() {
     long startTime = micros();
     //Send trig pulse
     digitalWrite(TRIG, HIGH);
-    digitalWrite(TRIG2, HIGH);
     delayMicroseconds(20);
     digitalWrite(TRIG, LOW);
-    digitalWrite(TRIG2, LOW);
     
     //Wait for echo start
-    while(digitalRead(ECHO2) == LOW){
+    while(digitalRead(ECHO) == LOW){
         if ((micros()-startTime)>10000) { //maximum of 160cm
             active = 0;
             return distance.getAverage();
@@ -82,7 +75,7 @@ double getCM() {
     
     //Wait for echo end
     startTime = micros();
-    while(digitalRead(ECHO2) == HIGH){
+    while(digitalRead(ECHO) == HIGH){
         if ((micros()-startTime)>10000) { //maximum of 160cm
             active = 0;
             return distance.getAverage();
