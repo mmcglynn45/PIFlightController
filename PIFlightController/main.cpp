@@ -144,7 +144,7 @@ int main(void)
             //cout << "Yaw = " << piIMU.yaw << endl;
             //cout << "MX = " << piIMU.mX << endl;
             //cout << "MY = " << piIMU.mY << endl;
-            myImage.takePicture();
+            //myImage.takePicture();
             cout << "COGX = " << myImage.cogX << endl;
             cout << "COGY = " << myImage.cogY << endl;
             
