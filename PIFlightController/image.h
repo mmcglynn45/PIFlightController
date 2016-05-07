@@ -34,6 +34,7 @@ class Image {
     
     
 public:
+    int active = 0;
     double cogX = 0;
     double cogY = 0;
     raspicam::RaspiCam Camera; 

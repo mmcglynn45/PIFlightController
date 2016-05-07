@@ -138,6 +138,10 @@ int main(void)
             //cout << "Yaw = " << piIMU.yaw << endl;
             //cout << "MX = " << piIMU.mX << endl;
             //cout << "MY = " << piIMU.mY << endl;
+            myImage.takePicture();
+            cout << "COGX = " << myImage.cogX << endl;
+            cout << "COGY = " << myImage.cogY << endl;
+            
             
             xVelDrift += piIMU.mX.getAverage(); //(t2-mXTime).count())/1000;
             xPosDrift += xVelDrift; //* (t2-mXTime).count())/1000;
@@ -264,6 +268,13 @@ void* sonar(void * sonar){
     Sonar * sonar2;
     sonar2 = (Sonar *)sonar;
     sonar2->getDistance();
+    return NULL;
+}
+
+void* takePicture(void * myImage){
+    Image * myImage2;
+    myImage2 = (Image *)myImage;
+    myImage2->takePicture();
     return NULL;
 }
 

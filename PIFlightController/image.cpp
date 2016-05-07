@@ -187,6 +187,7 @@ int Image::initialize(){
 }
 
 void Image::takePicture(){
+    active = 1;
     unsigned char *data=new unsigned char[  Camera.getImageTypeSize (     raspicam::RASPICAM_FORMAT_RGB )];
     Camera.grab();
     Camera.retrieve (data);
@@ -200,4 +201,5 @@ void Image::takePicture(){
     printf("COGX = %f, COGY = %f\n", cogX, cogY);
     saveImageToFile("testImageClass.ppm");
     delete data;
+    active = 0;
 }
