@@ -145,9 +145,9 @@ void Control::ManageOrientation(double roll, double pitch, double yaw, double al
     
     
     pitchC.insert(PitchPIDComputation(pitch, 0));
-    double pitchControl = pitchC.getAverage();
-    //double desiredPitchRate = PitchPIDComputation(pitch, 0);
-    //double pitchControl = pitchRatePIDComputation(pitchRate, desiredPitchRate);
+    //double pitchControl = pitchC.getAverage();
+    double desiredPitchRate = PitchPIDComputation(pitch, 0);
+    double pitchControl = pitchRatePIDComputation(pitchRate, desiredPitchRate);
     //std::cout<<"Pitch Control: "<<pitchControl<<std::endl;
     
     rollC.insert(RollPIDComputation(roll, 0));
@@ -230,8 +230,8 @@ double Control::AltitudePIDComputation(double current, double desired){
 
 double Control::pitchRatePIDComputation(double current, double desired){
     double Kp = 0.5;
-    double Ki = 0.2;
-    double Kd = 0.05;
+    double Ki = 0.05;
+    double Kd = 0.25;
     std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-pitchRateTime);
     double deltaT = time_span.count();
@@ -265,9 +265,9 @@ double Control::rollRatePIDComputation(double current, double desired){
 
 
 double Control::PitchPIDComputation(double current, double desired){
-    double Kp = 0.01;
-    double Ki = 0.008;
-    double Kd = 0.001;
+    double Kp = 0.15;
+    double Ki = 0.03;
+    double Kd = 0.1;
     std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> time_span = std::chrono::duration_cast<std::chrono::duration<double>> (now-pitchTime);
     double deltaT = time_span.count();
@@ -368,10 +368,10 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
         //std::cout<<YNMOTOR << " : "<< YNSpeed <<std::endl;
         //std::cout.flush();
     }
-    //adjustYPMotor(YPSpeed);
+    adjustYPMotor(YPSpeed);
     adjustYNMotor(YNSpeed);
     adjustXPMotor(XPSpeed);
-    //adjustXNMotor(XNSpeed);
+    adjustXNMotor(XNSpeed);
 }
 
 double Control::inputNormalizer(double input, double min, double max){
