@@ -49,7 +49,7 @@ int main ( int argc,char **argv ) {
     printf("ImageSize is %zu\n",imageLength);
     auto t1 = std::chrono::high_resolution_clock::now();
     Camera.setHorizontalFlip(1);
-    Camera.setRotation(90);
+    Camera.setRotation(135);
     Camera.grab();
     Image newImage;
     for ( int i=0; i<nCount; i++ ) {
