@@ -198,7 +198,7 @@ void Image::takePicture(){
     //newImage.fastThresholdCOG(0, 100, 130, 255, 0, 255);
     fastThresholdCOG(0, 40, 0, 255, 0, 255);
     markTarget(cogX, cogY);
-    printf("COGX = %f, COGY = %f\n", cogX-width, cogY-height);
+    printf("COGX = %f, COGY = %f\n", cogX-width/2, cogY-height/2);
     //saveImageToFile("testImageClass.ppm");
     delete data;
     active = 0;
