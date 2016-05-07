@@ -42,7 +42,7 @@ int main(){
             printf("Timeouts = %f\n", timeouts);
             using namespace std::chrono;
             milliseconds ms = duration_cast< milliseconds >(system_clock::now().time_since_epoch());
-            printf("Time in milliseconds %lld", ms.count());
+            printf("Time in milliseconds %lld\n", ms.count());
         }
     }
 
