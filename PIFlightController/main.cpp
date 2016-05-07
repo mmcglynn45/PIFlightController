@@ -36,7 +36,7 @@ void* getInputs(void * radio);
 void throttleInterrupt();
 void pitchInterrupt();
 void rollInterrupt();
-
+void* takePicture(void * myImage);
 
 
 #define THROTTLE 6
@@ -103,7 +103,7 @@ int main(void)
     auto t1 = std::chrono::high_resolution_clock::now();
     int created = 0;
     int inputThreadCreated = 0;
-    
+    int cameraThreadCreated = 0;
     ofstream flightFile;
     flightFile.open ("flightData.csv");
     flightFile << "Time,Pitch,Roll,PitchRate,RollRate,Yaw,MX,MY,ThrottleInput,PitchControl,PitchError,PitchIntegration,RollControl,RollError,RollIntegration,Motor3,Motor12,Motor7,Motor8\n";
@@ -127,6 +127,12 @@ int main(void)
              inputThreadCreated = 1;
              }
              */
+            
+            //Camera threading
+             if (!cameraThreadCreated) {
+             pthread_create(&thread2, NULL, takePicture, &myImage);
+             cameraThreadCreated = 1;
+             }
             
             //printf("Sonar Active: %i \n",firstSonar.active);
             while(!piIMU.updateIMU()){}
@@ -206,6 +212,12 @@ int main(void)
              pthread_join(thread2, NULL);
              }
              */
+            //Camera threading
+
+             if (!myImage.active){
+             cameraThreadCreated = 0;
+             pthread_join(thread2, NULL);
+             }
             
             double threshold = 30000;
             if (count>threshold) {
