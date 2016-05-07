@@ -194,7 +194,7 @@ void Image::takePicture(){
     setData(data);
     //newImage.threshold(0, 100, 130, 255, 0, 255);
     //newImage.calcCenterOfGravity();
-    //saveImageToFile("testImageClass.ppm");
+    saveImageToFile("myImage.ppm");
     //newImage.fastThresholdCOG(0, 100, 130, 255, 0, 255);
     fastThresholdCOG(0, 40, 0, 255, 0, 255);
     markTarget(cogX, cogY);

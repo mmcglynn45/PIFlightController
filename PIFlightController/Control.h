@@ -64,7 +64,7 @@ public:
     double mYPIDComputation(double current, double desired);
     double inputNormalizer(double input, double min, double max);
     void MapMotorOutput(double pitchControl,double rollControl, double yawControl, double throttleBaseline);
-    void ManageOrientation(double roll, double pitch, double yaw,double altitude, double mX, double mY, double rollRate, double pitchRate, double throttleInput, double rollInput, double pitchInput, double takeoffSetting);
+    void ManageOrientation(double roll, double pitch, double yaw,double altitude, double mX, double mY, double rollRate, double pitchRate, double throttleInput, double rollInput, double pitchInput, double takeoffSetting, double cogX, double cogY);
     double shiftNormalized(double input);
     int safetyCheck(double roll,double pitch);
     void shutdown();

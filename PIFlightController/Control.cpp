@@ -134,7 +134,7 @@ void Control::adjustMotorSpeed(int motor, double speed){
     pwmWrite(PIN_BASE + motor, tick);
 }
 
-void Control::ManageOrientation(double roll, double pitch, double yaw, double altitude, double mX, double mY, double rollRate, double pitchRate, double throttleInput, double rollInput, double pitchInput, double takeoffsetting){
+void Control::ManageOrientation(double roll, double pitch, double yaw, double altitude, double mX, double mY, double rollRate, double pitchRate, double throttleInput, double rollInput, double pitchInput, double takeoffsetting, double cogX, double cogY){
     //double desiredPitch = (pitchInput - 0.5)*2;
     //double desiredRoll = (rollInput - 0.5)*2;
     double desiredPitch = mXPIDComputation(mX, 0);
