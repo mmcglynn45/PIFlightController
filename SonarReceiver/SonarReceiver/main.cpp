@@ -69,8 +69,9 @@ double getCM() {
     while(digitalRead(ECHO) == LOW){
         if ((micros()-startTime)>10000) { //maximum of 160cm
             active = 0;
-            return distance.getAverage();
             std::cout << "timeout\n";
+            return distance.getAverage();
+
         }
     }
     
@@ -79,8 +80,9 @@ double getCM() {
     while(digitalRead(ECHO) == HIGH){
         if ((micros()-startTime)>10000) { //maximum of 160cm
             active = 0;
-            return distance.getAverage();
             std::cout << "timeout\n";
+            return distance.getAverage();
+
         }
     }
     long travelTime = micros() - startTime;
