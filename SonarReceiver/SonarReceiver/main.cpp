@@ -80,6 +80,7 @@ double getCM() {
         if ((micros()-startTime)>10000) { //maximum of 160cm
             active = 0;
             return distance.getAverage();
+            std::cout << "timeout\n";
         }
     }
     long travelTime = micros() - startTime;
@@ -90,7 +91,7 @@ double getCM() {
     if (fabs(newDistance-distance.getAverage())<1) {
         distance.insert(newDistance);
     }else{
-        distance.insert(newDistance*.1+distance.getAverage()*.9);
+        distance.insert(newDistance*.8+distance.getAverage()*.2);
     }
     active = 0;
     return distance.getAverage();
