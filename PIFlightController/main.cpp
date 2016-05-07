@@ -46,7 +46,6 @@ int main(void)
 {
     
     printf("Welcome to Flight Controller...initializing\n");
-    printf("WARNING Safety Exit Disabled");
     Control controller;
     controller.setup();
     printf("Controller initialized -- Now.\n");
