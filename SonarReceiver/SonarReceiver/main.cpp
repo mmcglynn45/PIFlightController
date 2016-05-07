@@ -37,6 +37,7 @@ int main(){
         double dist = getDistance();
         if (i%300==0) {
             printf("Sonar Distance = %f\n", dist/2.54);
+            printf("Timeouts = %f\n", timeouts);
         }
     }
 
