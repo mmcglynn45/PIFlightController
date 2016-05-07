@@ -15,6 +15,7 @@
 		2D475F0B1BC0F70F001813D0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D475EEF1BC08ADF001813D0 /* main.cpp */; };
 		2D475F131BC0F920001813D0 /* pca9685.c in Sources */ = {isa = PBXBuildFile; fileRef = 2D475F111BC0F920001813D0 /* pca9685.c */; };
 		2D475F171BC0FE86001813D0 /* Control.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D475F151BC0FE86001813D0 /* Control.cpp */; };
+		2DB687D91CDE72CF007C4765 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DB687D71CDE72CF007C4765 /* image.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,9 @@
 		2D475F141BC0F999001813D0 /* wiringPi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = wiringPi.h; path = wiringPi/wiringPi/wiringPi.h; sourceTree = "<group>"; };
 		2D475F151BC0FE86001813D0 /* Control.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Control.cpp; sourceTree = "<group>"; };
 		2D475F161BC0FE86001813D0 /* Control.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Control.h; sourceTree = "<group>"; };
+		2DB687D71CDE72CF007C4765 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = image.cpp; sourceTree = "<group>"; };
+		2DB687D81CDE72CF007C4765 /* image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = image.h; sourceTree = "<group>"; };
+		2DB687DA1CDE730C007C4765 /* raspicam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = raspicam.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,9 @@
 				2D45A5801BCB15600000511F /* input.cpp */,
 				2D45A5811BCB15600000511F /* input.h */,
 				2D475F151BC0FE86001813D0 /* Control.cpp */,
+				2DB687D71CDE72CF007C4765 /* image.cpp */,
+				2DB687DA1CDE730C007C4765 /* raspicam.h */,
+				2DB687D81CDE72CF007C4765 /* image.h */,
 				2D475F161BC0FE86001813D0 /* Control.h */,
 				2D468A101C6DCCDB00ECE847 /* MovingAverage.h */,
 				2D468A121C6DD6FC00ECE847 /* MovingAverage.cpp */,
@@ -199,6 +206,7 @@
 				2D468A131C6DD6FC00ECE847 /* MovingAverage.cpp in Sources */,
 				2D468A0E1C23F4B200ECE847 /* Sonar.cpp in Sources */,
 				2D45A57A1BC62C6C0000511F /* IMU.cpp in Sources */,
+				2DB687D91CDE72CF007C4765 /* image.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
