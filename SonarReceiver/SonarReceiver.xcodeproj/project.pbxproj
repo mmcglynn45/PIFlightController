@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D4CA6741C9E26120000F1D6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D4CA6731C9E26120000F1D6 /* main.cpp */; };
 		2D4CA6801C9E29900000F1D6 /* MovingAverage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D4CA67E1C9E29900000F1D6 /* MovingAverage.cpp */; };
 		2D4CA6831C9E2A430000F1D6 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 2D4CA6821C9E2A430000F1D6 /* Makefile */; };
 		2DB687DC1CDEBA80007C4765 /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DB687DB1CDEBA80007C4765 /* server.cpp */; };
@@ -152,7 +151,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D4CA6831C9E2A430000F1D6 /* Makefile in Sources */,
-				2D4CA6741C9E26120000F1D6 /* main.cpp in Sources */,
 				2DB687DC1CDEBA80007C4765 /* server.cpp in Sources */,
 				2D4CA6801C9E29900000F1D6 /* MovingAverage.cpp in Sources */,
 			);
