@@ -1,6 +1,6 @@
 
 LDFLAGS = -L/usr/local/lib
-LDLIBS  = -lwiringPi -lwiringPiDev -lpthread -lm -lwiringPiPca9685 -lRTIMULib
+LDLIBS  = -lwiringPi 
 OTHER   = -std=c++0x -pg
 
 all:
