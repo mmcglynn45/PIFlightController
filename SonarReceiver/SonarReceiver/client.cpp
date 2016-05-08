@@ -39,7 +39,8 @@ void sendTime(){
         error("ERROR connecting");
     bzero(buffer,256);
     std::chrono::milliseconds ms = std::chrono::duration_cast< std::chrono::milliseconds >(std::chrono::system_clock::now().time_since_epoch());
-    sprintf(buffer,"%lld\n", ms.count()+500);
+    long long timeKey =ms.count()+1000;
+    sprintf(buffer,"%lld\n", timeKey);
     n = write(sockfd,buffer,strlen(buffer));
     if (n < 0)
         error("ERROR writing to socket");
@@ -48,6 +49,15 @@ void sendTime(){
     if (n < 0)
         error("ERROR reading from socket");
     printf("%s\n",buffer);
+    int keepWaiting = 1;
+    while(keepWaiting){
+            std::chrono::milliseconds ms = std::chrono::duration_cast< std::chrono::milliseconds >(std::chrono::system_clock::now().time_since_epoch());
+        long long currentTime = ms.count();
+        if (currentTime==timeKey) {
+            printf("Time Sync\n");
+        }
+    }
+    
     close(sockfd);
 }
 
