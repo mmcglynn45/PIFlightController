@@ -39,7 +39,7 @@ void sendTime(){
         error("ERROR connecting");
     bzero(buffer,256);
     std::chrono::milliseconds ms = std::chrono::duration_cast< std::chrono::milliseconds >(std::chrono::system_clock::now().time_since_epoch());
-    long long timeKey =ms.count()+1000;
+    long long timeKey =ms.count()+3000;
     sprintf(buffer,"%lld\n", timeKey);
     n = write(sockfd,buffer,strlen(buffer));
     if (n < 0)
@@ -55,6 +55,7 @@ void sendTime(){
         long long currentTime = ms.count();
         if (currentTime==timeKey) {
             printf("Time Sync\n");
+            break;
         }
     }
     
