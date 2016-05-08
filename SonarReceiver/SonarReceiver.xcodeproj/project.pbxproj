@@ -10,6 +10,7 @@
 		2D4CA6801C9E29900000F1D6 /* MovingAverage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D4CA67E1C9E29900000F1D6 /* MovingAverage.cpp */; };
 		2D4CA6831C9E2A430000F1D6 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 2D4CA6821C9E2A430000F1D6 /* Makefile */; };
 		2DB687DC1CDEBA80007C4765 /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DB687DB1CDEBA80007C4765 /* server.cpp */; };
+		2DB687DF1CDEBB06007C4765 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DB687DD1CDEBB06007C4765 /* client.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +34,7 @@
 		2D4CA6811C9E29EC0000F1D6 /* wiringPi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = wiringPi.h; path = SonarReceiver.xcodeproj/../wiringPi/wiringPi/wiringPi.h; sourceTree = SOURCE_ROOT; };
 		2D4CA6821C9E2A430000F1D6 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		2DB687DB1CDEBA80007C4765 /* server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = server.cpp; sourceTree = "<group>"; };
+		2DB687DD1CDEBB06007C4765 /* client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = client.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				2D4CA6811C9E29EC0000F1D6 /* wiringPi.h */,
 				2D4CA6731C9E26120000F1D6 /* main.cpp */,
 				2DB687DB1CDEBA80007C4765 /* server.cpp */,
+				2DB687DD1CDEBB06007C4765 /* client.cpp */,
 				2D4CA6821C9E2A430000F1D6 /* Makefile */,
 				2D4CA67E1C9E29900000F1D6 /* MovingAverage.cpp */,
 				2D4CA67F1C9E29900000F1D6 /* MovingAverage.h */,
@@ -152,6 +155,7 @@
 			files = (
 				2D4CA6831C9E2A430000F1D6 /* Makefile in Sources */,
 				2DB687DC1CDEBA80007C4765 /* server.cpp in Sources */,
+				2DB687DF1CDEBB06007C4765 /* client.cpp in Sources */,
 				2D4CA6801C9E29900000F1D6 /* MovingAverage.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
