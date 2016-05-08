@@ -6,6 +6,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
+#include <chrono>
 
 void error(const char *msg)
 {
@@ -13,8 +14,7 @@ void error(const char *msg)
     exit(0);
 }
 
-int main(int argc, char *argv[])
-{
+void sendTime(){
     int sockfd, portno, n;
     struct sockaddr_in serv_addr;
     struct hostent *server;
@@ -37,9 +37,9 @@ int main(int argc, char *argv[])
     serv_addr.sin_port = htons(portno);
     if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0)
         error("ERROR connecting");
-    printf("Please enter the message: ");
     bzero(buffer,256);
-    fgets(buffer,255,stdin);
+    std::chrono::milliseconds ms = std::chrono::duration_cast< std::chrono::milliseconds >(std::chrono::system_clock::now().time_since_epoch());
+    sprintf(buffer,"%lld\n", ms.count()+500);
     n = write(sockfd,buffer,strlen(buffer));
     if (n < 0)
         error("ERROR writing to socket");
@@ -49,5 +49,9 @@ int main(int argc, char *argv[])
         error("ERROR reading from socket");
     printf("%s\n",buffer);
     close(sockfd);
-    return 0;
+}
+
+int main(int argc, char *argv[])
+{
+
 }
