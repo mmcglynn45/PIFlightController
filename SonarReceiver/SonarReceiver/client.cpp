@@ -53,5 +53,5 @@ void sendTime(){
 
 int main(int argc, char *argv[])
 {
-
+    sendTime();
 }
