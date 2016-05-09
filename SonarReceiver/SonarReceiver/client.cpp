@@ -35,7 +35,11 @@ double getDistance();
 int sendMessage();
 int demo();
 double timeouts = 0;
+int sockfd, portno, n;
+struct sockaddr_in serv_addr;
+struct hostent *server;
 
+char buffer[256];
 
 void error(const char *msg)
 {
@@ -43,8 +47,28 @@ void error(const char *msg)
     exit(1);
 }
 
-void connectionSetup(){
+int connectionSetup(){
     
+    
+    portno = 55555;
+    sockfd = socket(AF_INET, SOCK_STREAM, 0);
+    if (sockfd < 0){
+        error("ERROR opening socket");
+        return 0;
+    }
+    server = gethostbyname("mattpi");
+    if (server == NULL) {
+        fprintf(stderr,"ERROR, no such host\n");
+        return 0;
+    }
+    bzero((char *) &serv_addr, sizeof(serv_addr));
+    serv_addr.sin_family = AF_INET;
+    bcopy((char *)server->h_addr,
+          (char *)&serv_addr.sin_addr.s_addr,
+          server->h_length);
+    serv_addr.sin_port = htons(portno);
+    if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0)
+        error("ERROR connecting");
 }
 
 int waitMessage()
@@ -86,7 +110,8 @@ int waitMessage()
 
 
 int main(){
-    
+    while (!connectionSetup()) {
+    }
     printf("HELLO SONAR\n");
     setup();
     int i = 0;
@@ -106,7 +131,7 @@ int main(){
         }
     }
     
-    
+    close(sockfd);
 }
 
 
@@ -173,30 +198,7 @@ double getDistance(){
 
 
 int sendMessage(){
-    int sockfd, portno, n;
-    struct sockaddr_in serv_addr;
-    struct hostent *server;
-    
-    char buffer[256];
-    portno = 55555;
-    sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (sockfd < 0){
-        error("ERROR opening socket");
-        return 0;
-    }
-    server = gethostbyname("mattpi");
-    if (server == NULL) {
-        fprintf(stderr,"ERROR, no such host\n");
-        return 0;
-    }
-    bzero((char *) &serv_addr, sizeof(serv_addr));
-    serv_addr.sin_family = AF_INET;
-    bcopy((char *)server->h_addr,
-          (char *)&serv_addr.sin_addr.s_addr,
-          server->h_length);
-    serv_addr.sin_port = htons(portno);
-    if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0)
-        error("ERROR connecting");
+
     bzero(buffer,256);
     std::chrono::microseconds ms = std::chrono::duration_cast< std::chrono::microseconds >(std::chrono::system_clock::now().time_since_epoch());
     long long timeKey =ms.count()+30000;
@@ -207,13 +209,13 @@ int sendMessage(){
         return 0;
     }
 
-    bzero(buffer,256);
-    n = read(sockfd,buffer,255);
-    if (n < 0){
-        error("ERROR reading from socket");
-        return 0;
-    }
-    printf("%s\n",buffer);
+    //bzero(buffer,256);
+    //n = read(sockfd,buffer,255);
+    //if (n < 0){
+    //    error("ERROR reading from socket");
+    //    return 0;
+    //}
+    //printf("%s\n",buffer);
     /*
     int keepWaiting = 1;
     while(keepWaiting){
@@ -224,6 +226,6 @@ int sendMessage(){
         }
     }
      */
-    close(sockfd);
+
     return 1;
 }
