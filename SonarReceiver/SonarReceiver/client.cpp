@@ -38,7 +38,7 @@ double timeouts = 0;
 int sockfd, portno, n;
 struct sockaddr_in serv_addr;
 struct hostent *server;
-
+MovingAverage timeoutsCounter;
 char buffer[256];
 
 void error(const char *msg)
@@ -139,6 +139,7 @@ int main(){
 
 void setup() {
     //printf("Made it to setup");
+    timeoutsCounter.setup(40);
     distance.setup(100);
     wiringPiSetupGpio();
     
@@ -164,6 +165,7 @@ double getCM() {
         if ((micros()-startTime)>400000) { //maximum of 160cm
             active = 0;
             timeouts++;
+            timeoutsCounter.insert(100);
             return distance.getAverage();
             
         }
@@ -175,6 +177,7 @@ double getCM() {
         if ((micros()-startTime)>400000) { //maximum of 160cm
             active = 0;
             timeouts++;
+            timeoutsCounter.insert(100);
             return distance.getAverage();
             
         }
