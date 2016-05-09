@@ -139,7 +139,7 @@ int main(){
 
 void setup() {
     //printf("Made it to setup");
-    distance.setup(10);
+    distance.setup(100);
     wiringPiSetupGpio();
     
     pinMode(TRIG, OUTPUT);
