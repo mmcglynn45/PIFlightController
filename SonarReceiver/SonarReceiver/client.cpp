@@ -43,6 +43,10 @@ void error(const char *msg)
     exit(1);
 }
 
+void connectionSetup(){
+    
+}
+
 int waitMessage()
 {
     int sockfd, newsockfd, portno;
