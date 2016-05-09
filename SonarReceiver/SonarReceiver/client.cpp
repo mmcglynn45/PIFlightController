@@ -112,14 +112,14 @@ int waitMessage()
 
 
 int main(){
-    while (!connectionSetup()) {
-    }
+
     printf("HELLO SONAR\n");
     setup();
     int i = 0;
     while (1) {
         i++;
         delay(3);
+        connectionSetup();
         while (!sendMessage()) {
         }
         double dist = getDistance();
