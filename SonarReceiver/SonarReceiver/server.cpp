@@ -81,13 +81,13 @@ int main(){
     while (1) {
         i++;
         delay(3);
+        waitMessage();
         double dist = getDistance();
         if (i%300==0) {
             printf("Sonar Distance = %f\n", dist/2.54);
             printf("Timeouts = %f\n", timeouts);
             using namespace std::chrono;
-            micros micros = duration_cast< micros >(system_clock::now().time_since_epoch());
-            milliseconds ms = duration_cast< milliseconds >(system_clock::now().time_since_epoch());
+            microseconds ms = duration_cast< microseconds >(system_clock::now().time_since_epoch());
             printf("Time in milliseconds %lld\n", ms.count());
         }
     }

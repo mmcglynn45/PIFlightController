@@ -10,6 +10,7 @@
 		2D4CA6801C9E29900000F1D6 /* MovingAverage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2D4CA67E1C9E29900000F1D6 /* MovingAverage.cpp */; };
 		2D4CA6831C9E2A430000F1D6 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 2D4CA6821C9E2A430000F1D6 /* Makefile */; };
 		2DB687E01CE007DE007C4765 /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DB687DB1CDEBA80007C4765 /* server.cpp */; };
+		2DB687E11CE008CD007C4765 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DB687DD1CDEBB06007C4765 /* client.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -154,6 +155,7 @@
 			files = (
 				2DB687E01CE007DE007C4765 /* server.cpp in Sources */,
 				2D4CA6831C9E2A430000F1D6 /* Makefile in Sources */,
+				2DB687E11CE008CD007C4765 /* client.cpp in Sources */,
 				2D4CA6801C9E29900000F1D6 /* MovingAverage.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
