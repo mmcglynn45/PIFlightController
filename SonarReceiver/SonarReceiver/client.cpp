@@ -187,6 +187,9 @@ double getCM() {
     //Get distance in cm
     double newDistance = travelTime / 58.0;
     double delta = fabs(newDistance-lastReading);
+    if (newDistance>2500) {
+        return distance.getAverage();
+    }
     if (fabs(newDistance-distance.getAverage())<1) {
         distance.insert(newDistance);
     }else{
