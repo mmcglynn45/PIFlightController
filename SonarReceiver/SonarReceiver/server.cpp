@@ -86,6 +86,7 @@ int main(){
         i++;
         delay(3);
         waitMessage();
+        delayMicroseconds(2000);
         double dist = getDistance();
         printf("Sonar Distance = %f\n", dist/2.54);
         if (i%300==0) {
