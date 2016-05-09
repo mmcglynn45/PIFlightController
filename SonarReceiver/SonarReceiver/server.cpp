@@ -21,6 +21,12 @@
 #define TRIG 20
 #define ECHO 21
 
+
+int sockfd, newsockfd, portno;
+socklen_t clilen;
+char buffer[256];
+struct sockaddr_in serv_addr, cli_addr;
+int n;
 MovingAverage distance;
 int active;
 void setup();
@@ -35,13 +41,7 @@ void error(const char *msg)
     exit(1);
 }
 
-int waitMessage()
-{
-    int sockfd, newsockfd, portno;
-    socklen_t clilen;
-    char buffer[256];
-    struct sockaddr_in serv_addr, cli_addr;
-    int n;
+void connectionSetup(){
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd < 0)
         error("ERROR opening socket");
@@ -53,6 +53,12 @@ int waitMessage()
     if (bind(sockfd, (struct sockaddr *) &serv_addr,
              sizeof(serv_addr)) < 0)
         error("ERROR on binding");
+
+}
+
+
+int waitMessage()
+{
     listen(sockfd,5);
     clilen = sizeof(cli_addr);
     newsockfd = accept(sockfd,
@@ -66,15 +72,13 @@ int waitMessage()
     printf("Here is the message: %s\n",buffer);
     n = write(newsockfd,"I got your message",18);
     if (n < 0) error("ERROR writing to socket");
-    close(newsockfd);
-    close(sockfd);
     return 0;
 }
 
 
 
 int main(){
-    
+    connectionSetup();
     printf("HELLO SONAR\n");
     setup();
     int i = 0;
@@ -93,7 +97,8 @@ int main(){
         }
     }
     
-    
+    close(newsockfd);
+    close(sockfd);
 }
 
 
