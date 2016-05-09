@@ -211,13 +211,13 @@ int sendMessage(){
         return 0;
     }
 
-    //bzero(buffer,256);
-    //n = read(sockfd,buffer,255);
-    //if (n < 0){
-    //    error("ERROR reading from socket");
-    //    return 0;
-    //}
-    //printf("%s\n",buffer);
+    bzero(buffer,256);
+    n = read(sockfd,buffer,255);
+    if (n < 0){
+        error("ERROR reading from socket");
+        return 0;
+    }
+    printf("%s\n",buffer);
     /*
     int keepWaiting = 1;
     while(keepWaiting){
