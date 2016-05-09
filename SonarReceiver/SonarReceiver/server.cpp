@@ -83,6 +83,7 @@ int main(){
         delay(3);
         waitMessage();
         double dist = getDistance();
+        printf("Sonar Distance = %f\n", dist/2.54);
         if (i%300==0) {
             printf("Sonar Distance = %f\n", dist/2.54);
             printf("Timeouts = %f\n", timeouts);
@@ -107,7 +108,6 @@ void setup() {
     //TRIG pin must start LOW
     digitalWrite(TRIG, LOW);
     delay(30);
-    distance.insert(4);
 }
 
 double getCM() {
