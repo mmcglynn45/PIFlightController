@@ -52,8 +52,8 @@ int main(void)
     controller.setup();
     printf("Controller initialized -- Now.\n");
     Image myImage;
-    myImage.initialize();
-    printf("Camera initialized -- Now.\n");
+    //myImage.initialize();
+    //printf("Camera initialized -- Now.\n");
     radio.setup();
     wiringPiISR(THROTTLE, INT_EDGE_RISING, &throttleInterrupt);
     //wiringPiISR(PITCH, INT_EDGE_RISING, &pitchInterrupt);
@@ -130,7 +130,7 @@ int main(void)
             
             //Camera threading
              if (!cameraThreadCreated) {
-             pthread_create(&thread2, NULL, takePicture, &myImage);
+             //pthread_create(&thread2, NULL, takePicture, &myImage);
              cameraThreadCreated = 1;
              }
             
@@ -214,10 +214,12 @@ int main(void)
              */
             //Camera threading
 
+            /*
              if (!myImage.active){
-             cameraThreadCreated = 0;
-             pthread_join(thread2, NULL);
+             //cameraThreadCreated = 0;
+             //pthread_join(thread2, NULL);
              }
+             */
             
             double threshold = 30000;
             if (count>threshold) {
