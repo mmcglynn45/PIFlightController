@@ -55,6 +55,7 @@ int main(void)
     //myImage.initialize();
     //printf("Camera initialized -- Now.\n");
     radio.setup();
+    piHiPri(99);
     wiringPiISR(THROTTLE, INT_EDGE_RISING, &throttleInterrupt);
     //wiringPiISR(PITCH, INT_EDGE_RISING, &pitchInterrupt);
     //wiringPiISR(ROLL, INT_EDGE_RISING, &rollInterrupt);
