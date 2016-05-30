@@ -13,7 +13,7 @@
 void Sonar::setup() {
     //printf("Made it to setup");
     distance.setup(30);
-    wiringPiSetupGpio();
+    //wiringPiSetupGpio();
     
     pinMode(TRIG, OUTPUT);
     pinMode(ECHO, INPUT);
