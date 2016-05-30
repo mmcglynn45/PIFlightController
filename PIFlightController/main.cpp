@@ -54,8 +54,8 @@ int main(void)
     Image myImage;
     //myImage.initialize();
     //printf("Camera initialized -- Now.\n");
-    radio.setup();
-    wiringPiISR(THROTTLE, INT_EDGE_RISING, &throttleInterrupt);
+    //radio.setup();
+    //wiringPiISR(THROTTLE, INT_EDGE_RISING, &throttleInterrupt);
     //wiringPiISR(PITCH, INT_EDGE_RISING, &pitchInterrupt);
     //wiringPiISR(ROLL, INT_EDGE_RISING, &rollInterrupt);
     double totalRoll = 0;
