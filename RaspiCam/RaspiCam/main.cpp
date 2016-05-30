@@ -67,8 +67,8 @@ int main ( int argc,char **argv ) {
         //newImage.fastThresholdCOG(0, 100, 130, 255, 0, 255);
         newImage.fastThresholdCOG(0, 30, 0, 255, 0, 255);
         newImage.markTarget(newImage.cogX, newImage.cogY);
-        printf("COGX = %f, COGY = %f\n", newImage.cogX, newImage.cogY);
-        newImage.saveImageToFile("mattImage.ppm");
+        //printf("COGX = %f, COGY = %f\n", newImage.cogX, newImage.cogY);
+        //newImage.saveImageToFile("mattImage.ppm");
         delete data;
         
         //if ( i%5==0 )  cout<<"\r captured "<<i<<" images"<<std::flush;
