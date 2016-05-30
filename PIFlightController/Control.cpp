@@ -147,7 +147,7 @@ void Control::adjustMotorSpeed(int motor, double speed){
 
 void Control::ManageOrientation(double roll, double pitch, double yaw, double altitude, double mX, double mY, double rollRate, double pitchRate, double throttleInput, double rollInput, double pitchInput, double takeoffsetting, double cogX, double cogY){
     mapCameraInputs(&cogX, &cogY);
-    printf("COGX = %f, COGY = %f\n", cogX, cogY);
+    //printf("COGX = %f, COGY = %f\n", cogX, cogY);
     //double desiredPitch = (pitchInput - 0.5)*2;
     //double desiredRoll = (rollInput - 0.5)*2;
     double desiredPitch = mXPIDComputation(mX, 0);
