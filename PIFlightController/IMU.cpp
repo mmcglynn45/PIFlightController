@@ -27,7 +27,7 @@ void IMU::setup(){
     imu->setCompassEnable(true);
     roll.setup(100);
     pitch.setup(100);
-    yaw.setup(10);
+    yaw.setup(40);
     mX.setup(70);
     mY.setup(70);
     rollRate.setup(20);

@@ -142,7 +142,7 @@ int main(void)
             //cout << "Roll = " << piIMU.roll << endl;
             //cout << "PitchRate = " << piIMU.pitchRate << endl;
             //cout << "RollRate = " << piIMU.rollRate << endl;
-            //cout << "Yaw = " << piIMU.yaw << endl;
+            cout << "Yaw = " << piIMU.yaw.getAverage() << endl;
             //cout << "MX = " << piIMU.mX << endl;
             //cout << "MY = " << piIMU.mY << endl;
             //myImage.takePicture();

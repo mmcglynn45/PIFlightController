@@ -22,10 +22,10 @@
 //#define XNMOTOR 8 //Pitch plus - Roll minus - Yaw Plus - mY pos - mx neg
 //#define XPMOTOR 12 //Pitch plus - Roll Positive - Yaw Minus  - mY neg - mx neg
 
-#define YPMOTOR 3 //Pitch positive
-#define YNMOTOR 7 //Roll Positive
-#define XNMOTOR 8 //Pitch negative
-#define XPMOTOR 12 //Roll negative
+#define YPMOTOR 3 //Pitch positive Yaw +
+#define YNMOTOR 7 //Roll Positive  Yaw -
+#define XNMOTOR 8 //Pitch negative Yaw +
+#define XPMOTOR 12 //Roll negative Yaw -
 
 #define	PI					3.1415926535
 #define	DEGREE_TO_RAD		(RTMATH_PI / 180.0)
@@ -340,6 +340,7 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
     rollControl = rollControl/5;
     pitchControl = inputNormalizer(pitchControl,-.50,.50);
     rollControl = inputNormalizer(rollControl,-.90,.90);
+    yawControl = inputNormalizer(yawControl,-.2,.2);
     extRollControl = rollControl;
     extPitchControl = pitchControl;
     
