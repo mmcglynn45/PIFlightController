@@ -338,6 +338,7 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
     throttleBaseline = inputNormalizer(throttleBaseline, 0, 1.5);
     pitchControl = pitchControl/2;
     rollControl = rollControl/5;
+    yawControl = yawControl/6;
     pitchControl = inputNormalizer(pitchControl,-.50,.50);
     rollControl = inputNormalizer(rollControl,-.90,.90);
     yawControl = inputNormalizer(yawControl,-.2,.2);
@@ -353,7 +354,7 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
     double yawN = 1 - yawP;
     //std::cout<<"PitchP: " << pitchP << std::endl;
     //std::cout<<"RollP: " << rollP << std::endl;
-    
+    printf("Yaw Control = %f",yawControl);
     //Old mapping
     //double XPSpeed = throttleBaseline * pitchP * rollP *yawP;
     //double XNSpeed = throttleBaseline * pitchP * rollN *yawN;
@@ -361,10 +362,10 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
     //double YNSpeed = throttleBaseline * pitchN * rollN *yawP;
     
     //new mapping
-    double XPSpeed = throttleBaseline * rollN;
-    double XNSpeed = throttleBaseline * pitchN;
-    double YPSpeed = throttleBaseline * pitchP;
-    double YNSpeed = throttleBaseline * rollP;
+    double XPSpeed = throttleBaseline * rollN * yawN;
+    double XNSpeed = throttleBaseline * pitchN *yawP;
+    double YPSpeed = throttleBaseline * pitchP *yawP;
+    double YNSpeed = throttleBaseline * rollP * yawN;
     XPSpeed = inputNormalizer(XPSpeed, 0, 1);
     XNSpeed = inputNormalizer(XNSpeed, 0, 1);
     YPSpeed = inputNormalizer(YPSpeed, 0, 1);
