@@ -354,7 +354,7 @@ void Control::MapMotorOutput(double pitchControl,double rollControl, double yawC
     double yawN = 1 - yawP;
     //std::cout<<"PitchP: " << pitchP << std::endl;
     //std::cout<<"RollP: " << rollP << std::endl;
-    printf("Yaw Control = %f",yawControl);
+    //printf("Yaw Control = %f",yawControl);
     //Old mapping
     //double XPSpeed = throttleBaseline * pitchP * rollP *yawP;
     //double XNSpeed = throttleBaseline * pitchP * rollN *yawN;
